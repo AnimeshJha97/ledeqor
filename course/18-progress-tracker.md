@@ -6,10 +6,10 @@
 |---|---|---|
 | 0. Career Strategy & Product Direction | Complete | Full module content, assignment, quiz, interview prompts, positioning file |
 | 1. Python for AI Engineering | Complete | Full module content plus runnable FastAPI lab scaffold; tests written but not executed because Python is not installed locally |
-| 2. AI, ML, Generative AI & LLM Foundations | Not started |  |
-| 3. Document AI Fundamentals | Not started |  |
-| 4. LLM API Engineering | Not started |  |
-| 5. Structured Document Extraction | Not started |  |
+| 2. AI, ML, Generative AI & LLM Foundations | Complete | Full module content, diagrams, assignment, quiz, answer key, interview prompts, and flow bridge into Modules 3-5 |
+| 3. Document AI Fundamentals | Complete | Existing full module content reviewed for continuity after Module 2 |
+| 4. LLM API Engineering | Complete | Existing full module content reviewed for continuity after Module 2 |
+| 5. Structured Document Extraction | Complete | Existing full module content reviewed for continuity after Modules 3 and 4 |
 | 6. Embeddings, Vector Search & Semantic Search | Not started |  |
 | 7. RAG for Business Documents | Not started |  |
 | 8. Full Stack AI SaaS Architecture | Not started |  |

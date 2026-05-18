@@ -71,7 +71,7 @@ export const courseModules: CourseModule[] = [
     slug: "ai-ml-llm-foundations",
     title: "AI, ML, Generative AI & LLM Foundations",
     purpose: "Build the vocabulary and mental models needed to explain AI clearly as a software engineer.",
-    status: "outline",
+    status: "complete",
     sourceFile: "04-ai-ml-llm-foundations.md",
     outcome: "Explain core AI, ML, embeddings, transformers, inference, hallucination, and RAG tradeoffs.",
     lectures: [
@@ -101,7 +101,7 @@ export const courseModules: CourseModule[] = [
     slug: "document-ai-fundamentals",
     title: "Document AI Fundamentals",
     purpose: "Understand PDF, OCR, layout, metadata, classification, and extraction challenges.",
-    status: "outline",
+    status: "complete",
     sourceFile: "05-document-ai-fundamentals.md",
     outcome: "Build a document text extraction and metadata pipeline.",
     lectures: [
@@ -129,7 +129,7 @@ export const courseModules: CourseModule[] = [
     slug: "llm-api-engineering",
     title: "LLM API Engineering",
     purpose: "Use LLM APIs professionally with structured outputs, retries, streaming, fallback, and cost control.",
-    status: "outline",
+    status: "complete",
     sourceFile: "06-llm-api-engineering.md",
     outcome: "Build reusable AI service calls for summaries, classification, and extraction.",
     lectures: [
@@ -155,7 +155,7 @@ export const courseModules: CourseModule[] = [
     slug: "structured-document-extraction",
     title: "Structured Document Extraction",
     purpose: "Turn documents into useful business data through schemas, validation, and review flows.",
-    status: "outline",
+    status: "complete",
     sourceFile: "07-structured-document-extraction.md",
     outcome: "Extract and store invoice, contract, policy, and proposal fields.",
     lectures: [
@@ -271,4 +271,3 @@ export function getCourseStats() {
     lectureCount
   };
 }
-

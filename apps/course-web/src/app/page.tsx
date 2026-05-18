@@ -2,11 +2,17 @@ import Link from "next/link";
 import { ArrowRight, BookOpen, BrainCircuit, FileText, SearchCheck } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { StatusBadge } from "@/components/status-badge";
-import { allModules, getCourseStats } from "@/lib/course-data";
+import { getCourseStats } from "@/lib/course-data";
+import { getHydratedModules } from "@/lib/course-content";
 
 export default function DashboardPage() {
-  const stats = getCourseStats();
-  const completedModules = allModules.filter((module) => module.status === "complete");
+  const modules = getHydratedModules();
+  const stats = {
+    ...getCourseStats(),
+    completed: modules.filter((module) => module.status === "complete").length,
+    lectureCount: modules.reduce((total, module) => total + module.lectures.length, 0)
+  };
+  const completedModules = modules.filter((module) => module.status === "complete");
 
   return (
     <AppShell>

@@ -2,9 +2,11 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { StatusBadge } from "@/components/status-badge";
-import { allModules } from "@/lib/course-data";
+import { getHydratedModules } from "@/lib/course-content";
 
 export default function ModulesPage() {
+  const modules = getHydratedModules();
+
   return (
     <AppShell>
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -16,7 +18,7 @@ export default function ModulesPage() {
       </div>
 
       <div className="mt-6 grid gap-4">
-        {allModules.map((module) => (
+        {modules.map((module) => (
           <Link key={module.slug} href={`/modules/${module.slug}`} className="group rounded-md border border-line bg-surface p-5 shadow-sm transition hover:border-brand hover:bg-panel hover:shadow-soft">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
               <div>

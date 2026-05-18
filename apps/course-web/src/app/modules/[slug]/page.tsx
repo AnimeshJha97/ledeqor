@@ -5,7 +5,8 @@ import { AppShell } from "@/components/app-shell";
 import { MarkdownContent } from "@/components/markdown-content";
 import { ProgressToggle } from "@/components/progress-toggle";
 import { StatusBadge } from "@/components/status-badge";
-import { allModules, getModule } from "@/lib/course-data";
+import { allModules } from "@/lib/course-data";
+import { getHydratedModule } from "@/lib/course-content";
 import { parseMarkdown, readCourseMarkdown, readLabMarkdown, slugify } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -14,7 +15,7 @@ export function generateStaticParams() {
 
 export default async function ModuleDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const module = getModule(slug);
+  const module = getHydratedModule(slug);
 
   if (!module) {
     notFound();

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
-import { allModules } from "@/lib/course-data";
+import { getHydratedModules } from "@/lib/course-content";
 
 export default function LabsPage() {
-  const labs = allModules.filter((module) => module.labSlug);
+  const labs = getHydratedModules().filter((module) => module.labSlug);
 
   return (
     <AppShell>

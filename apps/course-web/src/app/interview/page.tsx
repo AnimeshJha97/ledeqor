@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
-import { allModules } from "@/lib/course-data";
+import { getHydratedModules } from "@/lib/course-content";
 
 export default function InterviewPage() {
+  const modules = getHydratedModules();
+
   return (
     <AppShell>
       <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">Interview prep</p>
@@ -17,7 +19,7 @@ export default function InterviewPage() {
       </div>
 
       <div className="mt-6 grid gap-4">
-        {allModules.filter((module) => module.status === "complete").map((module) => (
+        {modules.filter((module) => module.status === "complete").map((module) => (
           <Link key={module.slug} href={`/modules/${module.slug}#interview-questions`} className="rounded-md border border-line bg-surface p-5 shadow-sm transition hover:border-brand hover:bg-panel">
             <p className="text-sm font-semibold text-brand">Module {module.id}</p>
             <h3 className="mt-1 text-lg font-semibold text-ink">{module.title}</h3>
