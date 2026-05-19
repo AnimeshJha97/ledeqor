@@ -237,24 +237,87 @@ export const courseModules: CourseModule[] = [
 ];
 
 const remainingModules: CourseModule[] = [
-  ["full-stack-ai-saas-architecture", "Full Stack AI SaaS Architecture", "10-full-stack-ai-saas-architecture.md"],
-  ["agentic-document-workflows", "Agentic Document Workflows", "11-agentic-document-workflows.md"],
-  ["ai-evaluation-observability", "AI Evaluation, Testing & Observability", "12-ai-evaluation-observability.md"],
-  ["ai-security-privacy", "AI Security, Privacy & Compliance", "13-ai-security-privacy.md"],
-  ["deployment-scaling-llmops", "Deployment, Scaling & LLMOps", "14-deployment-scaling-llmops.md"],
-  ["orvion-docintel-capstone-blueprint", "Capstone Build: Orvion DocIntel", "15-orvion-docintel-capstone-blueprint.md"],
-  ["ai-engineer-interview-preparation", "AI Engineer Interview Preparation", "16-ai-engineer-interview-preparation.md"],
-  ["resume-linkedin-job-strategy", "Resume, LinkedIn & Job Strategy", "17-resume-linkedin-job-strategy.md"]
-].map(([slug, title, sourceFile], index) => ({
-  id: index + 8,
-  slug,
-  title,
-  purpose: "Detailed outline is available now. Full lecture expansion will be built in course production order.",
-  status: "outline" as const,
-  sourceFile,
-  outcome: "Complete this module as part of the full Orvion DocIntel course path.",
-  lectures: []
-}));
+  {
+    id: 8,
+    slug: "full-stack-ai-saas-architecture",
+    title: "Full Stack AI SaaS Architecture",
+    purpose: "Design Orvion DocIntel as a real SaaS with frontend, backend, AI service, database, queues, storage, auth, and observability.",
+    status: "complete",
+    sourceFile: "10-full-stack-ai-saas-architecture.md",
+    outcome: "Create the complete architecture blueprint, API contracts, schema plan, job model, and UI route map.",
+    lectures: []
+  },
+  {
+    id: 9,
+    slug: "agentic-document-workflows",
+    title: "Agentic Document Workflows",
+    purpose: "Build controlled document workflows with safe tool calling, schema validation, workflow state, and human review.",
+    status: "complete",
+    sourceFile: "11-agentic-document-workflows.md",
+    outcome: "Implement classifier, contract review, invoice approval, comparison, and checklist workflows safely.",
+    lectures: []
+  },
+  {
+    id: 10,
+    slug: "ai-evaluation-observability",
+    title: "AI Evaluation, Testing & Observability",
+    purpose: "Evaluate extraction, retrieval, citations, hallucination risk, latency, token usage, and cost like a production AI engineer.",
+    status: "complete",
+    sourceFile: "12-ai-evaluation-observability.md",
+    outcome: "Build golden datasets, eval scripts, usage tracking, prompt regression checks, and a quality dashboard plan.",
+    lectures: []
+  },
+  {
+    id: 11,
+    slug: "ai-security-privacy",
+    title: "AI Security, Privacy & Compliance",
+    purpose: "Protect sensitive business documents with tenant isolation, RBAC, prompt injection defenses, safe logging, and deletion workflows.",
+    status: "complete",
+    sourceFile: "13-ai-security-privacy.md",
+    outcome: "Create the security model for document access, vector privacy, secure uploads, audit logs, and PII-aware processing.",
+    lectures: []
+  },
+  {
+    id: 12,
+    slug: "deployment-scaling-llmops",
+    title: "Deployment, Scaling & LLMOps",
+    purpose: "Prepare the multi-service AI SaaS for local Docker, deployment, monitoring, health checks, cost control, and demo readiness.",
+    status: "complete",
+    sourceFile: "14-deployment-scaling-llmops.md",
+    outcome: "Create Docker, environment, health check, deployment, monitoring, README, and demo video plans.",
+    lectures: []
+  },
+  {
+    id: 13,
+    slug: "orvion-docintel-capstone-blueprint",
+    title: "Capstone Build: Orvion DocIntel",
+    purpose: "Build the full Orvion DocIntel product in ten implementation phases from setup to production polish.",
+    status: "complete",
+    sourceFile: "15-orvion-docintel-capstone-blueprint.md",
+    outcome: "Turn the entire course into a portfolio-grade product with upload, extraction, search, RAG, workflows, evals, security, and deployment.",
+    lectures: []
+  },
+  {
+    id: 14,
+    slug: "ai-engineer-interview-preparation",
+    title: "AI Engineer Interview Preparation",
+    purpose: "Convert your learning and capstone into interview answers, system design stories, mock interviews, and salary positioning.",
+    status: "complete",
+    sourceFile: "16-ai-engineer-interview-preparation.md",
+    outcome: "Prepare your pitch, project deep dive, AI concepts, system design answers, behavioral stories, and final checklist.",
+    lectures: []
+  },
+  {
+    id: 15,
+    slug: "resume-linkedin-job-strategy",
+    title: "Resume, LinkedIn & Job Strategy",
+    purpose: "Reposition your profile from MERN-only to senior full-stack engineer building applied AI products.",
+    status: "complete",
+    sourceFile: "17-resume-linkedin-job-strategy.md",
+    outcome: "Create the AI-focused resume, LinkedIn profile, GitHub proof, case study, outreach scripts, and application tracker.",
+    lectures: []
+  }
+];
 
 export const allModules = [...courseModules, ...remainingModules];
 

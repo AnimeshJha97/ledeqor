@@ -10,16 +10,16 @@
 | 3. Document AI Fundamentals | Complete | Existing full module content reviewed for continuity after Module 2 |
 | 4. LLM API Engineering | Complete | Existing full module content reviewed for continuity after Module 2 |
 | 5. Structured Document Extraction | Complete | Existing full module content reviewed for continuity after Modules 3 and 4 |
-| 6. Embeddings, Vector Search & Semantic Search | Not started |  |
-| 7. RAG for Business Documents | Not started |  |
-| 8. Full Stack AI SaaS Architecture | Not started |  |
-| 9. Agentic Document Workflows | Not started |  |
-| 10. AI Evaluation, Testing & Observability | Not started |  |
-| 11. AI Security, Privacy & Compliance | Not started |  |
-| 12. Deployment, Scaling & LLMOps | Not started |  |
-| 13. Capstone Build: Orvion DocIntel | Not started |  |
-| 14. AI Engineer Interview Preparation | Not started |  |
-| 15. Resume, LinkedIn & Job Strategy | Not started |  |
+| 6. Embeddings, Vector Search & Semantic Search | Complete | Full module content, semantic search lab, quiz, answer key, interview prompts, and vector DB comparison |
+| 7. RAG for Business Documents | Complete | Full module content, grounded Q&A lab, citations, unknown-answer handling, quiz, and RAG interview prep |
+| 8. Full Stack AI SaaS Architecture | Complete | Full module content, architecture blueprint, API contract design, schema plan, UI states, and system design prep |
+| 9. Agentic Document Workflows | Complete | Full module content, controlled workflow patterns, safe tools, human review, workflow state, and debugging guide |
+| 10. AI Evaluation, Testing & Observability | Complete | Full module content, golden datasets, extraction/RAG evals, citation checks, cost tracking, and dashboard plan |
+| 11. AI Security, Privacy & Compliance | Complete | Full module content, tenant isolation, RBAC, secure upload, prompt injection defense, safe logging, and deletion workflow |
+| 12. Deployment, Scaling & LLMOps | Complete | Full module content, Docker/Compose plan, health checks, monitoring, scaling, production README, and demo video prep |
+| 13. Capstone Build: Orvion DocIntel | Complete | Full module content with ten phased build plan, architecture diagram, acceptance criteria, quiz, and interview prompts |
+| 14. AI Engineer Interview Preparation | Complete | Full module content, interview pitch, technical question map, project deep dive, mock prep, and salary strategy |
+| 15. Resume, LinkedIn & Job Strategy | Complete | Full module content, resume bullets, LinkedIn rewrite, GitHub cleanup, case study, outreach, and application tracker |
 
 ## Capstone Progress
 
