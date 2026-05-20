@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
+import { requireApiCourseAccess } from "@/server/auth/access-control";
 import { getCapstoneProgress, updateCapstoneChecklistItem } from "@/server/capstone/capstone-progress-repository";
-
-const learnerId = "local-learner";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -11,7 +10,13 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "courseSlug is required" }, { status: 400 });
   }
 
-  const progress = await getCapstoneProgress(courseSlug, learnerId);
+  const access = await requireApiCourseAccess(courseSlug);
+
+  if (!access.ok) {
+    return access.response;
+  }
+
+  const progress = await getCapstoneProgress(courseSlug, access.user.id);
 
   return NextResponse.json({ progress });
 }
@@ -23,9 +28,15 @@ export async function PATCH(request: Request) {
     return NextResponse.json({ error: "courseSlug, phaseId, itemId, and completed are required" }, { status: 400 });
   }
 
+  const access = await requireApiCourseAccess(body.courseSlug);
+
+  if (!access.ok) {
+    return access.response;
+  }
+
   const progress = await updateCapstoneChecklistItem({
     courseSlug: body.courseSlug,
-    learnerId,
+    learnerId: access.user.id,
     phaseId: body.phaseId,
     itemId: body.itemId,
     completed: body.completed

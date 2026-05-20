@@ -1,7 +1,9 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
+import { upsertUserFromAuth } from "@/server/users/user-repository";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  secret: process.env.AUTH_SECRET,
   providers: [
     Google({
       clientId: process.env.AUTH_GOOGLE_ID,
@@ -10,6 +12,42 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   session: {
     strategy: "jwt"
+  },
+  callbacks: {
+    async signIn({ user }) {
+      const appUser = await upsertUserFromAuth({
+        email: user.email,
+        name: user.name,
+        image: user.image
+      });
+
+      return Boolean(appUser);
+    },
+    async jwt({ token, user }) {
+      const source = {
+        email: user?.email ?? token.email,
+        name: user?.name ?? token.name,
+        image: user?.image ?? token.picture
+      };
+      const appUser = await upsertUserFromAuth(source);
+
+      if (appUser) {
+        token.appUserId = appUser.id;
+        token.role = appUser.role;
+        token.name = appUser.name ?? token.name;
+        token.picture = appUser.image ?? token.picture;
+      }
+
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.appUserId as string;
+        session.user.role = token.role as string;
+      }
+
+      return session;
+    }
   },
   pages: {
     signIn: "/sign-in"

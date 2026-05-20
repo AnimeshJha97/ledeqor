@@ -23,7 +23,7 @@ Last updated: 2026-05-20
 
 | Priority | Task | Status | Notes |
 |---|---|---|---|
-| P3 | Phase 5: AI Tutor Later | Pending | Next major phase after the learning system, practice mode, capstone tracker, and visual library |
+| P3 | Phase 5: AI Tutor Later | Pending | Next major phase after access foundation, learning system, practice mode, capstone tracker, and visual library |
 
 ## Completed Tasks
 
@@ -47,6 +47,9 @@ Last updated: 2026-05-20
 | P1 | Phase 2: Practice Mode | Completed | Added flashcards, interactive quizzes with saved scores, short-answer writing with saved attempts, interview prompts, Gemini answer analysis endpoint, coding task prompts, and lecture self-rating | Build passed; quiz/progress/short-answer APIs returned 200; Gemini high-demand failure handled cleanly |
 | P1 | Phase 3: Capstone Build Tracker | Completed | Added course-scoped capstone workspace with 10 product build phases, checklist progress, theory/files/API/database/acceptance/interview story sections, and MongoDB progress persistence | `npm.cmd run build` passed; `/courses/ai-engineer-guide/capstone` returned 200; capstone progress PATCH/GET returned 200 |
 | P2 | Phase 4: Visual Learning | Completed | Added course-scoped visual learning library with Mermaid diagrams for AI foundations, ingestion, extraction, embeddings, RAG, SaaS architecture, workflows, evaluation, and deployment | `npm.cmd run build` passed; `/courses/ai-engineer-guide/visuals` returned 200 |
+| P0 | Fix Auth.js missing secret error | Completed | Passed `AUTH_SECRET` explicitly into the NextAuth config instead of relying on auto-detection | `npm.cmd run build` passed |
+| P0 | Security and route access architecture | Completed | Defined public/authenticated/enrolled/paid/admin access model, Udemy-inspired access patterns, route/API matrices, entitlement schema, guard layers, and implementation phases | Added `docs/security-route-access-architecture.md` |
+| P0 | Implement access foundation | Completed | Added Auth.js user sync, `users` and `course_entitlements`, shared page/API guards, temporary free enrollment CTA, private route gating, API gating, and session-based learner ids | `npm.cmd run build` passed; signed-out private study routes redirected to `/sign-in`; signed-out progress API returned 401; public course API no longer returns Markdown |
 
 ## In Progress
 
@@ -59,6 +62,8 @@ Last updated: 2026-05-20
 | Priority | Task | Status | Notes |
 |---|---|---|---|
 | P0 | Rotate exposed secrets | Pending | MongoDB, Google OAuth, Gemini keys were pasted in chat and should be rotated |
+| P1 | Implement My Learning dashboard | Pending | Show authenticated user's enrolled courses and continue-learning state |
+| P1 | Add paid plan enforcement | Pending | Connect pricing tiers to entitlement access levels after billing is added |
 | P0 | Progress tracking + Continue Learning | Completed | Implemented as part of Phase 1 |
 
 ## Pending: Phase 1 - Better Study UX

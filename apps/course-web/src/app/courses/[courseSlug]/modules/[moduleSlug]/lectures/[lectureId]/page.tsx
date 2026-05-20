@@ -4,11 +4,11 @@ import { ArrowLeft, ArrowRight, BookOpen, BriefcaseBusiness, CheckSquare, Messag
 import { AppShell } from "@/components/app-shell";
 import { MarkdownContent } from "@/components/markdown-content";
 import { LectureProgressButtons, SelfRating } from "@/components/study-progress-client";
+import { requireCourseAccess } from "@/server/auth/access-control";
 import { getLectureBlocks, getCourseModuleForStudy } from "@/server/courses/course-service";
 import { getProgress } from "@/server/progress/progress-repository";
 
 const supportedCourseSlug = "ai-engineer-guide";
-const learnerId = "local-learner";
 
 export const dynamic = "force-dynamic";
 
@@ -19,6 +19,7 @@ export default async function LecturePage({ params }: { params: Promise<{ course
     notFound();
   }
 
+  const { user } = await requireCourseAccess(courseSlug);
   const result = await getCourseModuleForStudy(courseSlug, moduleSlug);
 
   if (!result) {
@@ -33,7 +34,7 @@ export default async function LecturePage({ params }: { params: Promise<{ course
     notFound();
   }
 
-  const progress = await getProgress(courseSlug, learnerId);
+  const progress = await getProgress(courseSlug, user.id);
   const lectureProgress = progress.lectures.find((item) => item.moduleSlug === moduleSlug && item.lectureId === lectureId);
   const selfRating = progress.selfRatings?.find((item) => item.moduleSlug === moduleSlug && item.lectureId === lectureId);
   const lectureIndex = module.lectures.findIndex((item) => item.id === lectureId);

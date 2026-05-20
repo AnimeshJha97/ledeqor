@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
 import { getHydratedModules } from "@/lib/course-content";
+import { requireCourseAccess } from "@/server/auth/access-control";
 
-export default function InterviewPage() {
+export default async function InterviewPage() {
+  await requireCourseAccess("ai-engineer-guide");
   const modules = getHydratedModules();
 
   return (

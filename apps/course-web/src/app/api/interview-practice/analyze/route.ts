@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { jsonError } from "@/server/api/responses";
+import { isValidSlug } from "@/server/api/responses";
+import { requireApiCourseAccess } from "@/server/auth/access-control";
 
 type AnalyzeRequest = {
   question?: string;
@@ -41,6 +43,18 @@ export async function POST(request: Request) {
     return jsonError("Answer is too long for one-at-a-time practice", 400);
   }
 
+  const courseSlug = body.courseSlug ?? "ai-engineer-guide";
+
+  if (!isValidSlug(courseSlug)) {
+    return jsonError("Invalid course slug", 400);
+  }
+
+  const access = await requireApiCourseAccess(courseSlug);
+
+  if (!access.ok) {
+    return access.response;
+  }
+
   const prompt = `
 You are an AI engineering interview coach.
 
@@ -54,7 +68,7 @@ Rules:
 - Keep feedback concise.
 
 Context:
-Course: ${body.courseSlug ?? "unknown"}
+Course: ${courseSlug}
 Module: ${body.moduleSlug ?? "unknown"}
 
 Question:

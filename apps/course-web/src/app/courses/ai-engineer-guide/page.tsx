@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Layers3, ShieldCheck, Target, Workflow } from "lucide-react";
+import { CourseAccessCta } from "@/components/course-access-cta";
 import { MarketingShell } from "@/components/marketing-shell";
-import { PrimaryCta, SecondaryCta, SectionIntro, StatPill } from "@/components/marketing";
+import { SecondaryCta, SectionIntro, StatPill } from "@/components/marketing";
 import { getHydratedModules } from "@/lib/course-content";
 
 export const metadata: Metadata = {
@@ -20,7 +21,8 @@ const outcomes = [
   "Present a portfolio-ready AI SaaS project"
 ];
 
-export default function AiEngineerGuidePage() {
+export default async function AiEngineerGuidePage({ searchParams }: { searchParams?: Promise<{ access?: string }> }) {
+  const params = await searchParams;
   const modules = getHydratedModules();
   const lectureCount = modules.reduce((total, module) => total + module.lectures.length, 0);
 
@@ -36,8 +38,13 @@ export default function AiEngineerGuidePage() {
             <p className="mt-5 max-w-3xl text-base leading-8 text-muted sm:text-lg">
               A complete applied AI engineering path for full-stack developers. Learn by building a business document intelligence SaaS with upload, extraction, embeddings, RAG, workflows, evaluation, security, and deployment.
             </p>
+            {params?.access === "required" ? (
+              <div className="mt-5 max-w-2xl rounded-md border border-amber-400/40 bg-amber-400/10 px-4 py-3 text-sm leading-6 text-amber-100">
+                Sign in and enroll to open the study workspace. Course detail and curriculum preview stay public.
+              </div>
+            ) : null}
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <PrimaryCta href="/courses/ai-engineer-guide/modules">Open study dashboard</PrimaryCta>
+              <CourseAccessCta courseSlug="ai-engineer-guide" />
               <SecondaryCta href="/courses/ai-engineer-guide/capstone">View capstone tracker</SecondaryCta>
             </div>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -114,7 +121,7 @@ export default function AiEngineerGuidePage() {
           Open the dashboard, start from Module 0, and work through the capstone path with the product beside you.
         </p>
         <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-          <PrimaryCta href="/courses/ai-engineer-guide/modules">Open study dashboard</PrimaryCta>
+          <CourseAccessCta courseSlug="ai-engineer-guide" />
           <SecondaryCta href="/courses/ai-engineer-guide/visuals">View diagrams</SecondaryCta>
         </div>
       </section>

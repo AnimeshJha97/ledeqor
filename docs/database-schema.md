@@ -12,6 +12,54 @@ The app reads this from `MONGODB_DB`.
 
 ## Collections
 
+### `users`
+
+One document per authenticated platform user. Auth.js/Google sign-in syncs the user into this collection and stores the platform role.
+
+Shape:
+
+```ts
+{
+  email: string;
+  name?: string | null;
+  image?: string | null;
+  role: "learner" | "admin" | "instructor";
+  createdAt: Date;
+  updatedAt: Date;
+}
+```
+
+Indexes:
+
+- unique `{ email: 1 }`
+- `{ role: 1, updatedAt: -1 }`
+
+### `course_entitlements`
+
+One document per user per course. This is the access-control source of truth for private course content.
+
+Shape:
+
+```ts
+{
+  userId: string;
+  courseSlug: string;
+  accessLevel: "free" | "paid" | "pro" | "admin";
+  source: "manual" | "purchase" | "subscription" | "admin_grant" | "preview" | "free_enrollment";
+  status: "active" | "expired" | "revoked" | "refunded";
+  startsAt: Date;
+  expiresAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+}
+```
+
+Indexes:
+
+- unique `{ userId: 1, courseSlug: 1 }`
+- `{ courseSlug: 1, status: 1 }`
+- `{ userId: 1, status: 1 }`
+
 ### `courses`
 
 One document per course. This keeps course content meaningfully grouped and avoids scattering every module or lecture into separate top-level collections.
@@ -139,14 +187,15 @@ Indexes:
 
 ```text
 GET    /api/health
-GET    /api/courses
-GET    /api/courses/:courseSlug
+GET    /api/courses                         public catalog-safe summaries
+GET    /api/courses/:courseSlug             public summary unless enrolled
 POST   /api/courses/seed
-GET    /api/progress?courseSlug=ai-engineer-guide
-PATCH  /api/progress
-POST   /api/practice/attempts
-GET    /api/capstone/progress?courseSlug=ai-engineer-guide
-PATCH  /api/capstone/progress
+GET    /api/progress?courseSlug=ai-engineer-guide       authenticated + enrolled
+PATCH  /api/progress                                    authenticated + enrolled
+POST   /api/practice/attempts                           authenticated + enrolled
+GET    /api/capstone/progress?courseSlug=ai-engineer-guide authenticated + enrolled
+PATCH  /api/capstone/progress                           authenticated + enrolled
+POST   /api/interview-practice/analyze                  authenticated + enrolled
 ```
 
 ## Seeding

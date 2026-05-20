@@ -4,11 +4,11 @@ import { ArrowRight } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { ContinueLearningCard } from "@/components/continue-learning-card";
 import { StatusBadge } from "@/components/status-badge";
+import { requireCourseAccess } from "@/server/auth/access-control";
 import { getCourseForStudy, getModuleProgress, getNextLecture } from "@/server/courses/course-service";
 import { getProgress } from "@/server/progress/progress-repository";
 
 const supportedCourseSlug = "ai-engineer-guide";
-const learnerId = "local-learner";
 
 export const dynamic = "force-dynamic";
 
@@ -19,13 +19,14 @@ export default async function CourseModulesPage({ params }: { params: Promise<{ 
     notFound();
   }
 
+  const { user } = await requireCourseAccess(courseSlug);
   const course = await getCourseForStudy(courseSlug);
 
   if (!course) {
     notFound();
   }
 
-  const progress = await getProgress(courseSlug, learnerId);
+  const progress = await getProgress(courseSlug, user.id);
   const completedLectureKeys = new Set(
     progress.lectures
       .filter((lecture) => lecture.status === "done")

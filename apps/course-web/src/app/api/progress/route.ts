@@ -1,21 +1,26 @@
 import { NextResponse } from "next/server";
 import { isValidSlug, jsonError } from "@/server/api/responses";
+import { requireApiCourseAccess } from "@/server/auth/access-control";
 import { getProgress, updateLectureProgress, updateQuizScore, updateSelfRating } from "@/server/progress/progress-repository";
 
-const DEFAULT_LEARNER_ID = "local-learner";
 const validStatuses = new Set(["not_started", "reading", "done", "needs_revision"]);
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const courseSlug = url.searchParams.get("courseSlug") ?? "ai-engineer-guide";
-  const learnerId = url.searchParams.get("learnerId") ?? DEFAULT_LEARNER_ID;
 
   if (!isValidSlug(courseSlug)) {
     return jsonError("Invalid course slug", 400);
   }
 
+  const access = await requireApiCourseAccess(courseSlug);
+
+  if (!access.ok) {
+    return access.response;
+  }
+
   try {
-    const progress = await getProgress(courseSlug, learnerId);
+    const progress = await getProgress(courseSlug, access.user.id);
     return NextResponse.json({ progress });
   } catch (error) {
     return jsonError(error instanceof Error ? error.message : "Unable to load progress", 500);
@@ -26,7 +31,6 @@ export async function PATCH(request: Request) {
   try {
     const body = (await request.json()) as {
       courseSlug?: string;
-      learnerId?: string;
       moduleSlug?: string;
       lectureId?: string;
       status?: string;
@@ -37,7 +41,11 @@ export async function PATCH(request: Request) {
     };
 
     const courseSlug = body.courseSlug ?? "ai-engineer-guide";
-    const learnerId = body.learnerId ?? DEFAULT_LEARNER_ID;
+    const access = await requireApiCourseAccess(courseSlug);
+
+    if (!access.ok) {
+      return access.response;
+    }
 
     const action = body.action ?? "lecture";
 
@@ -50,7 +58,7 @@ export async function PATCH(request: Request) {
         return jsonError("Invalid quiz score", 400);
       }
 
-      const progress = await updateQuizScore(courseSlug, learnerId, {
+      const progress = await updateQuizScore(courseSlug, access.user.id, {
         moduleSlug: body.moduleSlug,
         score: body.score,
         total: body.total
@@ -68,7 +76,7 @@ export async function PATCH(request: Request) {
         return jsonError("Invalid self rating", 400);
       }
 
-      const progress = await updateSelfRating(courseSlug, learnerId, {
+      const progress = await updateSelfRating(courseSlug, access.user.id, {
         moduleSlug: body.moduleSlug,
         lectureId: body.lectureId,
         rating: body.rating as 1 | 2 | 3 | 4 | 5
@@ -81,7 +89,7 @@ export async function PATCH(request: Request) {
       return jsonError("Invalid progress status", 400);
     }
 
-    const progress = await updateLectureProgress(courseSlug, learnerId, {
+    const progress = await updateLectureProgress(courseSlug, access.user.id, {
       moduleSlug: body.moduleSlug,
       lectureId: body.lectureId,
       status: body.status as "not_started" | "reading" | "done" | "needs_revision"

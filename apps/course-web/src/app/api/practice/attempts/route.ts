@@ -1,14 +1,12 @@
 import { NextResponse } from "next/server";
 import { isValidSlug, jsonError } from "@/server/api/responses";
+import { requireApiCourseAccess } from "@/server/auth/access-control";
 import { upsertPracticeAttempt } from "@/server/practice/practice-repository";
-
-const DEFAULT_LEARNER_ID = "local-learner";
 
 export async function POST(request: Request) {
   let body: {
     courseSlug?: string;
     moduleSlug?: string;
-    learnerId?: string;
     prompt?: string;
     answer?: string;
     kind?: "short_answer" | "interview";
@@ -21,7 +19,11 @@ export async function POST(request: Request) {
   }
 
   const courseSlug = body.courseSlug ?? "ai-engineer-guide";
-  const learnerId = body.learnerId ?? DEFAULT_LEARNER_ID;
+  const access = await requireApiCourseAccess(courseSlug);
+
+  if (!access.ok) {
+    return access.response;
+  }
 
   if (!isValidSlug(courseSlug) || !body.moduleSlug || !isValidSlug(body.moduleSlug)) {
     return jsonError("Invalid course or module slug", 400);
@@ -38,7 +40,7 @@ export async function POST(request: Request) {
   const attempt = await upsertPracticeAttempt({
     courseSlug,
     moduleSlug: body.moduleSlug,
-    learnerId,
+    learnerId: access.user.id,
     prompt: body.prompt,
     answer: body.answer,
     kind: body.kind ?? "short_answer"

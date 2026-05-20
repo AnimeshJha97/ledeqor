@@ -4,10 +4,10 @@ import { ArrowRight, Database, FileCode2, ListChecks, Route, ShieldCheck, Sparkl
 import { AppShell } from "@/components/app-shell";
 import { CapstoneChecklistClient } from "@/components/capstone-checklist-client";
 import { capstonePhases } from "@/lib/capstone-data";
+import { requireCourseAccess } from "@/server/auth/access-control";
 import { getCapstoneProgress } from "@/server/capstone/capstone-progress-repository";
 
 const supportedCourseSlug = "ai-engineer-guide";
-const learnerId = "local-learner";
 
 export const dynamic = "force-dynamic";
 
@@ -18,7 +18,8 @@ export default async function CapstonePage({ params }: { params: Promise<{ cours
     notFound();
   }
 
-  const progress = await getCapstoneProgress(courseSlug, learnerId);
+  const { user } = await requireCourseAccess(courseSlug);
+  const progress = await getCapstoneProgress(courseSlug, user.id);
   const totalItems = capstonePhases.reduce((sum, phase) => sum + phase.implementationChecklist.length, 0);
   const completedItems = progress.completedItems.length;
   const completionPercent = totalItems ? Math.round((completedItems / totalItems) * 100) : 0;

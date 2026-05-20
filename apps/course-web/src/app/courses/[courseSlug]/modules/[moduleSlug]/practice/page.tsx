@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { PracticeModeClient } from "@/components/practice-mode-client";
 import { buildPracticePack } from "@/lib/study-tools";
+import { requireCourseAccess } from "@/server/auth/access-control";
 import { getCourseModuleForStudy } from "@/server/courses/course-service";
 
 const supportedCourseSlug = "ai-engineer-guide";
@@ -17,6 +18,7 @@ export default async function PracticePage({ params }: { params: Promise<{ cours
     notFound();
   }
 
+  await requireCourseAccess(courseSlug);
   const result = await getCourseModuleForStudy(courseSlug, moduleSlug);
 
   if (!result) {

@@ -8,11 +8,11 @@ import { ProgressToggle } from "@/components/progress-toggle";
 import { StatusBadge } from "@/components/status-badge";
 import { allModules } from "@/lib/course-data";
 import { parseMarkdown, readLabMarkdown, slugify } from "@/lib/content";
+import { requireCourseAccess } from "@/server/auth/access-control";
 import { getCourseModuleForStudy, getModuleBlocks, getModuleProgress } from "@/server/courses/course-service";
 import { getProgress } from "@/server/progress/progress-repository";
 
 const supportedCourseSlug = "ai-engineer-guide";
-const learnerId = "local-learner";
 
 export const dynamic = "force-dynamic";
 
@@ -27,6 +27,7 @@ export default async function CourseModuleDetailPage({ params }: { params: Promi
     notFound();
   }
 
+  const { user } = await requireCourseAccess(courseSlug);
   const result = await getCourseModuleForStudy(courseSlug, moduleSlug);
 
   if (!result) {
@@ -34,7 +35,7 @@ export default async function CourseModuleDetailPage({ params }: { params: Promi
   }
 
   const { module } = result;
-  const progress = await getProgress(courseSlug, learnerId);
+  const progress = await getProgress(courseSlug, user.id);
   const completedLectureKeys = new Set(
     progress.lectures
       .filter((lecture) => lecture.status === "done")

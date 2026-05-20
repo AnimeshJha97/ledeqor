@@ -4,6 +4,7 @@ import { ArrowRight, Boxes, GitBranch, Network } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { MermaidDiagram } from "@/components/mermaid-diagram";
 import { visualDiagrams } from "@/lib/visual-learning-data";
+import { requireCourseAccess } from "@/server/auth/access-control";
 
 const supportedCourseSlug = "ai-engineer-guide";
 
@@ -13,6 +14,8 @@ export default async function VisualLearningPage({ params }: { params: Promise<{
   if (courseSlug !== supportedCourseSlug) {
     notFound();
   }
+
+  await requireCourseAccess(courseSlug);
 
   return (
     <AppShell>
