@@ -20,7 +20,7 @@ export default function InterviewPage() {
 
       <div className="mt-6 grid gap-4">
         {modules.filter((module) => module.status === "complete").map((module) => (
-          <Link key={module.slug} href={`/modules/${module.slug}#interview-questions`} className="rounded-md border border-line bg-surface p-5 shadow-sm transition hover:border-brand hover:bg-panel">
+          <Link key={module.slug} href={`/courses/ai-engineer-guide/modules/${module.slug}#interview-questions`} className="rounded-md border border-line bg-surface p-5 shadow-sm transition hover:border-brand hover:bg-panel">
             <p className="text-sm font-semibold text-brand">Module {module.id}</p>
             <h3 className="mt-1 text-lg font-semibold text-ink">{module.title}</h3>
             <p className="mt-2 text-sm text-muted">Open the module and review its interview section.</p>

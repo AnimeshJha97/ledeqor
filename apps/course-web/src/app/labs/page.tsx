@@ -13,7 +13,7 @@ export default function LabsPage() {
 
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         {labs.map((module) => (
-          <Link key={module.slug} href={`/modules/${module.slug}#module-lab`} className="rounded-md border border-line bg-surface p-5 shadow-sm transition hover:border-brand hover:bg-panel hover:shadow-soft">
+          <Link key={module.slug} href={`/courses/ai-engineer-guide/modules/${module.slug}#module-lab`} className="rounded-md border border-line bg-surface p-5 shadow-sm transition hover:border-brand hover:bg-panel hover:shadow-soft">
             <p className="text-sm font-semibold text-brand">Module {module.id}</p>
             <h3 className="mt-2 text-xl font-semibold text-ink">{module.labSlug}</h3>
             <p className="mt-2 text-sm leading-6 text-muted">{module.outcome}</p>
