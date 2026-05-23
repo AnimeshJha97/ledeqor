@@ -293,7 +293,7 @@ const remainingModules: CourseModule[] = [
     title: "Capstone Build: Arkion DocIntel",
     purpose: "Build the full Arkion DocIntel product in ten implementation phases from setup to production polish.",
     status: "complete",
-    sourceFile: "15-Arkion-docintel-capstone-blueprint.md",
+    sourceFile: "15-arkion-docintel-capstone-blueprint.md",
     outcome: "Turn the entire course into a portfolio-grade product with upload, extraction, search, RAG, workflows, evals, security, and deployment.",
     lectures: []
   },
