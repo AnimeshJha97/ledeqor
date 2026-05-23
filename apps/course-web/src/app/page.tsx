@@ -8,7 +8,7 @@ import { getHydratedModules } from "@/lib/course-content";
 export const metadata: Metadata = {
   title: "AI Engineer Guide | Full-Stack AI Engineering Course for Developers",
   description:
-    "Learn applied AI engineering by building Orvion DocIntel, a production-style AI document intelligence SaaS with Python, FastAPI, LLMs, RAG, vector search, workflows, evaluation, and deployment.",
+    "Learn applied AI engineering by building Arkion DocIntel, a production-style AI document intelligence SaaS with Python, FastAPI, LLMs, RAG, vector search, workflows, evaluation, and deployment.",
   keywords: [
     "AI engineering course",
     "full stack AI engineer",
@@ -198,7 +198,7 @@ export default function LandingPage() {
           <CourseCard
             href="/courses/ai-engineer-guide"
             title="AI Engineer Guide"
-            description="Build Orvion DocIntel, a full-stack AI document intelligence SaaS, while preparing for applied AI engineering interviews."
+            description="Build Arkion DocIntel, a full-stack AI document intelligence SaaS, while preparing for applied AI engineering interviews."
             stats={[`${modules.length} modules`, `${lectureCount}+ lectures`, "Capstone project", "Interview prep"]}
           />
         </div>

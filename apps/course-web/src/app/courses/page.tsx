@@ -26,7 +26,7 @@ export default function CoursesPage() {
           <CourseCard
             href="/courses/ai-engineer-guide"
             title="AI Engineer Guide"
-            description="Move from full-stack MERN experience into applied AI engineering by building Orvion DocIntel, a production-style document intelligence SaaS."
+            description="Move from full-stack MERN experience into applied AI engineering by building Arkion DocIntel, a production-style document intelligence SaaS."
             stats={[`${modules.length} modules`, `${lectureCount}+ lectures`, "Available now", "Capstone"]}
           />
 

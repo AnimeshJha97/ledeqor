@@ -1,8 +1,8 @@
-# Module 13: Capstone Build - Orvion DocIntel
+# Module 13: Capstone Build - Arkion DocIntel
 
 ## Module Purpose
 
-This module is the product build plan for Orvion DocIntel. It converts everything learned so far into a phased, portfolio-ready B2B SaaS.
+This module is the product build plan for Arkion DocIntel. It converts everything learned so far into a phased, portfolio-ready B2B SaaS.
 
 The goal is not to build every enterprise feature at once. The goal is to build a serious vertical slice that proves you can design, implement, explain, evaluate, and deploy an applied AI product.
 
@@ -23,7 +23,7 @@ By the end of this module, you should be able to:
 
 ## Final Mini Build
 
-Complete the portfolio version of Orvion DocIntel:
+Complete the portfolio version of Arkion DocIntel:
 
 - working app
 - source repository
@@ -220,7 +220,7 @@ flowchart TB
 
 ## Interview Questions
 
-1. Walk me through Orvion DocIntel.
+1. Walk me through Arkion DocIntel.
 2. What was the hardest technical challenge?
 3. How did you design the RAG pipeline?
 4. How did you evaluate reliability?

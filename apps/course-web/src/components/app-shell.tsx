@@ -30,7 +30,7 @@ export function AppShell({ children, moduleLinks }: AppShellProps) {
   ];
 
   useEffect(() => {
-    const saved = window.localStorage.getItem("orvion-course-sidebar");
+    const saved = window.localStorage.getItem("Arkion-course-sidebar");
     if (saved === "closed") {
       setSidebarOpen(false);
     }
@@ -39,7 +39,7 @@ export function AppShell({ children, moduleLinks }: AppShellProps) {
   function toggleSidebar() {
     const next = !sidebarOpen;
     setSidebarOpen(next);
-    window.localStorage.setItem("orvion-course-sidebar", next ? "open" : "closed");
+    window.localStorage.setItem("Arkion-course-sidebar", next ? "open" : "closed");
   }
 
   return (

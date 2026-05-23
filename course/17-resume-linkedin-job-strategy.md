@@ -12,7 +12,7 @@ By the end of this module, you should be able to:
 
 - rewrite your resume for AI-adjacent roles
 - add AI skills honestly
-- describe Orvion DocIntel as project proof
+- describe Arkion DocIntel as project proof
 - update LinkedIn headline and about section
 - clean up GitHub
 - create a portfolio case study
@@ -28,7 +28,7 @@ Create:
 - AI-focused resume version
 - LinkedIn headline
 - LinkedIn about section
-- Orvion DocIntel project section
+- Arkion DocIntel project section
 - GitHub README polish
 - portfolio case study
 - demo video script
@@ -70,11 +70,11 @@ Use skills you can explain:
 
 Avoid claiming deep ML research unless you have proof.
 
-## 15.4 Writing Orvion DocIntel Project Section
+## 15.4 Writing Arkion DocIntel Project Section
 
 Resume bullet:
 
-"Built Orvion DocIntel, a document intelligence SaaS that uploads business documents, extracts structured fields, performs semantic search, answers questions with citations, compares documents, and runs AI workflows using Python, FastAPI, LLM APIs, embeddings, pgvector, RAG, Redis queues, and a Next.js dashboard."
+"Built Arkion DocIntel, a document intelligence SaaS that uploads business documents, extracts structured fields, performs semantic search, answers questions with citations, compares documents, and runs AI workflows using Python, FastAPI, LLM APIs, embeddings, pgvector, RAG, Redis queues, and a Next.js dashboard."
 
 ## 15.5 Rewriting LinkedIn Headline
 
@@ -95,14 +95,14 @@ Structure:
 1. Current identity.
 2. Full-stack strength.
 3. Applied AI expansion.
-4. Orvion DocIntel proof.
+4. Arkion DocIntel proof.
 5. Target roles.
 
 ## 15.7 GitHub Profile Cleanup
 
 GitHub checklist:
 
-- pinned Orvion DocIntel repo
+- pinned Arkion DocIntel repo
 - clear README
 - screenshots
 - architecture diagram
@@ -200,7 +200,7 @@ Application package:
 
 - tailored resume
 - short note
-- Orvion DocIntel link
+- Arkion DocIntel link
 - GitHub link
 - demo video
 - architecture diagram

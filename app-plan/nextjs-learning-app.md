@@ -54,7 +54,7 @@ Use this rule:
 
 Reason:
 
-Orvion DocIntel is a production-style SaaS capstone. The important skills are local development, API services, project structure, tests, environment variables, background jobs, database integration, and deployment. Colab is useful for quick AI/ML experiments, but it does not teach the production workflow deeply enough.
+Arkion DocIntel is a production-style SaaS capstone. The important skills are local development, API services, project structure, tests, environment variables, background jobs, database integration, and deployment. Colab is useful for quick AI/ML experiments, but it does not teach the production workflow deeply enough.
 
 ### Recommended Lab Pattern
 

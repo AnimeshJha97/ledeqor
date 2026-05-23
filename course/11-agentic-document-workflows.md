@@ -4,7 +4,7 @@
 
 This module teaches controlled AI workflows for business documents.
 
-Agents should not be random chatbots with too much freedom. In Orvion DocIntel, they should be narrow, auditable workflows that use tools, follow steps, produce structured results, and allow human approval when risk is high.
+Agents should not be random chatbots with too much freedom. In Arkion DocIntel, they should be narrow, auditable workflows that use tools, follow steps, produce structured results, and allow human approval when risk is high.
 
 ## Learning Outcomes
 

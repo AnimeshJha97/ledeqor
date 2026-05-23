@@ -6,7 +6,7 @@ What you should understand or build by the end of this lecture.
 
 ## Why This Matters
 
-Why this concept matters for applied AI engineering and Orvion DocIntel.
+Why this concept matters for applied AI engineering and Arkion DocIntel.
 
 ## Plain-English Explanation
 
@@ -28,7 +28,7 @@ Add code sample here.
 
 ## Product Connection
 
-Where this appears in Orvion DocIntel.
+Where this appears in Arkion DocIntel.
 
 ## Common Mistakes
 
@@ -48,6 +48,6 @@ Hands-on task.
 
 - [ ] I understand the concept.
 - [ ] I can explain it simply.
-- [ ] I can connect it to Orvion DocIntel.
+- [ ] I can connect it to Arkion DocIntel.
 - [ ] I completed the exercise.
 

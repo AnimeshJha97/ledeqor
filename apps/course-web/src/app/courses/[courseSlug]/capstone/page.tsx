@@ -31,7 +31,7 @@ export default async function CapstonePage({ params }: { params: Promise<{ cours
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">Capstone Build Tracker</p>
             <h2 className="mt-3 max-w-4xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-              Build Orvion DocIntel in production phases
+              Build Arkion DocIntel in production phases
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-7 text-muted">
               This workspace converts the course into a product build plan: theory to learn, files to create, APIs to ship,

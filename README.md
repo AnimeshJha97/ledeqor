@@ -1,4 +1,4 @@
-# Orvion DocIntel AI Engineer Course
+# Arkion DocIntel AI Engineer Course
 
 This repository is the source of truth for a self-paced course that turns a senior MERN full-stack engineer into an applied AI engineer through a production-style document intelligence SaaS build.
 
@@ -19,7 +19,7 @@ This gives you both learning material and a portfolio-grade product.
 ## Repository Shape
 
 ```text
-orvion-docintel-ai-engineer-course/
+Arkion-docintel-ai-engineer-course/
   apps/
     course-web/
   course/
@@ -67,11 +67,11 @@ The app reads from the Markdown course source and keeps the existing file struct
 
 By the end, you should be able to say:
 
-> I am a senior full-stack engineer with strong React, Node.js, TypeScript, backend, and product delivery experience. I expanded into applied AI engineering by building Orvion DocIntel, a document intelligence platform that processes business documents using Python, FastAPI, LLMs, embeddings, vector search, RAG, structured extraction, AI workflows, evaluation, and production deployment.
+> I am a senior full-stack engineer with strong React, Node.js, TypeScript, backend, and product delivery experience. I expanded into applied AI engineering by building Arkion DocIntel, a document intelligence platform that processes business documents using Python, FastAPI, LLMs, embeddings, vector search, RAG, structured extraction, AI workflows, evaluation, and production deployment.
 
 ## Course Product
 
-Orvion DocIntel is a B2B SaaS document intelligence platform where businesses can upload documents, extract structured fields, search semantically, ask grounded questions with citations, compare documents, detect risks, and trigger document workflows.
+Arkion DocIntel is a B2B SaaS document intelligence platform where businesses can upload documents, extract structured fields, search semantically, ask grounded questions with citations, compare documents, detect risks, and trigger document workflows.
 
 ## Build Philosophy
 

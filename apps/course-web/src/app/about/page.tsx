@@ -87,7 +87,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-4xl px-4 py-14 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Start with the AI Engineer Guide.</h2>
           <p className="mt-4 text-base leading-7 text-muted">
-            The current flagship course uses Orvion DocIntel as the capstone product and sets up the platform for future AI engineering tracks.
+            The current flagship course uses Arkion DocIntel as the capstone product and sets up the platform for future AI engineering tracks.
           </p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
             <PrimaryCta href="/courses/ai-engineer-guide">View course</PrimaryCta>

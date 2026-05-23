@@ -1,8 +1,8 @@
-# Orvion DocIntel Capstone Blueprint
+# Arkion DocIntel Capstone Blueprint
 
 ## Product Summary
 
-Orvion DocIntel is an AI document intelligence platform for businesses.
+Arkion DocIntel is an AI document intelligence platform for businesses.
 
 Users can upload business documents, extract structured data, search semantically, ask questions with citations, compare documents, and run controlled AI workflows.
 

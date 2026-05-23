@@ -2,7 +2,7 @@
 
 ## Module Purpose
 
-This module gives you the AI foundation needed to build Orvion DocIntel without drowning in research math too early.
+This module gives you the AI foundation needed to build Arkion DocIntel without drowning in research math too early.
 
 You are not trying to become an ML researcher in this phase. You are learning enough AI, ML, LLM, embeddings, hallucination, grounding, and evaluation vocabulary to design and explain production AI features as a senior full-stack engineer.
 
@@ -26,7 +26,7 @@ By the end of this module, you should be able to:
 - understand why embeddings power semantic search
 - explain basic ML interview terms like classification, regression, clustering, overfitting, precision, recall, and F1 score
 - identify which ML theory can wait while building an applied AI portfolio project
-- connect these concepts directly to Orvion DocIntel
+- connect these concepts directly to Arkion DocIntel
 
 ## Final Mini Build
 
@@ -36,7 +36,7 @@ Create an AI concepts notebook or Markdown explainer for your own portfolio lear
 - a one-page explanation of how an LLM request works
 - a diagram showing prompting vs RAG vs fine-tuning
 - five interview answers in your own words
-- a decision table for when Orvion DocIntel should use rules, prompts, embeddings, RAG, or fine-tuning
+- a decision table for when Arkion DocIntel should use rules, prompts, embeddings, RAG, or fine-tuning
 
 This mini build is intentionally not a heavy coding lab. Module 1 already gave you FastAPI setup. Module 3 starts the document pipeline. Module 2 is the mental model layer between them.
 
@@ -76,7 +76,7 @@ flowchart TB
 
 ### Product Connection
 
-Orvion DocIntel uses AI when it classifies a document, extracts fields, searches by meaning, answers questions, summarizes content, and detects risks.
+Arkion DocIntel uses AI when it classifies a document, extracts fields, searches by meaning, answers questions, summarizes content, and detects risks.
 
 It also uses normal software: authentication, file upload, database storage, queues, permissions, and dashboards.
 
@@ -128,7 +128,7 @@ The model learns patterns that help classify future documents.
 
 ### Product Connection
 
-In Orvion DocIntel, you may start with simple rules for classification, then later use ML or LLM classification when documents become more varied.
+In Arkion DocIntel, you may start with simple rules for classification, then later use ML or LLM classification when documents become more varied.
 
 ### Common Mistake
 
@@ -170,7 +170,7 @@ flowchart LR
 
 ### Product Connection
 
-You do not need to train deep learning models to build Orvion DocIntel v1. But you will use products of deep learning: LLM APIs, embedding models, OCR models, and rerankers.
+You do not need to train deep learning models to build Arkion DocIntel v1. But you will use products of deep learning: LLM APIs, embedding models, OCR models, and rerankers.
 
 ### Interview Angle
 
@@ -198,7 +198,7 @@ Generative AI creates outputs such as:
 - structured JSON
 - explanations
 
-For Orvion DocIntel, generative AI is useful for:
+For Arkion DocIntel, generative AI is useful for:
 
 - document summaries
 - contract risk explanations
@@ -260,7 +260,7 @@ LLMs can:
 
 ### Product Connection
 
-Orvion DocIntel uses LLMs as a reasoning and language layer, not as the whole product.
+Arkion DocIntel uses LLMs as a reasoning and language layer, not as the whole product.
 
 The product still needs:
 
@@ -300,7 +300,7 @@ flowchart LR
 
 ### Product Connection
 
-When Orvion asks an LLM to extract invoice fields, the model is not opening a database of truth. It is predicting a structured response from the text you provide. Your app must validate that response.
+When Arkion asks an LLM to extract invoice fields, the model is not opening a database of truth. It is predicting a structured response from the text you provide. Your app must validate that response.
 
 ### Common Mistake
 
@@ -429,7 +429,7 @@ Keyword search may miss this. Embedding search can find it.
 
 ### Product Connection
 
-Embeddings let Orvion DocIntel search documents by meaning, not just exact text.
+Embeddings let Arkion DocIntel search documents by meaning, not just exact text.
 
 ---
 
@@ -453,7 +453,7 @@ They may not share the same keywords, but they point to the same concept.
 
 ### Product Connection
 
-When a user asks, "Can we cancel this contract early?", Orvion should retrieve termination clauses even if the document never says "cancel."
+When a user asks, "Can we cancel this contract early?", Arkion should retrieve termination clauses even if the document never says "cancel."
 
 ### Common Mistake
 
@@ -483,7 +483,7 @@ opposite relationship -> vectors point apart -> lower score
 
 ### Product Connection
 
-When Orvion searches document chunks, the vector database can rank chunks by similarity to the user's query embedding.
+When Arkion searches document chunks, the vector database can rank chunks by similarity to the user's query embedding.
 
 ### Interview Angle
 
@@ -558,7 +558,7 @@ Useful when:
 
 ### Product Decision
 
-For Orvion DocIntel v1:
+For Arkion DocIntel v1:
 
 - use prompting for classification, extraction, and summaries
 - use embeddings and RAG for document Q&A
@@ -594,7 +594,7 @@ In production, you care about:
 
 ### Product Connection
 
-Orvion DocIntel will run inference for summaries, extraction, Q&A, comparison, and risk review. Module 4 turns this into a reusable service layer.
+Arkion DocIntel will run inference for summaries, extraction, Q&A, comparison, and risk review. Module 4 turns this into a reusable service layer.
 
 ---
 
@@ -614,7 +614,7 @@ Temperature controls randomness.
 | Medium | Balanced | summaries, explanations |
 | High | More creative | brainstorming, marketing copy |
 
-For Orvion extraction, prefer low temperature.
+For Arkion extraction, prefer low temperature.
 
 ### Top-p
 
@@ -676,7 +676,7 @@ The document does not specify a termination notice period.
 
 Grounding means forcing the answer to rely on provided sources.
 
-In Orvion, grounding comes from:
+In Arkion, grounding comes from:
 
 - retrieved document chunks
 - citations
@@ -724,7 +724,7 @@ flowchart TB
 
 ### Product Connection
 
-Orvion DocIntel should not start with fine-tuning. Start with parsing, prompts, structured schemas, embeddings, RAG, and evaluation.
+Arkion DocIntel should not start with fine-tuning. Start with parsing, prompts, structured schemas, embeddings, RAG, and evaluation.
 
 ---
 
@@ -762,7 +762,7 @@ Use this structure:
 
 Example:
 
-"Embeddings are numeric representations of meaning. In Orvion DocIntel, I use embeddings to search contract chunks by semantic similarity, so a user can ask 'how do we terminate?' and retrieve relevant clauses even if the document uses different wording. In production I would evaluate retrieval quality, metadata filters, and citation correctness."
+"Embeddings are numeric representations of meaning. In Arkion DocIntel, I use embeddings to search contract chunks by semantic similarity, so a user can ask 'how do we terminate?' and retrieve relevant clauses even if the document uses different wording. In production I would evaluate retrieval quality, metadata filters, and citation correctness."
 
 ---
 
@@ -861,7 +861,7 @@ Build:
 - a Mermaid diagram explaining the LLM request lifecycle
 - a decision table for rules vs prompts vs embeddings vs RAG vs fine-tuning
 - five interview answers in your own words
-- a one-page explanation of how Orvion DocIntel will use AI without becoming "just a chatbot"
+- a one-page explanation of how Arkion DocIntel will use AI without becoming "just a chatbot"
 
 Acceptance criteria:
 
@@ -883,7 +883,7 @@ Acceptance criteria:
 9. What does cosine similarity compare?
 10. What is hallucination?
 11. What is grounding?
-12. When should Orvion use RAG instead of a direct prompt?
+12. When should Arkion use RAG instead of a direct prompt?
 13. Why should fine-tuning not be the first solution?
 14. What is precision?
 15. What is recall?
@@ -915,7 +915,7 @@ Acceptance criteria:
 5. When would you consider fine-tuning?
 6. How do hallucinations happen, and how do you reduce them?
 7. How would you evaluate whether document Q&A is reliable?
-8. Why is Orvion DocIntel stronger than a basic chatbot project?
+8. Why is Arkion DocIntel stronger than a basic chatbot project?
 
 ## Source Links
 

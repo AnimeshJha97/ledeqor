@@ -4,7 +4,7 @@ import { CheckCircle2, Circle } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export function ProgressToggle({ moduleSlug }: { moduleSlug: string }) {
-  const storageKey = `orvion-course-progress:${moduleSlug}`;
+  const storageKey = `Arkion-course-progress:${moduleSlug}`;
   const [done, setDone] = useState(false);
 
   useEffect(() => {

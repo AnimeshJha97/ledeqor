@@ -4,7 +4,7 @@
 
 This module teaches Retrieval-Augmented Generation, the core pattern behind grounded document Q&A.
 
-RAG lets Orvion DocIntel answer questions using uploaded business documents instead of relying only on what a model already knows. The system retrieves relevant chunks, builds context, generates an answer, and cites sources.
+RAG lets Arkion DocIntel answer questions using uploaded business documents instead of relying only on what a model already knows. The system retrieves relevant chunks, builds context, generates an answer, and cites sources.
 
 ## Learning Outcomes
 
@@ -22,7 +22,7 @@ By the end of this module, you should be able to:
 
 ## Final Mini Build
 
-Build Orvion DocIntel Q&A:
+Build Arkion DocIntel Q&A:
 
 - ask a question on one document
 - ask across a workspace

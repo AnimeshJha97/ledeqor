@@ -30,7 +30,7 @@ export const courseModules: CourseModule[] = [
       { id: "0.2", title: "AI Engineer vs ML Engineer vs Data Scientist", kind: "strategy" },
       { id: "0.3", title: "Best target roles for your background", kind: "strategy" },
       { id: "0.4", title: "Why document intelligence is a strong portfolio project", kind: "strategy" },
-      { id: "0.5", title: "How Orvion DocIntel fits under Orvion Labs", kind: "strategy" },
+      { id: "0.5", title: "How Arkion DocIntel fits under Arkion Labs", kind: "strategy" },
       { id: "0.6", title: "What companies expect from Applied AI Engineers", kind: "strategy" },
       { id: "0.7", title: "What to learn and what to ignore in the first 2 months", kind: "strategy" },
       { id: "0.8", title: "Final 8-week learning and build strategy", kind: "strategy" }
@@ -241,7 +241,7 @@ const remainingModules: CourseModule[] = [
     id: 8,
     slug: "full-stack-ai-saas-architecture",
     title: "Full Stack AI SaaS Architecture",
-    purpose: "Design Orvion DocIntel as a real SaaS with frontend, backend, AI service, database, queues, storage, auth, and observability.",
+    purpose: "Design Arkion DocIntel as a real SaaS with frontend, backend, AI service, database, queues, storage, auth, and observability.",
     status: "complete",
     sourceFile: "10-full-stack-ai-saas-architecture.md",
     outcome: "Create the complete architecture blueprint, API contracts, schema plan, job model, and UI route map.",
@@ -289,11 +289,11 @@ const remainingModules: CourseModule[] = [
   },
   {
     id: 13,
-    slug: "orvion-docintel-capstone-blueprint",
-    title: "Capstone Build: Orvion DocIntel",
-    purpose: "Build the full Orvion DocIntel product in ten implementation phases from setup to production polish.",
+    slug: "Arkion-docintel-capstone-blueprint",
+    title: "Capstone Build: Arkion DocIntel",
+    purpose: "Build the full Arkion DocIntel product in ten implementation phases from setup to production polish.",
     status: "complete",
-    sourceFile: "15-orvion-docintel-capstone-blueprint.md",
+    sourceFile: "15-Arkion-docintel-capstone-blueprint.md",
     outcome: "Turn the entire course into a portfolio-grade product with upload, extraction, search, RAG, workflows, evals, security, and deployment.",
     lectures: []
   },

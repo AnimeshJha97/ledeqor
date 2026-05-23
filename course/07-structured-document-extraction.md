@@ -26,7 +26,7 @@ By the end of this module, you should be able to:
 
 ## Final Mini Build
 
-Build the first structured extraction pipeline for Orvion DocIntel:
+Build the first structured extraction pipeline for Arkion DocIntel:
 
 - choose schema based on document type
 - call the AI service with schema-specific prompts
@@ -62,7 +62,7 @@ Contract text becomes:
 
 ```json
 {
-  "parties": ["Acme Services", "Orvion Labs"],
+  "parties": ["Acme Services", "Arkion Labs"],
   "effective_date": "2026-05-01",
   "termination_notice_days": 30
 }
@@ -70,7 +70,7 @@ Contract text becomes:
 
 ### Product Connection
 
-This is where Orvion DocIntel stops being "document chat" and becomes a business tool.
+This is where Arkion DocIntel stops being "document chat" and becomes a business tool.
 
 ---
 
@@ -84,7 +84,7 @@ Use structured outputs that software can trust.
 
 Humans like paragraphs. Applications need fields.
 
-JSON lets Orvion:
+JSON lets Arkion:
 
 - display extracted fields in a dashboard
 - filter invoices by due date
@@ -421,7 +421,7 @@ Show:
 
 ### Product Connection
 
-Human review makes Orvion credible for finance, legal, and HR workflows.
+Human review makes Arkion credible for finance, legal, and HR workflows.
 
 ---
 
@@ -492,7 +492,7 @@ Store the full validated JSON in a `jsonb` column, then later add indexed relati
 
 ### Product Connection
 
-Orvion can start with JSON storage, then optimize fields used for filtering and reporting.
+Arkion can start with JSON storage, then optimize fields used for filtering and reporting.
 
 ---
 

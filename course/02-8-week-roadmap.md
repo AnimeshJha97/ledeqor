@@ -52,7 +52,7 @@ Build:
 
 Outcome:
 
-Orvion DocIntel starts becoming a business tool.
+Arkion DocIntel starts becoming a business tool.
 
 ## Week 4: Embeddings + Semantic Search
 

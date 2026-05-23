@@ -2,7 +2,7 @@
 
 ## Goal
 
-Build the first backend service for Orvion DocIntel.
+Build the first backend service for Arkion DocIntel.
 
 This service does not extract PDF text yet. That comes later. For now, it proves you can create a Python API, accept document uploads, validate files, save them locally, return metadata, and test the behavior.
 
@@ -107,7 +107,7 @@ Response:
 - [ ] uploaded files are saved in `uploads/`.
 - [ ] tests pass.
 
-## Why This Matters For Orvion DocIntel
+## Why This Matters For Arkion DocIntel
 
 Every later feature starts with uploaded documents:
 

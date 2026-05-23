@@ -2,7 +2,7 @@
 
 ## Module Purpose
 
-This module teaches the document-processing layer behind Orvion DocIntel.
+This module teaches the document-processing layer behind Arkion DocIntel.
 
 A generic chatbot starts with clean text typed by a user. A document intelligence product starts with messy files: PDFs, scans, invoices, contracts, tables, headers, footers, missing pages, signatures, stamps, page numbers, and formatting that can break simple text extraction.
 
@@ -21,7 +21,7 @@ By the end of this module, you should be able to:
 - identify document metadata
 - classify basic document types
 - describe table, layout, and multi-page parsing issues
-- design the first ingestion pipeline for Orvion DocIntel
+- design the first ingestion pipeline for Arkion DocIntel
 
 ## Final Mini Build
 
@@ -83,7 +83,7 @@ flowchart LR
 
 ### Product Connection
 
-Orvion DocIntel starts by turning contracts, invoices, and policies into clean text and metadata. Every later feature depends on this foundation.
+Arkion DocIntel starts by turning contracts, invoices, and policies into clean text and metadata. Every later feature depends on this foundation.
 
 ### Common Mistakes
 
@@ -124,7 +124,7 @@ Examples:
 
 ### Product Connection
 
-If Orvion DocIntel extracts a wrong invoice total or misses a termination clause, the product becomes untrustworthy. Parsing quality affects business value.
+If Arkion DocIntel extracts a wrong invoice total or misses a termination clause, the product becomes untrustworthy. Parsing quality affects business value.
 
 ### Mini Exercise
 
@@ -262,7 +262,7 @@ Cloud and managed:
 
 ### Product Decision
 
-For the first Orvion DocIntel build:
+For the first Arkion DocIntel build:
 
 - support digital PDFs first
 - detect scanned PDFs
@@ -520,7 +520,7 @@ Structured extraction answers:
 
 ### Product Connection
 
-Entity extraction helps Orvion DocIntel identify parties, dates, amounts, and obligations before building full extraction schemas.
+Entity extraction helps Arkion DocIntel identify parties, dates, amounts, and obligations before building full extraction schemas.
 
 ---
 
@@ -575,7 +575,7 @@ Common clauses to detect:
 
 ### Product Connection
 
-Orvion DocIntel can summarize a contract and flag risky or missing clauses.
+Arkion DocIntel can summarize a contract and flag risky or missing clauses.
 
 ### Mini Exercise
 
@@ -596,7 +596,7 @@ This becomes your future extraction target.
 
 ### Goal
 
-Identify the first invoice fields Orvion should extract.
+Identify the first invoice fields Arkion should extract.
 
 ### Core Fields
 

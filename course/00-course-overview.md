@@ -2,7 +2,7 @@
 
 ## Working Product
 
-Orvion DocIntel: AI Document Intelligence Platform for Businesses.
+Arkion DocIntel: AI Document Intelligence Platform for Businesses.
 
 ## Who This Course Is For
 
@@ -62,7 +62,7 @@ flowchart LR
 10. AI Evaluation, Testing & Observability
 11. AI Security, Privacy & Compliance
 12. Deployment, Scaling & LLMOps
-13. Capstone Build: Orvion DocIntel
+13. Capstone Build: Arkion DocIntel
 14. AI Engineer Interview Preparation
 15. Resume, LinkedIn & Job Strategy
 

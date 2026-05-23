@@ -11,7 +11,7 @@ You are positioning as a senior full-stack engineer who can build production-gra
 By the end of this module, you should be able to:
 
 - explain your MERN-to-AI transition
-- introduce Orvion DocIntel clearly
+- introduce Arkion DocIntel clearly
 - answer Python, FastAPI, LLM, RAG, vector DB, agent, eval, security, and system design questions
 - tell strong project stories
 - handle leadership and salary conversations
@@ -58,7 +58,7 @@ Keep it tight:
 - capstone proof
 - target role
 
-## 14.4 How To Explain Orvion DocIntel
+## 14.4 How To Explain Arkion DocIntel
 
 Use this structure:
 
@@ -254,12 +254,12 @@ Before interviews:
 
 ## Final Pitch
 
-I am a senior full-stack engineer with strong experience in React, Node.js, TypeScript, scalable backend systems, and product delivery. Recently, I expanded into applied AI engineering by building Orvion DocIntel, a document intelligence platform that processes business documents using Python, FastAPI, LLMs, embeddings, vector search, RAG, structured extraction, AI workflows, evaluation, and production deployment. My strength is building complete AI products end to end, not just integrating AI APIs.
+I am a senior full-stack engineer with strong experience in React, Node.js, TypeScript, scalable backend systems, and product delivery. Recently, I expanded into applied AI engineering by building Arkion DocIntel, a document intelligence platform that processes business documents using Python, FastAPI, LLMs, embeddings, vector search, RAG, structured extraction, AI workflows, evaluation, and production deployment. My strength is building complete AI products end to end, not just integrating AI APIs.
 
 ## Quiz
 
 1. What is your positioning?
-2. How should you explain Orvion DocIntel?
+2. How should you explain Arkion DocIntel?
 3. What AI concepts must you know cold?
 4. What should your system design include?
 5. Why is evaluation a strong interview differentiator?

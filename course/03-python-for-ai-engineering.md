@@ -4,7 +4,7 @@
 
 This module teaches Python from a software-engineering perspective.
 
-You are not learning random scripting. You are learning enough Python to build and maintain the AI backend of Orvion DocIntel.
+You are not learning random scripting. You are learning enough Python to build and maintain the AI backend of Arkion DocIntel.
 
 You need Python for:
 
@@ -99,7 +99,7 @@ pip freeze > requirements.txt
 
 ### Product Connection
 
-Orvion DocIntel will have a Python AI service. Its environment must be isolated because AI projects often have heavier dependencies than normal APIs.
+Arkion DocIntel will have a Python AI service. Its environment must be isolated because AI projects often have heavier dependencies than normal APIs.
 
 ### Common Mistakes
 
@@ -498,7 +498,7 @@ api_key = os.getenv("OPENAI_API_KEY")
 
 ### Product Connection
 
-Orvion DocIntel will use environment variables for:
+Arkion DocIntel will use environment variables for:
 
 - LLM API keys
 - database URLs
@@ -606,14 +606,14 @@ Later, Docker will install from `requirements.txt` or `pyproject.toml`.
 
 ### Goal
 
-Create the first API service for Orvion DocIntel.
+Create the first API service for Arkion DocIntel.
 
 ### Minimal FastAPI App
 
 ```python
 from fastapi import FastAPI
 
-app = FastAPI(title="Orvion DocIntel AI Service")
+app = FastAPI(title="Arkion DocIntel AI Service")
 
 @app.get("/health")
 async def health_check():
@@ -850,7 +850,7 @@ Document AI products handle sensitive data. Safe logging starts now.
 
 ### Goal
 
-Build the first working backend service for Orvion DocIntel.
+Build the first working backend service for Arkion DocIntel.
 
 ### Requirements
 

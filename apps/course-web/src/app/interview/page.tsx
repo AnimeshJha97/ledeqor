@@ -16,7 +16,7 @@ export default async function InterviewPage() {
       <div className="mt-6 rounded-md border border-line bg-surface p-6 shadow-soft">
         <h3 className="text-xl font-semibold text-ink">Core Pitch</h3>
         <p className="mt-4 max-w-4xl text-lg leading-8 text-slate-300">
-          I am a senior full-stack engineer with strong React, Node.js, TypeScript, backend, and product delivery experience. I expanded into applied AI engineering by building Orvion DocIntel, a document intelligence platform that processes business documents using Python, FastAPI, LLMs, embeddings, vector search, RAG, structured extraction, AI workflows, evaluation, and production deployment.
+          I am a senior full-stack engineer with strong React, Node.js, TypeScript, backend, and product delivery experience. I expanded into applied AI engineering by building Arkion DocIntel, a document intelligence platform that processes business documents using Python, FastAPI, LLMs, embeddings, vector search, RAG, structured extraction, AI workflows, evaluation, and production deployment.
         </p>
       </div>
 

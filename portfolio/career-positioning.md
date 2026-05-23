@@ -31,7 +31,7 @@ Applied AI Engineer / Full Stack AI Engineer
 
 ## Product I Am Building
 
-Orvion DocIntel, an AI document intelligence platform for businesses.
+Arkion DocIntel, an AI document intelligence platform for businesses.
 
 ## My Pitch
 

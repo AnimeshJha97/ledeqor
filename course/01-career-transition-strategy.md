@@ -32,13 +32,13 @@ AI learning can become chaotic fast. There are too many topics:
 
 If you study everything randomly, you will feel busy but not become hireable.
 
-This course uses one product, Orvion DocIntel, as the filter. If a topic helps you build or explain the product, it matters. If it only satisfies curiosity, it can wait.
+This course uses one product, Arkion DocIntel, as the filter. If a topic helps you build or explain the product, it matters. If it only satisfies curiosity, it can wait.
 
 ## Product Direction
 
 Working product name:
 
-Orvion DocIntel
+Arkion DocIntel
 
 Product category:
 
@@ -46,7 +46,7 @@ AI Document Intelligence Platform for Businesses
 
 One-line product pitch:
 
-Orvion DocIntel helps businesses upload documents, extract structured information, search semantically, ask grounded questions with citations, compare documents, detect risks, and trigger AI workflows.
+Arkion DocIntel helps businesses upload documents, extract structured information, search semantically, ask grounded questions with citations, compare documents, detect risks, and trigger AI workflows.
 
 ## What Companies Should See In This Project
 
@@ -154,7 +154,7 @@ flowchart LR
 
 ### Product Connection
 
-In Orvion DocIntel, MERN skills handle:
+In Arkion DocIntel, MERN skills handle:
 
 - user dashboard
 - document library
@@ -227,7 +227,7 @@ Those roles require deeper math, research, model training, and systems specializ
 
 ### Product Connection
 
-Orvion DocIntel is designed for applied AI roles because it includes:
+Arkion DocIntel is designed for applied AI roles because it includes:
 
 - LLM APIs
 - document workflows
@@ -366,7 +366,7 @@ Strong portfolio project:
 
 ---
 
-## 0.5 How Orvion DocIntel Fits Under Orvion Labs
+## 0.5 How Arkion DocIntel Fits Under Arkion Labs
 
 ### Goal
 
@@ -374,11 +374,11 @@ Create a product story that sounds like a launchable business, not only a studen
 
 ### Parent Brand
 
-Orvion Labs can be positioned as a builder of business automation and AI productivity tools.
+Arkion Labs can be positioned as a builder of business automation and AI productivity tools.
 
 ### Product Family
 
-Orvion DocIntel can be the first product:
+Arkion DocIntel can be the first product:
 
 - document intelligence
 - business workflow automation
@@ -421,7 +421,7 @@ Short:
 
 Long:
 
-"Orvion DocIntel helps business teams extract structured information, ask grounded questions, compare documents, and detect risks across contracts, invoices, policies, and operational documents."
+"Arkion DocIntel helps business teams extract structured information, ask grounded questions, compare documents, and detect risks across contracts, invoices, policies, and operational documents."
 
 ---
 
@@ -516,7 +516,7 @@ Avoid rabbit holes:
 
 ### Rule
 
-If it does not help Orvion DocIntel work, explain, or deploy, it waits.
+If it does not help Arkion DocIntel work, explain, or deploy, it waits.
 
 ---
 
@@ -531,7 +531,7 @@ Connect learning to weekly product progress.
 Every week has two outputs:
 
 1. Skill output: what you understand.
-2. Product output: what Orvion DocIntel can do.
+2. Product output: what Arkion DocIntel can do.
 
 ### Week Plan
 
@@ -606,7 +606,7 @@ Applied AI Engineer / Full Stack AI Engineer
 
 ## Product I Am Building
 
-Orvion DocIntel, an AI document intelligence platform for businesses.
+Arkion DocIntel, an AI document intelligence platform for businesses.
 
 ## My Pitch
 
@@ -618,7 +618,7 @@ I am a senior full-stack engineer expanding into applied AI engineering by build
 1. Why is "MERN developer" weaker positioning than "Full Stack AI Engineer"?
 2. What is the difference between an ML Engineer and an Applied AI Engineer?
 3. Why is document intelligence stronger than a generic chatbot project?
-4. Which three document types should Orvion DocIntel support first?
+4. Which three document types should Arkion DocIntel support first?
 5. What AI topics should be ignored during the first 8 weeks?
 
 ## Answer Key
@@ -635,7 +635,7 @@ I am a senior full-stack engineer expanding into applied AI engineering by build
 2. What kind of AI engineer are you trying to become?
 3. Why did you choose document intelligence as your capstone?
 4. How does your full-stack experience help in AI product engineering?
-5. What does Orvion DocIntel do?
+5. What does Arkion DocIntel do?
 
 ## Source Links
 

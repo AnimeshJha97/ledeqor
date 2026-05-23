@@ -7,9 +7,9 @@ import { SecondaryCta, SectionIntro, StatPill } from "@/components/marketing";
 import { getHydratedModules } from "@/lib/course-content";
 
 export const metadata: Metadata = {
-  title: "AI Engineer Guide Course | Build Orvion DocIntel",
+  title: "AI Engineer Guide Course | Build Arkion DocIntel",
   description:
-    "Build Orvion DocIntel, a production-style AI document intelligence SaaS, while learning Python, FastAPI, LLMs, vector search, RAG, workflows, evaluation, security, deployment, and interview strategy."
+    "Build Arkion DocIntel, a production-style AI document intelligence SaaS, while learning Python, FastAPI, LLMs, vector search, RAG, workflows, evaluation, security, deployment, and interview strategy."
 };
 
 const outcomes = [
@@ -33,7 +33,7 @@ export default async function AiEngineerGuidePage({ searchParams }: { searchPara
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">Available now</p>
             <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
-              AI Engineer Guide: build Orvion DocIntel end to end.
+              AI Engineer Guide: build Arkion DocIntel end to end.
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-8 text-muted sm:text-lg">
               A complete applied AI engineering path for full-stack developers. Learn by building a business document intelligence SaaS with upload, extraction, embeddings, RAG, workflows, evaluation, security, and deployment.

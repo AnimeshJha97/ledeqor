@@ -40,7 +40,7 @@ export function buildAiEngineerGuideCourse(): CourseRecord {
   return {
     slug: AI_ENGINEER_GUIDE_SLUG,
     title: "AI Engineer Guide",
-    subtitle: "Applied AI engineering through Orvion DocIntel",
+    subtitle: "Applied AI engineering through Arkion DocIntel",
     description: "A full-stack learning path for moving from MERN experience into applied AI engineering with Python, FastAPI, LLMs, embeddings, RAG, workflows, evals, security, deployment, and career strategy.",
     status: "published",
     version: 1,

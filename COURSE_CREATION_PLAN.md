@@ -7,7 +7,7 @@ The strongest path is to build the course as a real learning product, then build
 The course should have three connected outputs:
 
 1. A detailed curriculum that teaches concepts from zero.
-2. A working Orvion DocIntel capstone product.
+2. A working Arkion DocIntel capstone product.
 3. Portfolio and interview material generated from the build.
 
 ## Recommended Architecture
@@ -22,7 +22,7 @@ Each lecture should include:
 - Why it matters in AI engineering
 - MERN-to-AI mental model
 - Code example
-- Product connection to Orvion DocIntel
+- Product connection to Arkion DocIntel
 - Common beginner mistakes
 - Interview angle
 - Mini exercise
@@ -56,7 +56,7 @@ Recommended stack:
 
 ### Capstone Product
 
-Build Orvion DocIntel as a separate monorepo or subfolder.
+Build Arkion DocIntel as a separate monorepo or subfolder.
 
 Recommended stack:
 

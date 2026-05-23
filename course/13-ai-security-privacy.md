@@ -2,7 +2,7 @@
 
 ## Module Purpose
 
-Document intelligence platforms handle sensitive business data. This module teaches the security and privacy layer needed for Orvion DocIntel to feel enterprise-ready.
+Document intelligence platforms handle sensitive business data. This module teaches the security and privacy layer needed for Arkion DocIntel to feel enterprise-ready.
 
 ## Learning Outcomes
 
@@ -246,7 +246,7 @@ Consider audit retention rules.
 
 ## 11.19 Responsible AI Basics
 
-Responsible AI for Orvion means:
+Responsible AI for Arkion means:
 
 - transparency
 - citations

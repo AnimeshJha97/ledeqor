@@ -11,7 +11,7 @@ export default async function LabsPage() {
     <AppShell>
       <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">Hands-on</p>
       <h2 className="mt-2 text-3xl font-semibold text-ink">Labs</h2>
-      <p className="mt-2 max-w-2xl text-muted">Labs turn each module into product progress inside Orvion DocIntel.</p>
+      <p className="mt-2 max-w-2xl text-muted">Labs turn each module into product progress inside Arkion DocIntel.</p>
 
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         {labs.map((module) => (

@@ -4,7 +4,7 @@
 
 This module turns your MERN background into an advantage.
 
-Many people can build notebooks. Fewer can build a real AI SaaS with auth, uploads, queues, storage, databases, AI services, permissions, loading states, and admin visibility. Orvion DocIntel should look like a serious product, not an API demo.
+Many people can build notebooks. Fewer can build a real AI SaaS with auth, uploads, queues, storage, databases, AI services, permissions, loading states, and admin visibility. Arkion DocIntel should look like a serious product, not an API demo.
 
 ## Learning Outcomes
 
@@ -21,7 +21,7 @@ By the end of this module, you should be able to:
 
 ## Final Mini Build
 
-Create the Orvion DocIntel architecture blueprint:
+Create the Arkion DocIntel architecture blueprint:
 
 - monorepo structure
 - service boundaries

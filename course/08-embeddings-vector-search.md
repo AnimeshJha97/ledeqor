@@ -2,7 +2,7 @@
 
 ## Module Purpose
 
-This module teaches the retrieval foundation behind Orvion DocIntel.
+This module teaches the retrieval foundation behind Arkion DocIntel.
 
 Modules 3-5 turned files into parsed text and structured business data. Now you need search by meaning. Users will not always ask with the same words used inside a document. They may ask "when do we pay?" while the contract says "payment shall be remitted within thirty days." Embeddings and vector search solve that gap.
 
@@ -23,7 +23,7 @@ By the end of this module, you should be able to:
 
 ## Final Mini Build
 
-Extend Orvion DocIntel with:
+Extend Arkion DocIntel with:
 
 - page-aware chunk generation
 - embedding generation service
@@ -47,7 +47,7 @@ Embeddings are numeric representations of meaning. A paragraph, sentence, or que
 
 In real models, the vector has hundreds or thousands of dimensions.
 
-Product use: Orvion embeds document chunks and user queries so it can compare meaning.
+Product use: Arkion embeds document chunks and user queries so it can compare meaning.
 
 ## 6.2 Why Keyword Search Is Not Enough
 
@@ -115,7 +115,7 @@ Common approaches:
 - page-aware chunks
 - clause-aware chunks for contracts
 
-For Orvion v1, use page-aware paragraph chunks, then improve per document type.
+For Arkion v1, use page-aware paragraph chunks, then improve per document type.
 
 ## 6.7 Chunk Size And Overlap
 

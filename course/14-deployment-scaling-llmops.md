@@ -2,7 +2,7 @@
 
 ## Module Purpose
 
-This module turns Orvion DocIntel from a local project into a portfolio-grade product that can be demoed, explained, monitored, and improved.
+This module turns Arkion DocIntel from a local project into a portfolio-grade product that can be demoed, explained, monitored, and improved.
 
 Deployment is not only "put it online." For AI systems, you also need queues, health checks, environment variables, logs, cost tracking, latency monitoring, and clear production limitations.
 

@@ -6,7 +6,7 @@ const dbName = process.env.MONGODB_DB ?? "ai_engineer_guide";
 
 declare global {
   // eslint-disable-next-line no-var
-  var __orvionMongoClientPromise: Promise<MongoClient> | undefined;
+  var __ArkionMongoClientPromise: Promise<MongoClient> | undefined;
 }
 
 export function hasMongoConfig() {
@@ -20,14 +20,14 @@ export async function getMongoClient() {
     throw new Error("MONGODB_URI is not configured");
   }
 
-  if (!globalThis.__orvionMongoClientPromise) {
+  if (!globalThis.__ArkionMongoClientPromise) {
     const client = new MongoClient(connectionUri, {
-      appName: "orvion-ai-engineer-guide"
+      appName: "Arkion-ai-engineer-guide"
     });
-    globalThis.__orvionMongoClientPromise = client.connect();
+    globalThis.__ArkionMongoClientPromise = client.connect();
   }
 
-  return globalThis.__orvionMongoClientPromise;
+  return globalThis.__ArkionMongoClientPromise;
 }
 
 export async function getDb(): Promise<Db> {
