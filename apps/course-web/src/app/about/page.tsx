@@ -4,8 +4,8 @@ import { FeatureCard, PrimaryCta, SecondaryCta, SectionIntro } from "@/component
 import { MarketingShell } from "@/components/marketing-shell";
 
 export const metadata: Metadata = {
-  title: "About | AI Engineer Guide",
-  description: "AI Engineer Guide is a project-driven learning platform for full-stack developers moving into applied AI engineering."
+  title: "About | Ledeqor",
+  description: "Ledeqor is a project-driven learning platform from Arkion Labs for developers upgrading into future-ready technologies."
 };
 
 const principles = [
@@ -48,10 +48,10 @@ export default function AboutPage() {
         <div className="max-w-4xl">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">About the platform</p>
           <h1 className="mt-4 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
-            AI Engineer Guide helps full-stack developers become applied AI product builders.
+            Ledeqor helps developers learn, develop, and conquer future-ready technology.
           </h1>
           <p className="mt-5 text-base leading-8 text-muted sm:text-lg">
-            The platform is designed for developers who already know how to build software and now want to add AI engineering depth: LLM APIs, document intelligence, vector search, RAG, workflows, evaluation, security, deployment, and career positioning.
+            Built by Arkion Labs, the platform is designed for developers who already know how to build software and now want structured upgrade paths into applied AI engineering, modern SaaS architecture, and future high-demand skills.
           </p>
         </div>
       </section>
@@ -87,7 +87,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-4xl px-4 py-14 text-center sm:px-6 lg:px-8">
           <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Start with the AI Engineer Guide.</h2>
           <p className="mt-4 text-base leading-7 text-muted">
-            The current flagship course uses Arkion DocIntel as the capstone product and sets up the platform for future AI engineering tracks.
+            The current flagship course uses Arkion DocIntel as the capstone product and sets up Ledeqor for future technology tracks.
           </p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
             <PrimaryCta href="/courses/ai-engineer-guide">View course</PrimaryCta>

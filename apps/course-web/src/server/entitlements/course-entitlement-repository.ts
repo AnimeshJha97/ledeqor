@@ -9,7 +9,8 @@ export type CourseEntitlement = {
   userId: string;
   courseSlug: string;
   accessLevel: CourseAccessLevel;
-  source: "manual" | "purchase" | "subscription" | "admin_grant" | "preview" | "free_enrollment";
+  source: "manual" | "purchase" | "subscription" | "admin_grant" | "preview" | "free_enrollment" | "founder_free";
+  campaignId?: string;
   status: CourseEntitlementStatus;
   startsAt: Date;
   expiresAt?: Date;
@@ -32,6 +33,7 @@ async function entitlementsCollection(): Promise<Collection<CourseEntitlement>> 
   await collection.createIndex({ userId: 1, courseSlug: 1 }, { unique: true });
   await collection.createIndex({ courseSlug: 1, status: 1 });
   await collection.createIndex({ userId: 1, status: 1 });
+  await collection.createIndex({ campaignId: 1, status: 1 });
 
   return collection;
 }
@@ -51,6 +53,48 @@ export function hasMinimumAccess(entitlement: Pick<CourseEntitlement, "accessLev
 export async function getCourseEntitlement(userId: string, courseSlug: string) {
   const collection = await entitlementsCollection();
   return collection.findOne({ userId, courseSlug });
+}
+
+export async function countActiveCampaignRedemptions(campaignId: string) {
+  const collection = await entitlementsCollection();
+  return collection.countDocuments({ campaignId, status: "active" });
+}
+
+export async function grantFounderFreeEntitlement(input: {
+  userId: string;
+  courseSlug: string;
+  campaignId: string;
+  startsAt: Date;
+  expiresAt: Date;
+}) {
+  const collection = await entitlementsCollection();
+  const now = new Date();
+  const existing = await getCourseEntitlement(input.userId, input.courseSlug);
+
+  if (existing) {
+    return existing;
+  }
+
+  await collection.updateOne(
+    { userId: input.userId, courseSlug: input.courseSlug },
+    {
+      $setOnInsert: {
+        userId: input.userId,
+        courseSlug: input.courseSlug,
+        accessLevel: "pro",
+        source: "founder_free",
+        campaignId: input.campaignId,
+        status: "active",
+        startsAt: input.startsAt,
+        expiresAt: input.expiresAt,
+        createdAt: now,
+        updatedAt: now
+      }
+    },
+    { upsert: true }
+  );
+
+  return getCourseEntitlement(input.userId, input.courseSlug);
 }
 
 export async function grantFreeCourseEntitlement(userId: string, courseSlug: string) {
