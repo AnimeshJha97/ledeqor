@@ -4,7 +4,7 @@ import { MarketingShell } from "@/components/marketing-shell";
 
 export const metadata: Metadata = {
   title: "Sign In",
-  description: "Sign in to AI Engineer Guide with Google."
+  description: "Sign in to Ledeqor with Google."
 };
 
 export default function SignInPage() {

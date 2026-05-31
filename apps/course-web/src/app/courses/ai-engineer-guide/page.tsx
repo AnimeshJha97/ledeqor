@@ -21,7 +21,7 @@ const outcomes = [
   "Present a portfolio-ready AI SaaS project"
 ];
 
-export default async function AiEngineerGuidePage({ searchParams }: { searchParams?: Promise<{ access?: string }> }) {
+export default async function AiEngineerGuidePage({ searchParams }: { searchParams?: Promise<{ access?: string; claim?: string }> }) {
   const params = await searchParams;
   const modules = getHydratedModules();
   const lectureCount = modules.reduce((total, module) => total + module.lectures.length, 0);
@@ -31,16 +31,29 @@ export default async function AiEngineerGuidePage({ searchParams }: { searchPara
       <section className="border-b border-line">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1fr_0.75fr] lg:px-8">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">Available now</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">Founder Free Access available now</p>
             <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
-              AI Engineer Guide: build Arkion DocIntel end to end.
+              Master AI engineering by building Arkion DocIntel end to end.
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-8 text-muted sm:text-lg">
-              A complete applied AI engineering path for full-stack developers. Learn by building a business document intelligence SaaS with upload, extraction, embeddings, RAG, workflows, evaluation, security, and deployment.
+              Learn concepts, build a real AI SaaS product, practice interviews, and turn the project into career proof.
             </p>
+            <div className="mt-5 max-w-2xl rounded-md border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm font-semibold text-emerald-100">
+              Founder Free Access: early developers get Pro access free. Limited to the first 25 users.
+            </div>
             {params?.access === "required" ? (
               <div className="mt-5 max-w-2xl rounded-md border border-amber-400/40 bg-amber-400/10 px-4 py-3 text-sm leading-6 text-amber-100">
                 Sign in and enroll to open the study workspace. Course detail and curriculum preview stay public.
+              </div>
+            ) : null}
+            {params?.claim === "full" ? (
+              <div className="mt-5 max-w-2xl rounded-md border border-amber-400/40 bg-amber-400/10 px-4 py-3 text-sm leading-6 text-amber-100">
+                Founder Free Access is full for now. You can still review the course preview.
+              </div>
+            ) : null}
+            {params?.claim === "unavailable" ? (
+              <div className="mt-5 max-w-2xl rounded-md border border-amber-400/40 bg-amber-400/10 px-4 py-3 text-sm leading-6 text-amber-100">
+                Founder Free Access is only available for the AI Engineer Guide course.
               </div>
             ) : null}
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">

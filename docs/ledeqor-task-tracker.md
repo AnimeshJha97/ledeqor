@@ -54,7 +54,6 @@ Last updated: 2026-05-20
 | P0 | Pricing tiers and offer campaign schema | Completed | Updated pricing to two INR paid tiers: Pro Rs. 499/month and Career Rs. 799/month. Added active 100% early-bird campaign for Pro and fixed Best value badge wrapping | `npm.cmd run build` passed |
 | P0 | Switch AI analysis provider to OpenAI GPT-4.1 nano | Completed | Updated interview answer analysis to use OpenAI Responses API with `OPENAI_API_KEY` and `OPENAI_MODEL`, defaulting to `gpt-4.1-nano`; updated env example and security docs | `npm.cmd run build` passed |
 | P1 | Ledeqor product brief | Completed | Created detailed product brief covering product idea, current capabilities, access model, pricing direction, upgrade roadmap, future course ideas, moat, metrics, risks, and near-term priorities | Added `docs/ledeqor-product-brief.md` |
-| P0 | Founder Free launch sprint | Completed | Implemented Founder Free Pro-style claim flow, 25-user redemption cap, 30-day entitlement expiry, `/my-learning` dashboard lite, launch CTAs/copy, feedback CTA config, and schema docs | `npm.cmd run build` passed; `/`, `/pricing`, `/courses/ai-engineer-guide` returned 200; signed-out `/my-learning` redirected to `/sign-in` |
 
 ## In Progress
 
