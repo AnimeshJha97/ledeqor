@@ -6,9 +6,9 @@ import { MarketingShell } from "@/components/marketing-shell";
 import { getHydratedModules } from "@/lib/course-content";
 
 export const metadata: Metadata = {
-  title: "AI Engineer Guide | Full-Stack AI Engineering Course for Developers",
+  title: "Ledeqor | Learn Future-Ready Technology By Building",
   description:
-    "Learn applied AI engineering by building Arkion DocIntel, a production-style AI document intelligence SaaS with Python, FastAPI, LLMs, RAG, vector search, workflows, evaluation, and deployment.",
+    "Ledeqor is a project-driven learning platform from Arkion Labs for developers upgrading into AI engineering and other future-ready technologies.",
   keywords: [
     "AI engineering course",
     "full stack AI engineer",
@@ -71,15 +71,18 @@ export default function LandingPage() {
       <section className="border-b border-line">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-20">
           <div className="flex flex-col justify-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">Applied AI engineering path</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">Founder Free Access by Arkion Labs</p>
             <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl lg:text-6xl">
-              Become a full-stack AI engineer by building real AI products.
+              Master AI engineering by building a real AI SaaS product.
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-8 text-muted sm:text-lg">
-              A project-driven learning platform for developers who want to move beyond chatbot demos and build production-style AI systems with Python, FastAPI, LLMs, RAG, vector search, workflows, evaluation, and deployment.
+              Ledeqor helps developers learn concepts, build Arkion DocIntel, practice interviews, and turn the project into career proof.
             </p>
+            <div className="mt-5 max-w-2xl rounded-md border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm font-semibold text-emerald-100">
+              Founder Free Access: early developers get Pro access free. Limited to the first 25 users.
+            </div>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <PrimaryCta href="/courses/ai-engineer-guide">Start AI Engineer Guide</PrimaryCta>
+              <PrimaryCta href="/courses/ai-engineer-guide?claim=founder-free">Claim Founder Free Access</PrimaryCta>
               <SecondaryCta href="/courses">Explore courses</SecondaryCta>
             </div>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -148,7 +151,7 @@ export default function LandingPage() {
           <SectionIntro
             eyebrow="Solution"
             title="Learn AI engineering the way products are actually built."
-            description="AI Engineer Guide combines structured learning with course-specific projects, practice, and career outcomes. Each course is designed for a different level of experience and a different product build."
+            description="Ledeqor combines structured learning with course-specific projects, practice, and career outcomes. Each course is designed for a different level of experience and a different product build."
           />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {solutionFeatures.map((feature) => (
@@ -211,7 +214,7 @@ export default function LandingPage() {
             Learn the concepts, build the product, explain the architecture, and walk into interviews with a real story.
           </p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-            <PrimaryCta href="/courses/ai-engineer-guide">Start AI Engineer Guide</PrimaryCta>
+            <PrimaryCta href="/courses/ai-engineer-guide?claim=founder-free">Claim Founder Free Access</PrimaryCta>
             <SecondaryCta href="/about">Learn about the platform</SecondaryCta>
           </div>
         </div>

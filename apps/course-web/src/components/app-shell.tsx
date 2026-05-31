@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { BookOpen, Compass, FolderKanban, GraduationCap, LayoutDashboard, Network, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { BookOpen, Compass, FolderKanban, GraduationCap, LayoutDashboard, Network, PanelLeftClose, PanelLeftOpen, UserRound } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type NavItem = {
@@ -22,6 +22,7 @@ export function AppShell({ children, moduleLinks }: AppShellProps) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const navItems: NavItem[] = [
     { href: "/courses", label: "Courses", icon: Compass },
+    { href: "/my-learning", label: "My Learning", icon: UserRound },
     { href: "/courses/ai-engineer-guide", label: "Course overview", icon: LayoutDashboard },
     { href: "/courses/ai-engineer-guide/modules", label: "Modules", icon: BookOpen },
     { href: "/courses/ai-engineer-guide/capstone", label: "Capstone", icon: FolderKanban },
@@ -30,7 +31,7 @@ export function AppShell({ children, moduleLinks }: AppShellProps) {
   ];
 
   useEffect(() => {
-    const saved = window.localStorage.getItem("Arkion-course-sidebar");
+    const saved = window.localStorage.getItem("ledeqor-course-sidebar");
     if (saved === "closed") {
       setSidebarOpen(false);
     }
@@ -39,7 +40,7 @@ export function AppShell({ children, moduleLinks }: AppShellProps) {
   function toggleSidebar() {
     const next = !sidebarOpen;
     setSidebarOpen(next);
-    window.localStorage.setItem("Arkion-course-sidebar", next ? "open" : "closed");
+    window.localStorage.setItem("ledeqor-course-sidebar", next ? "open" : "closed");
   }
 
   return (
@@ -51,8 +52,8 @@ export function AppShell({ children, moduleLinks }: AppShellProps) {
       >
         <div className="flex items-start justify-between gap-4">
           <Link href="/" className="block min-w-0">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">AI Engineer Guide</p>
-            <h1 className="mt-2 text-2xl font-semibold text-ink">Study Workspace</h1>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">Ledeqor</p>
+            <h1 className="mt-2 text-2xl font-semibold text-ink">AI Engineer Guide</h1>
             <p className="mt-2 text-sm leading-6 text-muted">Study applied AI engineering through courses, practice, diagrams, and capstone builds.</p>
           </Link>
 
@@ -98,9 +99,9 @@ export function AppShell({ children, moduleLinks }: AppShellProps) {
 
       <header className="sticky top-0 z-10 border-b border-line bg-surface/90 px-4 py-4 backdrop-blur lg:hidden">
         <div className="flex items-center justify-between">
-          <Link href="/" className="font-semibold text-ink">AI Engineer Guide</Link>
-          <Link href={moduleLinks?.labHref ?? "/courses/ai-engineer-guide/capstone"} className="rounded-md border border-line px-3 py-1.5 text-sm font-medium text-slate-200">
-            {moduleLinks?.labHref ? "Lab" : "Capstone"}
+          <Link href="/" className="font-semibold text-ink">Ledeqor</Link>
+          <Link href={moduleLinks?.labHref ?? "/my-learning"} className="rounded-md border border-line px-3 py-1.5 text-sm font-medium text-slate-200">
+            {moduleLinks?.labHref ? "Lab" : "My Learning"}
           </Link>
         </div>
       </header>

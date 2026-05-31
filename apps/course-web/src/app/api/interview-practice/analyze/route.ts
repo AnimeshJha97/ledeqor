@@ -11,16 +11,16 @@ type AnalyzeRequest = {
 };
 
 export async function POST(request: Request) {
-  const provider = process.env.AI_PROVIDER ?? "gemini";
-  const apiKey = process.env.GEMINI_API_KEY;
-  const model = process.env.GEMINI_MODEL ?? "gemini-2.5-flash";
-
-  if (provider !== "gemini") {
-    return jsonError("Configured AI provider is not supported for interview practice", 400);
-  }
+  const provider = process.env.AI_PROVIDER ?? "openai";
+  const apiKey = process.env.OPENAI_API_KEY;
+  const model = process.env.OPENAI_MODEL ?? "gpt-4.1-nano";
 
   if (!apiKey) {
-    return jsonError("Gemini API key is not configured", 500);
+    return jsonError("OpenAI API key is not configured", 500);
+  }
+
+  if (provider !== "openai") {
+    return jsonError("Configured AI provider is not supported for interview practice", 400);
   }
 
   let body: AnalyzeRequest;
@@ -87,38 +87,65 @@ Return JSON with this shape:
 }
 `;
 
-  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+  const response = await fetch("https://api.openai.com/v1/responses", {
     method: "POST",
     headers: {
+      Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      contents: [
-        {
-          role: "user",
-          parts: [{ text: prompt }]
+      model,
+      input: prompt,
+      temperature: 0.2,
+      max_output_tokens: 900,
+      text: {
+        format: {
+          type: "json_schema",
+          name: "interview_answer_analysis",
+          strict: true,
+          schema: {
+            type: "object",
+            additionalProperties: false,
+            properties: {
+              score: { type: "number", minimum: 1, maximum: 10 },
+              strengths: {
+                type: "array",
+                items: { type: "string" }
+              },
+              gaps: {
+                type: "array",
+                items: { type: "string" }
+              },
+              improved_answer_outline: {
+                type: "array",
+                items: { type: "string" }
+              },
+              next_practice_tip: { type: "string" }
+            },
+            required: ["score", "strengths", "gaps", "improved_answer_outline", "next_practice_tip"]
+          }
         }
-      ],
-      generationConfig: {
-        temperature: 0.2,
-        maxOutputTokens: 900,
-        responseMimeType: "application/json"
       }
     })
   });
 
   if (!response.ok) {
     const errorText = await response.text();
-    return jsonError(`Gemini request failed: ${errorText}`, 502);
+    return jsonError(`OpenAI request failed: ${errorText}`, 502);
   }
 
   const payload = await response.json() as {
-    candidates?: { content?: { parts?: { text?: string }[] } }[];
+    output_text?: string;
+    output?: {
+      content?: {
+        text?: string;
+      }[];
+    }[];
   };
-  const text = payload.candidates?.[0]?.content?.parts?.[0]?.text;
+  const text = payload.output_text ?? payload.output?.flatMap((item) => item.content ?? []).find((item) => item.text)?.text;
 
   if (!text) {
-    return jsonError("Gemini returned an empty response", 502);
+    return jsonError("OpenAI returned an empty response", 502);
   }
 
   try {

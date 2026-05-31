@@ -151,7 +151,7 @@ Can access:
 | `/about` | Public | Trust page |
 | `/sign-in` | Public only when signed out | Auth entry |
 | `/dashboard` | Authenticated | User home |
-| `/my-learning` | Authenticated | Owned/enrolled courses |
+| `/my-learning` | Authenticated | Owned/enrolled courses and Founder Free empty state |
 | `/courses/[courseSlug]/modules` | Enrolled learner | Paid/private course content |
 | `/courses/[courseSlug]/modules/[moduleSlug]` | Enrolled learner | Module content |
 | `/courses/[courseSlug]/modules/[moduleSlug]/lectures/[lectureId]` | Enrolled learner | Lecture body |
@@ -327,6 +327,7 @@ For `/api/interview-practice/analyze`:
 - require course entitlement
 - enforce per-user rate limits
 - validate input length
+- use `OPENAI_API_KEY` and `OPENAI_MODEL`, currently `gpt-4.1-nano`
 - store prompt/answer only if product needs history
 - avoid sending private keys to client
 - log token/cost metadata, not full sensitive answers by default
@@ -387,10 +388,20 @@ POST      /api/interview-practice/analyze
 
 ### Phase B: Enrollment Flow
 
+Status: Founder Free launch version implemented.
+
 1. Add `/my-learning`.
-2. Add free enrollment button on course detail page.
-3. Create entitlement on enrollment.
+2. Add Founder Free claim button on landing, pricing, and course detail pages.
+3. Create Pro-style `founder_free` entitlement on claim.
 4. Redirect enrolled users to study dashboard.
+
+Founder Free defaults:
+
+- Course: `ai-engineer-guide`
+- Access level: `pro`
+- Duration: 30 days
+- Max redemptions: 25 users
+- Payment required: no
 
 ### Phase C: Paid Access
 

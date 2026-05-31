@@ -45,7 +45,8 @@ Shape:
   userId: string;
   courseSlug: string;
   accessLevel: "free" | "paid" | "pro" | "admin";
-  source: "manual" | "purchase" | "subscription" | "admin_grant" | "preview" | "free_enrollment";
+  source: "manual" | "purchase" | "subscription" | "admin_grant" | "preview" | "free_enrollment" | "founder_free";
+  campaignId?: string;
   status: "active" | "expired" | "revoked" | "refunded";
   startsAt: Date;
   expiresAt?: Date;
@@ -59,6 +60,95 @@ Indexes:
 - unique `{ userId: 1, courseSlug: 1 }`
 - `{ courseSlug: 1, status: 1 }`
 - `{ userId: 1, status: 1 }`
+- `{ campaignId: 1, status: 1 }`
+
+### `pricing_plans`
+
+One document per sellable paid tier. Free access and previews are handled by entitlements or campaigns, not as a separate paid plan.
+
+Current tiers:
+
+- `pro`: Rs. 499/month
+- `career`: Rs. 799/month
+
+Shape:
+
+```ts
+{
+  slug: "pro" | "career";
+  name: string;
+  description: string;
+  currency: "INR";
+  amount: number;
+  billingPeriod: "month" | "year" | "one_time";
+  accessLevel: "paid" | "pro";
+  features: string[];
+  status: "active" | "archived";
+  sortOrder: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+```
+
+Indexes:
+
+- unique `{ slug: 1 }`
+- `{ status: 1, sortOrder: 1 }`
+
+### `offer_campaigns`
+
+One document per pricing campaign. Campaigns can target one or more pricing tiers and apply a percentage discount. This allows launch offers, festival offers, limited-time upgrades, and plan-specific promotions without changing the base plan price.
+
+Example current campaign:
+
+```ts
+{
+  slug: "founder-free-access";
+  name: "Founder Free Access";
+  description: "Launch campaign that makes the Rs. 499 Pro tier free for early users.";
+  targetPlanSlugs: ["pro"];
+  discountPercentage: 100;
+  status: "active";
+  startsAt: Date;
+  endsAt?: Date;
+  maxRedemptions: 25;
+  redeemedCount: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+```
+
+General shape:
+
+```ts
+{
+  slug: string;
+  name: string;
+  description?: string;
+  targetPlanSlugs: ("pro" | "career")[];
+  discountPercentage: number; // 0-100
+  status: "draft" | "scheduled" | "active" | "paused" | "expired";
+  startsAt: Date;
+  endsAt?: Date;
+  maxRedemptions?: number;
+  redeemedCount: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+```
+
+Indexes:
+
+- unique `{ slug: 1 }`
+- `{ status: 1, startsAt: 1, endsAt: 1 }`
+- `{ targetPlanSlugs: 1, status: 1 }`
+
+Campaign application rule:
+
+1. Read active campaigns where `targetPlanSlugs` contains the plan slug.
+2. Keep campaigns where `startsAt <= now` and `endsAt` is missing or `endsAt >= now`.
+3. If multiple campaigns match, use the highest `discountPercentage` unless a later admin priority field is added.
+4. Final amount is `round(plan.amount * (1 - discountPercentage / 100))`.
 
 ### `courses`
 
