@@ -37,11 +37,11 @@ export default async function CapstonePage({ params }: { params: Promise<{ cours
               This workspace converts the course into a product build plan: theory to learn, files to create, APIs to ship,
               data models to design, acceptance criteria to prove, and the interview story each phase unlocks.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link href={`/courses/${courseSlug}/modules`} className="inline-flex items-center gap-2 rounded-md bg-brand px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link href={`/courses/${courseSlug}/modules`} className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 sm:w-auto">
                 Study modules <ArrowRight size={17} />
               </Link>
-              <Link href={`/courses/${courseSlug}/visuals`} className="inline-flex items-center gap-2 rounded-md border border-line px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand">
+              <Link href={`/courses/${courseSlug}/visuals`} className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-line px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand sm:w-auto">
                 Open visual library
               </Link>
             </div>
@@ -128,8 +128,8 @@ function InfoPanel({ title, icon, items, code = false }: { title: string; icon: 
       </h4>
       <ul className="mt-3 grid gap-2 text-sm leading-6 text-muted">
         {items.map((item) => (
-          <li key={item} className="rounded-md bg-slate-950/35 px-3 py-2">
-            {code ? <code className="text-slate-200">{item}</code> : item}
+          <li key={item} className="min-w-0 rounded-md bg-slate-950/35 px-3 py-2">
+            {code ? <code className="break-all text-slate-200">{item}</code> : <span className="break-words">{item}</span>}
           </li>
         ))}
       </ul>

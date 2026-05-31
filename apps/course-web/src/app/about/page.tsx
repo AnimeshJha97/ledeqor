@@ -47,7 +47,7 @@ export default function AboutPage() {
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="max-w-4xl">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">About the platform</p>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+          <h1 className="mt-4 text-3xl font-semibold tracking-tight text-ink sm:text-5xl">
             Ledeqor helps developers learn, develop, and conquer future-ready technology.
           </h1>
           <p className="mt-5 text-base leading-8 text-muted sm:text-lg">

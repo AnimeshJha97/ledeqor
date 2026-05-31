@@ -102,8 +102,8 @@ export function PracticeModeClient({
           <div className="mt-5 rounded-md border border-line bg-panel p-5">
             <p className="text-lg font-semibold text-ink">{flashcard.front}</p>
             {revealed ? <p className="mt-4 text-sm leading-6 text-muted">{flashcard.back}</p> : null}
-            <div className="mt-5 flex flex-wrap gap-2">
-              <button type="button" onClick={() => setRevealed((value) => !value)} className="rounded-md bg-brand px-3 py-2 text-sm font-semibold text-slate-950">
+            <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+              <button type="button" onClick={() => setRevealed((value) => !value)} className="w-full rounded-md bg-brand px-3 py-2 text-sm font-semibold text-slate-950 sm:w-auto">
                 {revealed ? "Hide answer" : "Reveal answer"}
               </button>
               <button
@@ -112,7 +112,7 @@ export function PracticeModeClient({
                   setActiveFlashcard((activeFlashcard + 1) % pack.flashcards.length);
                   setRevealed(false);
                 }}
-                className="rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200"
+                className="w-full rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 sm:w-auto"
               >
                 Next card
               </button>
@@ -150,8 +150,8 @@ export function PracticeModeClient({
             </div>
           ))}
         </div>
-        <div className="mt-5 flex flex-wrap items-center gap-3">
-          <button type="button" disabled={!answeredAll || isPending} onClick={submitQuiz} className="rounded-md bg-brand px-3 py-2 text-sm font-semibold text-slate-950 disabled:cursor-not-allowed disabled:opacity-50">
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          <button type="button" disabled={!answeredAll || isPending} onClick={submitQuiz} className="w-full rounded-md bg-brand px-3 py-2 text-sm font-semibold text-slate-950 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto">
             Save quiz score
           </button>
           <p className="text-sm font-semibold text-slate-300">{answeredAll ? `Score: ${score}/${pack.quiz.length}` : "Answer all questions to score"}</p>
@@ -176,12 +176,12 @@ export function PracticeModeClient({
                 className="mt-3 w-full rounded-md border border-line bg-surface px-3 py-2 text-sm leading-6 text-slate-200 outline-none transition focus:border-brand"
                 placeholder="Write your answer here..."
               />
-              <div className="mt-3 flex items-center gap-3">
+              <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <button
                   type="button"
                   disabled={isPending || (shortAnswers[prompt] ?? "").trim().length < 5}
                   onClick={() => saveShortAnswer(prompt)}
-                  className="rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-50"
+                  className="w-full rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
                 >
                   Save answer
                 </button>
@@ -195,7 +195,7 @@ export function PracticeModeClient({
       <section className="rounded-md border border-line bg-surface p-5 shadow-sm">
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">Interview practice</p>
         <h2 className="mt-2 text-2xl font-semibold text-ink">One answer at a time</h2>
-        <select value={practiceQuestion} onChange={(event) => setPracticeQuestion(event.target.value)} className="mt-5 w-full rounded-md border border-line bg-panel px-3 py-2 text-sm text-slate-200">
+        <select value={practiceQuestion} onChange={(event) => setPracticeQuestion(event.target.value)} className="mt-5 w-full min-w-0 rounded-md border border-line bg-panel px-3 py-2 text-sm text-slate-200">
           {pack.interviewPrompts.map((prompt) => (
             <option key={prompt} value={prompt}>{prompt}</option>
           ))}
@@ -207,7 +207,7 @@ export function PracticeModeClient({
           className="mt-3 w-full rounded-md border border-line bg-panel px-3 py-2 text-sm leading-6 text-slate-200 outline-none transition focus:border-brand"
           placeholder="Write your answer like you are speaking in an interview..."
         />
-        <button type="button" disabled={isPending || practiceAnswer.trim().length < 20} onClick={analyzeAnswer} className="mt-3 rounded-md bg-brand px-3 py-2 text-sm font-semibold text-slate-950 disabled:cursor-not-allowed disabled:opacity-50">
+        <button type="button" disabled={isPending || practiceAnswer.trim().length < 20} onClick={analyzeAnswer} className="mt-3 w-full rounded-md bg-brand px-3 py-2 text-sm font-semibold text-slate-950 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto">
           Analyze answer
         </button>
         {analysis ? (

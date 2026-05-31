@@ -67,7 +67,7 @@ export default async function VisualLearningPage({ params }: { params: Promise<{
                 <h3 className="mt-3 text-2xl font-semibold text-ink">{diagram.title}</h3>
                 <p className="mt-2 max-w-3xl text-sm leading-6 text-muted">{diagram.description}</p>
               </div>
-              <Link href={`/courses/${courseSlug}/capstone`} className="inline-flex w-fit items-center gap-2 rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand">
+              <Link href={`/courses/${courseSlug}/capstone`} className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand sm:w-fit">
                 Capstone tracker <ArrowRight size={16} />
               </Link>
             </div>

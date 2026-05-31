@@ -51,8 +51,9 @@ export function MermaidDiagram({ chart }: { chart: string }) {
   }
 
   return (
-    <div className="max-w-full overflow-auto rounded-md border border-line bg-panel p-4 shadow-sm">
-      <div dangerouslySetInnerHTML={{ __html: svg }} />
+    <div className="max-w-full overflow-x-auto rounded-md border border-line bg-panel p-4 shadow-sm" aria-label="Scrollable diagram">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400 sm:hidden">Swipe to view diagram</p>
+      <div className="min-w-[680px] max-w-none" dangerouslySetInnerHTML={{ __html: svg }} />
     </div>
   );
 }

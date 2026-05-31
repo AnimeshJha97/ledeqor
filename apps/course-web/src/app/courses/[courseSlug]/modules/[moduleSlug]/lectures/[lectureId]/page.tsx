@@ -47,9 +47,9 @@ export default async function LecturePage({ params }: { params: Promise<{ course
         <ArrowLeft size={18} /> Back to module
       </Link>
 
-      <div className="mt-5 rounded-md border border-line bg-surface p-6 shadow-soft sm:p-8">
+      <div className="mt-5 rounded-md border border-line bg-surface p-5 shadow-soft sm:p-8">
         <p className="text-sm font-semibold text-brand">Module {module.id} / Lecture {lecture.id}</p>
-        <h1 className="mt-3 max-w-4xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl">{lecture.title}</h1>
+        <h1 className="mt-3 max-w-4xl text-2xl font-semibold tracking-tight text-ink sm:text-4xl">{lecture.title}</h1>
         <p className="mt-4 max-w-3xl text-base leading-7 text-muted">{module.title}</p>
         <div className="mt-6">
           <LectureProgressButtons courseSlug={courseSlug} moduleSlug={moduleSlug} lectureId={lectureId} initialStatus={lectureProgress?.status ?? "not_started"} />
@@ -57,7 +57,7 @@ export default async function LecturePage({ params }: { params: Promise<{ course
       </div>
 
       <div className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1fr)_320px]">
-        <section className="min-w-0 overflow-hidden rounded-md border border-line bg-surface p-6 shadow-sm sm:p-8">
+        <section className="min-w-0 overflow-hidden rounded-md border border-line bg-surface p-5 shadow-sm sm:p-8">
           <MarkdownContent blocks={lectureBlocks} />
         </section>
 
@@ -72,16 +72,16 @@ export default async function LecturePage({ params }: { params: Promise<{ course
 
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-between">
         {previous ? (
-          <Link href={`/courses/${courseSlug}/modules/${moduleSlug}/lectures/${previous.id}`} className="inline-flex items-center gap-2 rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 hover:border-brand hover:text-brand">
+          <Link href={`/courses/${courseSlug}/modules/${moduleSlug}/lectures/${previous.id}`} className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 hover:border-brand hover:text-brand sm:w-auto">
             <ArrowLeft size={17} /> Previous
           </Link>
         ) : <span />}
         {next ? (
-          <Link href={`/courses/${courseSlug}/modules/${moduleSlug}/lectures/${next.id}`} className="inline-flex items-center gap-2 rounded-md bg-brand px-3 py-2 text-sm font-semibold text-slate-950 hover:bg-cyan-300">
+          <Link href={`/courses/${courseSlug}/modules/${moduleSlug}/lectures/${next.id}`} className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-3 py-2 text-sm font-semibold text-slate-950 hover:bg-cyan-300 sm:w-auto">
             Next lecture <ArrowRight size={17} />
           </Link>
         ) : (
-          <Link href={`/courses/${courseSlug}/modules/${moduleSlug}/practice`} className="inline-flex items-center gap-2 rounded-md bg-brand px-3 py-2 text-sm font-semibold text-slate-950 hover:bg-cyan-300">
+          <Link href={`/courses/${courseSlug}/modules/${moduleSlug}/practice`} className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-3 py-2 text-sm font-semibold text-slate-950 hover:bg-cyan-300 sm:w-auto">
             Practice mode <ArrowRight size={17} />
           </Link>
         )}

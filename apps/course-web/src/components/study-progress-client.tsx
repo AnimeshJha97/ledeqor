@@ -57,7 +57,7 @@ export function LectureProgressButtons({
             type="button"
             disabled={isPending}
             onClick={() => updateStatus(item.value)}
-            className={`inline-flex items-center justify-center gap-2 rounded-md border px-3 py-2 text-sm font-semibold transition ${
+            className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-md border px-3 py-2 text-sm font-semibold transition ${
               active ? "border-brand bg-cyan-400/10 text-brand" : "border-line bg-panel text-slate-300 hover:border-brand hover:text-brand"
             }`}
           >
