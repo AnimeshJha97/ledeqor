@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, GraduationCap, Menu } from "lucide-react";
+import { ArrowRight, BookOpen, GraduationCap } from "lucide-react";
 import { AuthActions } from "@/components/auth-actions";
+import { MobileMarketingMenu } from "@/components/mobile-marketing-menu";
 
 type MarketingShellProps = {
   children: React.ReactNode;
@@ -13,9 +14,18 @@ const navItems = [
   { href: "/about", label: "About" }
 ];
 
+const mobileNavItems = [
+  { href: "/", label: "Home", description: "Return to the Ledeqor landing page" },
+  { href: "/courses", label: "Courses", description: "Browse available learning tracks" },
+  { href: "/pricing", label: "Pricing", description: "View free launch access and paid tiers" },
+  { href: "/courses/ai-engineer-guide", label: "AI Engineer Guide", description: "Open the flagship course overview" },
+  { href: "/about", label: "About", description: "Learn about Ledeqor and Arkion Labs" },
+  { href: "/my-learning", label: "My Learning", description: "Continue your enrolled courses" }
+];
+
 export function MarketingShell({ children }: MarketingShellProps) {
   return (
-    <div className="min-h-screen bg-paper text-ink">
+    <div className="min-h-screen overflow-x-hidden bg-paper text-ink">
       <header className="sticky top-0 z-30 border-b border-line bg-paper/92 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex min-w-0 items-center gap-3" aria-label="Ledeqor home">
@@ -28,7 +38,7 @@ export function MarketingShell({ children }: MarketingShellProps) {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav className="hidden items-center gap-1 lg:flex">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href} className="rounded-md px-3 py-2 text-sm font-semibold text-slate-300 transition hover:bg-surface hover:text-ink">
                 {item.label}
@@ -36,7 +46,7 @@ export function MarketingShell({ children }: MarketingShellProps) {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 sm:flex">
+          <div className="hidden items-center gap-3 lg:flex">
             <AuthActions />
             <Link href="/my-learning" className="inline-flex items-center gap-2 rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand">
               My Learning <BookOpen size={16} />
@@ -46,13 +56,24 @@ export function MarketingShell({ children }: MarketingShellProps) {
             </Link>
           </div>
 
-          <Link href="/courses" className="inline-flex rounded-md border border-line p-2 text-slate-200 transition hover:border-brand hover:text-brand md:hidden" aria-label="Open courses">
-            <Menu size={20} />
-          </Link>
+          <MobileMarketingMenu
+            links={mobileNavItems}
+            action={
+              <>
+                <AuthActions />
+                <Link href="/my-learning" className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand">
+                  My Learning <BookOpen size={16} />
+                </Link>
+                <Link href="/courses/ai-engineer-guide?claim=founder-free" className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-3 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300">
+                  Claim Founder Free <ArrowRight size={16} />
+                </Link>
+              </>
+            }
+          />
         </div>
       </header>
 
-      <main>{children}</main>
+      <main className="min-w-0 overflow-x-hidden">{children}</main>
 
       <footer className="border-t border-line bg-surface/60">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 sm:px-6 md:grid-cols-[1fr_auto] lg:px-8">

@@ -72,13 +72,13 @@ export default function LandingPage() {
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-20">
           <div className="flex flex-col justify-center">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">Founder Free Access by Arkion Labs</p>
-            <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl lg:text-6xl">
+            <h1 className="mt-4 max-w-4xl break-words text-3xl font-semibold tracking-tight text-ink sm:text-5xl lg:text-6xl">
               Master AI engineering by building a real AI SaaS product.
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-8 text-muted sm:text-lg">
               Ledeqor helps developers learn concepts, build Arkion DocIntel, practice interviews, and turn the project into career proof.
             </p>
-            <div className="mt-5 max-w-2xl rounded-md border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm font-semibold text-emerald-100">
+            <div className="mt-5 max-w-2xl break-words rounded-md border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm font-semibold leading-6 text-emerald-100">
               Founder Free Access: early developers get Pro access free. Limited to the first 25 users.
             </div>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
@@ -95,12 +95,12 @@ export default function LandingPage() {
 
           <div className="min-w-0 rounded-md border border-line bg-surface p-4 shadow-soft sm:p-5">
             <div className="rounded-md border border-line bg-panel p-4">
-              <div className="flex items-center justify-between gap-3">
-                <div>
+              <div className="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="min-w-0">
                   <p className="text-sm font-semibold text-brand">Project-based courses</p>
                   <h2 className="mt-1 text-xl font-semibold text-ink">Learn by building complete AI applications</h2>
                 </div>
-                <span className="rounded-full bg-emerald-400/10 px-2.5 py-1 text-xs font-semibold text-emerald-300 ring-1 ring-emerald-400/20">
+                <span className="w-fit shrink-0 rounded-full bg-emerald-400/10 px-2.5 py-1 text-xs font-semibold text-emerald-300 ring-1 ring-emerald-400/20">
                   Portfolio-ready
                 </span>
               </div>
