@@ -89,8 +89,25 @@ export default async function CourseModuleDetailPage({ params }: { params: Promi
         </div>
       </div>
 
+      {module.lectures.length ? (
+        <details className="mt-6 rounded-md border border-line bg-surface p-4 shadow-sm xl:hidden">
+          <summary className="cursor-pointer text-base font-semibold text-ink">Lectures in this module</summary>
+          <div className="mt-4 grid gap-2">
+            {module.lectures.map((lecture) => (
+              <Link
+                key={lecture.id}
+                href={`/courses/${courseSlug}/modules/${module.slug}/lectures/${lecture.id}`}
+                className="block min-h-12 rounded-md border border-line bg-panel px-3 py-3 text-sm leading-6 text-slate-300 transition hover:border-brand hover:bg-cyan-400/10"
+              >
+                <span className="font-semibold text-brand">{lecture.id}</span> {lecture.title}
+              </Link>
+            ))}
+          </div>
+        </details>
+      ) : null}
+
       <div className="mt-6 grid min-w-0 gap-6 xl:grid-cols-[320px_minmax(0,1fr)]">
-        <aside className="h-fit rounded-md border border-line bg-surface p-5 shadow-sm xl:sticky xl:top-6">
+        <aside className="hidden h-fit rounded-md border border-line bg-surface p-5 shadow-sm xl:sticky xl:top-6 xl:block">
           <h3 className="font-semibold text-ink">Lecture Map</h3>
           <div className="mt-4 grid gap-2">
             {module.lectures.length ? (

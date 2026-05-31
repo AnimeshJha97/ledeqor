@@ -1,6 +1,6 @@
 # Project Task Tracker
 
-Last updated: 2026-05-20
+Last updated: 2026-06-01
 
 ## Tracking Rules
 
@@ -23,7 +23,7 @@ Last updated: 2026-05-20
 
 | Priority | Task | Status | Notes |
 |---|---|---|---|
-| P3 | Phase 5: AI Tutor Later | Pending | Next major phase after access foundation, learning system, practice mode, capstone tracker, and visual library |
+| P3 | Phase 5: AI Tutor Later | Pending | Next major phase after access foundation, learning system, practice mode, capstone tracker, visual library, and mobile-first UX pass |
 
 ## Completed Tasks
 
@@ -55,6 +55,7 @@ Last updated: 2026-05-20
 | P0 | Switch AI analysis provider to OpenAI GPT-4.1 nano | Completed | Updated interview answer analysis to use OpenAI Responses API with `OPENAI_API_KEY` and `OPENAI_MODEL`, defaulting to `gpt-4.1-nano`; updated env example and security docs | `npm.cmd run build` passed |
 | P1 | Ledeqor product brief | Completed | Created detailed product brief covering product idea, current capabilities, access model, pricing direction, upgrade roadmap, future course ideas, moat, metrics, risks, and near-term priorities | Added `docs/ledeqor-product-brief.md` |
 | P0 | Founder Free launch sprint | Completed | Implemented Founder Free Pro-style claim flow, 25-user redemption cap, 30-day entitlement expiry, `/my-learning` dashboard lite, launch CTAs/copy, feedback CTA config, and schema docs | `npm.cmd run build` passed; `/`, `/pricing`, `/courses/ai-engineer-guide` returned 200; signed-out `/my-learning` redirected to `/sign-in` |
+| P0 | Mobile-first UX upgrade | Completed | Added real mobile drawers for marketing and study shells, moved tablet/narrow navigation into drawers, added mobile lecture map, tightened lecture/practice/capstone/visual responsiveness, and constrained code/table/diagram overflow | `npm.cmd run build` passed; public routes returned 200; protected study routes returned 307 when signed out; headless mobile screenshot pass identified and informed header breakpoint fix |
 
 ## In Progress
 

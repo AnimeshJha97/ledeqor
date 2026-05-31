@@ -28,9 +28,9 @@ export function MarkdownContent({ blocks }: { blocks: MarkdownBlock[] }) {
         if (block.type === "heading") {
           const className =
             block.level === 1
-              ? "text-3xl font-semibold text-ink"
+              ? "text-2xl font-semibold text-ink sm:text-3xl"
               : block.level === 2
-                ? "pt-6 text-2xl font-semibold text-ink"
+                ? "pt-6 text-xl font-semibold text-ink sm:text-2xl"
                 : "pt-3 text-lg font-semibold text-slate-100";
 
           if (block.level === 1) {
