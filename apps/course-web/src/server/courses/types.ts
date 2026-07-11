@@ -2,7 +2,7 @@ export type CourseLectureRecord = {
   id: string;
   title: string;
   anchor: string;
-  kind?: "concept" | "build" | "interview" | "strategy";
+  kind?: "concept" | "build" | "strategy";
 };
 
 export type CourseModuleRecord = {

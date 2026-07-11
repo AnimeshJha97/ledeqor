@@ -15,7 +15,7 @@ export default function SignInPage() {
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">Welcome back</p>
           <h1 className="mt-3 text-3xl font-semibold text-ink">Sign in to continue learning.</h1>
           <p className="mt-3 text-sm leading-6 text-muted">
-            Google sign-in will power course progress, interview practice, and future personalized learning.
+            Google sign-in will power course progress, practice history, and future personalized learning.
           </p>
           <div className="mt-6">
             <AuthActions />

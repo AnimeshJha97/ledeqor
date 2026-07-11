@@ -1,7 +1,7 @@
 export type Lecture = {
   id: string;
   title: string;
-  kind?: "concept" | "build" | "interview" | "strategy";
+  kind?: "concept" | "build" | "strategy";
 };
 
 export type CourseModule = {
@@ -19,12 +19,12 @@ export type CourseModule = {
 export const courseModules: CourseModule[] = [
   {
     id: 0,
-    slug: "career-transition-strategy",
-    title: "Career Strategy & Product Direction",
+    slug: "product-direction-learning-strategy",
+    title: "Product Direction & Learning Strategy",
     purpose: "Position your 5 years of MERN experience as leverage for applied AI engineering roles.",
     status: "complete",
     sourceFile: "01-career-transition-strategy.md",
-    outcome: "Clear target role, product direction, capstone scope, and interview positioning.",
+    outcome: "Clear product direction, capstone scope, and focused learning path.",
     lectures: [
       { id: "0.1", title: "Why MERN-only positioning is limiting", kind: "strategy" },
       { id: "0.2", title: "AI Engineer vs ML Engineer vs Data Scientist", kind: "strategy" },
@@ -92,7 +92,7 @@ export const courseModules: CourseModule[] = [
       { id: "2.15", title: "Temperature, top-p, max tokens, stop sequences" },
       { id: "2.16", title: "Hallucination and grounding" },
       { id: "2.17", title: "Prompting vs RAG vs fine-tuning" },
-      { id: "2.18", title: "What AI concepts are important for interviews" },
+      { id: "2.18", title: "What AI concepts matter for product engineering" },
       { id: "2.19", title: "What ML theory can wait" }
     ]
   },
@@ -231,7 +231,7 @@ export const courseModules: CourseModule[] = [
       { id: "7.17", title: "Invoice search using RAG" },
       { id: "7.18", title: "RAG failure cases" },
       { id: "7.19", title: "RAG debugging" },
-      { id: "7.20", title: "RAG interview questions" }
+      { id: "7.20", title: "RAG design review checklist" }
     ]
   }
 ];
@@ -295,26 +295,6 @@ const remainingModules: CourseModule[] = [
     status: "complete",
     sourceFile: "15-arkion-docintel-capstone-blueprint.md",
     outcome: "Turn the entire course into a portfolio-grade product with upload, extraction, search, RAG, workflows, evals, security, and deployment.",
-    lectures: []
-  },
-  {
-    id: 14,
-    slug: "ai-engineer-interview-preparation",
-    title: "AI Engineer Interview Preparation",
-    purpose: "Convert your learning and capstone into interview answers, system design stories, mock interviews, and salary positioning.",
-    status: "complete",
-    sourceFile: "16-ai-engineer-interview-preparation.md",
-    outcome: "Prepare your pitch, project deep dive, AI concepts, system design answers, behavioral stories, and final checklist.",
-    lectures: []
-  },
-  {
-    id: 15,
-    slug: "resume-linkedin-job-strategy",
-    title: "Resume, LinkedIn & Job Strategy",
-    purpose: "Reposition your profile from MERN-only to senior full-stack engineer building applied AI products.",
-    status: "complete",
-    sourceFile: "17-resume-linkedin-job-strategy.md",
-    outcome: "Create the AI-focused resume, LinkedIn profile, GitHub proof, case study, outreach scripts, and application tracker.",
     lectures: []
   }
 ];

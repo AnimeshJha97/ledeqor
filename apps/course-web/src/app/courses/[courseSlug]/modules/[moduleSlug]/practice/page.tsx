@@ -38,7 +38,7 @@ export default async function PracticePage({ params }: { params: Promise<{ cours
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">Practice Mode</p>
         <h1 className="mt-3 max-w-4xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl">{module.title}</h1>
         <p className="mt-4 max-w-3xl text-base leading-7 text-muted">
-          Use flashcards, quizzes, short answers, interview prompts, and coding tasks to turn reading into recall and implementation.
+          Use flashcards, quizzes, short answers, and coding tasks to turn reading into recall and implementation.
         </p>
       </div>
 

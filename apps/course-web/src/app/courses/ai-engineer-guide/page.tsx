@@ -9,11 +9,11 @@ import { getHydratedModules } from "@/lib/course-content";
 export const metadata: Metadata = {
   title: "AI Engineer Guide Course | Build Arkion DocIntel",
   description:
-    "Build Arkion DocIntel, a production-style AI document intelligence SaaS, while learning Python, FastAPI, LLMs, vector search, RAG, workflows, evaluation, security, deployment, and interview strategy."
+    "Build Arkion DocIntel, a production-style AI document intelligence SaaS, while learning Python, FastAPI, LLMs, vector search, RAG, workflows, evaluation, security, and deployment."
 };
 
 const outcomes = [
-  "Explain AI systems clearly in interviews",
+  "Explain AI systems through a real product",
   "Build Python and FastAPI AI services",
   "Implement semantic search and RAG",
   "Extract structured fields from documents",
@@ -36,7 +36,7 @@ export default async function AiEngineerGuidePage({ searchParams }: { searchPara
               Master AI engineering by building Arkion DocIntel end to end.
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-8 text-muted sm:text-lg">
-              Learn concepts, build a real AI SaaS product, practice interviews, and turn the project into career proof.
+              Learn concepts, build a real AI SaaS product, and turn the project into credible proof of skill.
             </p>
             <div className="mt-5 max-w-2xl rounded-md border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm font-semibold text-emerald-100">
               Founder Free Access: early developers get Pro access free. Limited to the first 25 users.
@@ -91,7 +91,7 @@ export default async function AiEngineerGuidePage({ searchParams }: { searchPara
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <SectionIntro eyebrow="Outcomes" title="You finish with interview stories, not just notes." />
+        <SectionIntro eyebrow="Outcomes" title="You finish with product proof, not just notes." />
         <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {outcomes.map((outcome) => (
             <div key={outcome} className="flex gap-3 rounded-md border border-line bg-surface p-4">
@@ -106,8 +106,8 @@ export default async function AiEngineerGuidePage({ searchParams }: { searchPara
         <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
           <SectionIntro
             eyebrow="Curriculum"
-            title="The complete path from career strategy to launch readiness."
-            description="Every module maps to a product capability, an interview story, or a career asset."
+            title="The complete path from foundations to launch readiness."
+            description="Every module maps to a product capability, implementation skill, or capstone milestone."
           />
           <div className="mt-8 grid gap-3">
             {modules.map((module) => (

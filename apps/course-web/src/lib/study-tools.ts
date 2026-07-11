@@ -11,7 +11,6 @@ export type StudyPracticePack = {
   flashcards: { front: string; back: string }[];
   quiz: GeneratedQuizQuestion[];
   shortAnswers: string[];
-  interviewPrompts: string[];
   codingTasks: string[];
 };
 
@@ -28,7 +27,7 @@ export function buildPracticePack(module: CourseModuleRecord): StudyPracticePack
   return {
     flashcards: lectureTitles.slice(0, 6).map((title) => ({
       front: `Explain: ${title}`,
-      back: `Connect "${title}" to ${module.title} and describe how it helps the course project or interview story.`
+      back: `Connect "${title}" to ${module.title} and describe how it helps the course project.`
     })),
     quiz: [
       {
@@ -59,11 +58,6 @@ export function buildPracticePack(module: CourseModuleRecord): StudyPracticePack
       `Explain ${primary} in your own words.`,
       `How does ${module.title} move the course project forward?`,
       `What is still confusing in this module, and what would you ask a senior engineer?`
-    ],
-    interviewPrompts: [
-      `Explain ${module.title} to an interviewer in 90 seconds.`,
-      `Give one production risk related to ${module.title}.`,
-      `Connect ${secondary} to a real AI product decision.`
     ],
     codingTasks: [
       `Create or update one file that supports the ${module.title} part of the capstone.`,

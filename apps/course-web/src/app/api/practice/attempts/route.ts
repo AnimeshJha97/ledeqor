@@ -9,7 +9,7 @@ export async function POST(request: Request) {
     moduleSlug?: string;
     prompt?: string;
     answer?: string;
-    kind?: "short_answer" | "interview";
+    kind?: "short_answer";
   };
 
   try {

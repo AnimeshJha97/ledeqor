@@ -4,7 +4,7 @@
 
 The learning app turns the course source into an interactive study experience.
 
-The course should be useful even before the app exists. The app improves navigation, progress tracking, quizzes, and portfolio polish.
+The course should be useful even before the app exists. The app improves navigation, progress tracking, quizzes, labs, and capstone polish.
 
 ## Suggested Features
 
@@ -14,7 +14,6 @@ The course should be useful even before the app exists. The app improves navigat
 - Lab view
 - Quiz mode
 - Capstone phase tracker
-- Interview flashcards
 - Search across course content
 - Notes per lecture
 - Completion status
@@ -25,12 +24,12 @@ The app has two navigation modes.
 
 ### Global Mode
 
-On dashboard, modules, labs, and interview index pages:
+On dashboard, modules, labs, and capstone pages:
 
 - Dashboard opens the course overview.
 - Modules opens the full module list.
 - Labs opens a lab index across all modules.
-- Interview opens an interview-prep index across completed modules.
+- Capstone opens the project build tracker.
 
 ### Module Reader Mode
 
@@ -39,9 +38,8 @@ Inside a specific module:
 - Dashboard still opens the course overview.
 - Modules opens the full module list.
 - Labs jumps to that module's lab section when a lab exists.
-- Interview jumps to that module's interview questions section when it exists.
 
-This keeps the side menu useful while studying. The user should not lose their place by clicking Labs or Interview inside a module.
+This keeps the side menu useful while studying. The user should not lose their place by clicking Labs inside a module.
 
 ## Lab UX Decision
 
@@ -67,7 +65,7 @@ Each lab should include:
 - Expected result
 - Debugging notes
 - Acceptance criteria
-- Interview explanation
+- Project explanation
 
 ### When To Use Google Colab
 
@@ -100,8 +98,7 @@ Do not use Colab as the main capstone build environment.
 /lectures/[lectureSlug]   Lecture reader
 /labs                     Lab index
 /capstone                 Capstone tracker
-/interview                Interview prep
-/portfolio                Portfolio assets
+/portfolio                Project assets
 ```
 
 ## Build Timing

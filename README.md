@@ -29,7 +29,6 @@ Ledeqor currently includes:
 - Module dashboard
 - Lecture detail pages
 - Flashcards, quizzes, short answers, coding tasks, and self-rating
-- OpenAI-backed interview answer analysis using `gpt-4.1-nano`
 - Capstone build tracker
 - Visual learning library with Mermaid diagrams
 - Mobile-first navigation and responsive study experience
@@ -42,7 +41,7 @@ The AI Engineer Guide helps a senior full-stack MERN developer transition into a
 
 The course covers:
 
-- Career strategy and AI role positioning
+- Product direction and AI project positioning
 - Python for AI engineering
 - AI, ML, generative AI, and LLM foundations
 - Document AI fundamentals
@@ -56,8 +55,6 @@ The course covers:
 - AI security, privacy, and compliance
 - Deployment, scaling, and LLMOps
 - Capstone build execution
-- AI engineer interview preparation
-- Resume, LinkedIn, and job strategy
 
 ### Capstone: Arkion DocIntel
 
@@ -74,7 +71,7 @@ Arkion DocIntel is a B2B SaaS document intelligence platform where businesses ca
 - Trigger controlled document workflows
 - Export structured data
 
-The capstone exists to create a stronger interview story than a basic chatbot project.
+The capstone exists to create stronger project proof than a basic chatbot demo.
 
 ## Repository Structure
 
@@ -86,7 +83,7 @@ orvion-docintel-ai-engineer-course/
   labs/                          # Hands-on module labs
   capstone/                      # Arkion DocIntel product build docs
   docs/                          # Architecture, schema, product, and task docs
-  portfolio/                     # Portfolio and career assets
+  portfolio/                     # Portfolio and project assets
   templates/                     # Reusable course/project templates
   app-plan/                      # Planning material
 ```
@@ -140,9 +137,6 @@ AUTH_GOOGLE_ID=
 AUTH_GOOGLE_SECRET=
 AUTH_SECRET=
 AUTH_TRUST_HOST=true
-AI_PROVIDER=openai
-OPENAI_API_KEY=
-OPENAI_MODEL=gpt-4.1-nano
 FOUNDER_FREE_MAX_REDEMPTIONS=25
 NEXT_PUBLIC_FEEDBACK_FORM_URL=
 ```
@@ -202,7 +196,6 @@ Backend inside Next.js:
 - Auth.js Google authentication
 - Course access and entitlement guards
 - Progress, practice, and capstone persistence
-- OpenAI interview answer analysis endpoint
 
 Database:
 
@@ -240,10 +233,9 @@ The current launch flow includes Founder Free access for early users.
 
 ## Pricing Direction
 
-The current paid tiers are INR-based:
+The current paid tier is INR-based:
 
 - Pro: Rs. 499
-- Career: Rs. 799
 
 The Pro tier currently supports an early-bird campaign that can discount the plan by percentage. During launch, the active campaign makes Pro available for free to a limited number of users.
 
@@ -284,7 +276,7 @@ It is a project-first learning platform where every serious course should produc
 - Deep conceptual understanding
 - A real portfolio project
 - Hands-on labs
-- Practice and interview readiness
+- Practice and project readiness
 - Architecture explanations
-- Career assets
+- Project assets
 - A launchable product story

@@ -89,7 +89,6 @@ export function MarketingShell({ children }: MarketingShellProps) {
                 {item.label}
               </Link>
             ))}
-            <Link href="/pricing" className="hover:text-brand">Pricing</Link>
             <Link href="/my-learning" className="hover:text-brand">My Learning</Link>
           </div>
         </div>

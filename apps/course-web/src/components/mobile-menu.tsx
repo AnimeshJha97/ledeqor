@@ -48,9 +48,9 @@ export function MobileMenu({ open, title, subtitle, links, action, footer, hideA
 
   return (
     <div className={`fixed inset-0 z-50 ${hideAt === "lg" ? "lg:hidden" : "md:hidden"}`} role="dialog" aria-modal="true" aria-label={title}>
-      <button type="button" className="absolute inset-0 bg-black/60" aria-label="Close menu" onClick={onClose} />
-      <div className="absolute inset-y-0 right-0 flex w-[min(92vw,380px)] max-w-full flex-col border-l border-line bg-surface shadow-soft">
-        <div className="flex items-start justify-between gap-4 border-b border-line px-4 py-4">
+      <button type="button" className="absolute inset-0 bg-black/80 backdrop-blur-sm" aria-label="Close menu" onClick={onClose} />
+      <div className="absolute inset-y-0 right-0 flex w-[min(92vw,380px)] max-w-full flex-col border-l border-line bg-[#0b111c] shadow-[0_24px_80px_rgba(0,0,0,0.75)]">
+        <div className="flex items-start justify-between gap-4 border-b border-line bg-surface px-4 py-4">
           <div className="min-w-0">
             <p className="text-base font-semibold text-ink">{title}</p>
             {subtitle ? <p className="mt-1 text-sm leading-5 text-muted">{subtitle}</p> : null}
@@ -65,13 +65,13 @@ export function MobileMenu({ open, title, subtitle, links, action, footer, hideA
           </button>
         </div>
 
-        <nav className="grid gap-2 overflow-y-auto px-4 py-4">
+        <nav className="grid gap-2 overflow-y-auto bg-[#0b111c] px-4 py-4">
           {links.map((item) => (
             <Link
               key={`${item.href}-${item.label}`}
               href={item.href}
               onClick={onClose}
-              className="rounded-md border border-line bg-panel px-4 py-3 text-left transition hover:border-brand hover:bg-cyan-400/10"
+              className="rounded-md border border-line bg-panel px-4 py-3 text-left shadow-sm transition hover:border-brand hover:bg-cyan-400/10"
             >
               <span className="block text-sm font-semibold text-slate-100">{item.label}</span>
               {item.description ? <span className="mt-1 block text-xs leading-5 text-muted">{item.description}</span> : null}
@@ -80,7 +80,7 @@ export function MobileMenu({ open, title, subtitle, links, action, footer, hideA
         </nav>
 
         {(action || footer) ? (
-          <div className="mt-auto border-t border-line px-4 py-4">
+          <div className="mt-auto border-t border-line bg-surface px-4 py-4 shadow-[0_-18px_40px_rgba(0,0,0,0.25)]">
             {action ? <div className="grid gap-3">{action}</div> : null}
             {footer ? <div className="mt-4 text-sm text-muted">{footer}</div> : null}
           </div>

@@ -27,7 +27,7 @@ export default async function VisualLearningPage({ params }: { params: Promise<{
               Diagrams for the systems you are learning to build
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-7 text-muted">
-              Use these diagrams before lectures, during revision, and while explaining the capstone in interviews.
+              Use these diagrams before lectures, during revision, and while explaining the capstone architecture.
               Each one maps a course concept to the Arkion DocIntel product architecture.
             </p>
           </div>

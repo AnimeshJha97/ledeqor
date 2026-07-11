@@ -55,11 +55,11 @@ const solutionFeatures = [
 ];
 
 const roadmapGroups = [
-  ["Foundation", "Career Strategy", "Python for AI Engineering", "AI / ML / LLM Foundations"],
+  ["Foundation", "Product Direction", "Python for AI Engineering", "AI / ML / LLM Foundations"],
   ["Document Intelligence", "Document AI Fundamentals", "LLM API Engineering", "Structured Extraction"],
   ["Retrieval and Architecture", "Embeddings and Vector Search", "RAG for Business Documents", "Full Stack AI SaaS Architecture"],
   ["Production Readiness", "Agentic Workflows", "Evaluation and Observability", "Security and Privacy", "Deployment and LLMOps"],
-  ["Career Launch", "Capstone Build", "Interview Preparation", "Resume, LinkedIn, Job Strategy"]
+  ["Project Launch", "Capstone Build", "Demo Readiness", "Documentation and Polish"]
 ];
 
 export default function LandingPage() {
@@ -76,7 +76,7 @@ export default function LandingPage() {
               Master AI engineering by building a real AI SaaS product.
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-8 text-muted sm:text-lg">
-              Ledeqor helps developers learn concepts, build Arkion DocIntel, practice interviews, and turn the project into career proof.
+              Ledeqor helps developers learn concepts, build Arkion DocIntel, and turn the project into credible proof of skill.
             </p>
             <div className="mt-5 max-w-2xl break-words rounded-md border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm font-semibold leading-6 text-emerald-100">
               Founder Free Access: early developers get Pro access free. Limited to the first 25 users.
@@ -105,7 +105,7 @@ export default function LandingPage() {
                 </span>
               </div>
               <div className="mt-5 grid gap-3">
-                {["Choose a course by level", "Study concepts in sequence", "Build the course project", "Practice interview answers", "Track progress and readiness"].map((step, index) => (
+                {["Choose a course by level", "Study concepts in sequence", "Build the course project", "Practice with quizzes and labs", "Track progress and readiness"].map((step, index) => (
                   <div key={step} className="flex items-center gap-3 rounded-md border border-line bg-surface px-3 py-3">
                     <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-brand/10 text-sm font-semibold text-brand ring-1 ring-brand/20">
                       {index + 1}
@@ -124,7 +124,7 @@ export default function LandingPage() {
               <div className="rounded-md border border-line bg-panel p-4">
                 <GitBranch className="text-accent" size={20} />
                 <p className="mt-3 text-sm font-semibold text-ink">Real system design story</p>
-                <p className="mt-1 text-xs leading-5 text-muted">Every course ends with a serious project and a clear interview narrative.</p>
+                <p className="mt-1 text-xs leading-5 text-muted">Every course ends with a serious project and a clear product narrative.</p>
               </div>
             </div>
           </div>
@@ -135,10 +135,10 @@ export default function LandingPage() {
         <SectionIntro
           eyebrow="Why this exists"
           title="Most AI tutorials stop where real engineering begins."
-          description="You learn prompts, build a chatbot, and still cannot explain architecture, retrieval, evaluation, security, cost, or deployment in an interview. This platform is built around product proof."
+          description="You learn prompts, build a chatbot, and still cannot show architecture, retrieval, evaluation, security, cost, or deployment depth. This platform is built around product proof."
         />
         <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {["No production architecture", "No RAG evaluation", "No portfolio story", "No document processing", "No security model", "No career positioning"].map((item) => (
+          {["No production architecture", "No RAG evaluation", "No project depth", "No document processing", "No security model", "No deployment proof"].map((item) => (
             <div key={item} className="rounded-md border border-line bg-surface p-4 text-sm font-semibold text-slate-300">
               {item}
             </div>
@@ -151,7 +151,7 @@ export default function LandingPage() {
           <SectionIntro
             eyebrow="Solution"
             title="Learn AI engineering the way products are actually built."
-            description="Ledeqor combines structured learning with course-specific projects, practice, and career outcomes. Each course is designed for a different level of experience and a different product build."
+            description="Ledeqor combines structured learning with course-specific projects, practice, and product outcomes. Each course is designed for a different level of experience and a different product build."
           />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {solutionFeatures.map((feature) => (
@@ -165,10 +165,10 @@ export default function LandingPage() {
         <SectionIntro
           eyebrow="Capstone"
           title="Every course comes with a real project, not just lessons."
-          description="The flagship AI Engineer Guide uses a document intelligence SaaS project. Future courses can use different builds, different skill levels, and different career outcomes while sharing the same learning platform."
+          description="The flagship AI Engineer Guide uses a document intelligence SaaS project. Future courses can use different builds and skill levels while sharing the same learning platform."
         />
         <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {["Beginner-to-advanced tracks", "Course-specific capstones", "Practice and interview loops", "Progress saved per course", "AI answer review tools", "Launch-ready portfolio assets"].map((item) => (
+          {["Beginner-to-advanced tracks", "Course-specific capstones", "Practice and lab loops", "Progress saved per course", "Guided project checklists", "Launch-ready project assets"].map((item) => (
             <div key={item} className="rounded-md border border-line bg-surface p-5">
               <Rocket className="text-brand" size={20} />
               <p className="mt-3 text-sm font-semibold text-ink">{item}</p>
@@ -201,17 +201,17 @@ export default function LandingPage() {
           <CourseCard
             href="/courses/ai-engineer-guide"
             title="AI Engineer Guide"
-            description="Build Arkion DocIntel, a full-stack AI document intelligence SaaS, while preparing for applied AI engineering interviews."
-            stats={[`${modules.length} modules`, `${lectureCount}+ lectures`, "Capstone project", "Interview prep"]}
+            description="Build Arkion DocIntel, a full-stack AI document intelligence SaaS, while learning applied AI engineering through a real product."
+            stats={[`${modules.length} modules`, `${lectureCount}+ lectures`, "Capstone project", "Practice mode"]}
           />
         </div>
       </section>
 
       <section className="border-t border-line">
         <div className="mx-auto max-w-4xl px-4 py-14 text-center sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Build the AI portfolio project your resume is missing.</h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Build the AI portfolio project your profile is missing.</h2>
           <p className="mt-4 text-base leading-7 text-muted">
-            Learn the concepts, build the product, explain the architecture, and walk into interviews with a real story.
+            Learn the concepts, build the product, explain the architecture, and publish a project you can stand behind.
           </p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
             <PrimaryCta href="/courses/ai-engineer-guide?claim=founder-free">Claim Founder Free Access</PrimaryCta>

@@ -26,8 +26,8 @@ const principles = [
   },
   {
     icon: BriefcaseBusiness,
-    title: "Prepare for interviews",
-    description: "Every major concept connects to a project story, system design decision, or practical interview answer."
+    title: "Create project proof",
+    description: "Every major concept connects to a product capability, system design decision, or implementation note."
   },
   {
     icon: ShieldCheck,
@@ -37,7 +37,7 @@ const principles = [
   {
     icon: Compass,
     title: "Launch with proof",
-    description: "The final output is a portfolio project, resume story, LinkedIn positioning, and demo-ready product narrative."
+    description: "The final output is a portfolio project, architecture explanation, and demo-ready product narrative."
   }
 ];
 
@@ -71,7 +71,7 @@ export default function AboutPage() {
         <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
           <SectionIntro
             eyebrow="Who it is for"
-            title="Developers who want AI skills that survive real interviews."
+            title="Developers who want AI skills that show up in real products."
             description="The first course is tuned for MERN and full-stack engineers with product experience who want to move into applied AI roles without pretending to be ML researchers overnight."
           />
           <div className="rounded-md border border-line bg-surface p-6 shadow-sm">

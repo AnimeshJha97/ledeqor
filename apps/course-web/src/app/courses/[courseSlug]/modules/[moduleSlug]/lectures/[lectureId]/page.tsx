@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, BookOpen, BriefcaseBusiness, CheckSquare, MessageSquareText } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, BriefcaseBusiness, CheckSquare, FileText } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { MarkdownContent } from "@/components/markdown-content";
 import { LectureProgressButtons, SelfRating } from "@/components/study-progress-client";
@@ -64,7 +64,7 @@ export default async function LecturePage({ params }: { params: Promise<{ course
         <aside className="grid h-fit gap-4 xl:sticky xl:top-6">
           <StudyCue icon={<BookOpen size={18} />} title="Concept" text="Summarize the lecture in one paragraph before moving on." />
           <StudyCue icon={<BriefcaseBusiness size={18} />} title="Product connection" text={`Connect this idea to the ${module.title} part of the course project.`} />
-          <StudyCue icon={<MessageSquareText size={18} />} title="Interview angle" text="Say the answer out loud in 60-90 seconds." />
+          <StudyCue icon={<FileText size={18} />} title="Build note" text="Write how this idea affects the project architecture, API, data model, or UI." />
           <StudyCue icon={<CheckSquare size={18} />} title="Mini task" text="Write one note, one question, or one implementation step." />
           <SelfRating courseSlug={courseSlug} moduleSlug={moduleSlug} lectureId={lectureId} initialRating={selfRating?.rating} />
         </aside>

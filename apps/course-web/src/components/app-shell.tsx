@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { BookOpen, Code2, Compass, FolderKanban, GraduationCap, LayoutDashboard, Menu, Network, PanelLeftClose, PanelLeftOpen, UserRound } from "lucide-react";
+import { BookOpen, Code2, Compass, FolderKanban, LayoutDashboard, Menu, Network, PanelLeftClose, PanelLeftOpen, UserRound } from "lucide-react";
 import { useEffect, useState } from "react";
 import { MobileMenu } from "@/components/mobile-menu";
 
@@ -15,7 +15,6 @@ type AppShellProps = {
   children: React.ReactNode;
   moduleLinks?: {
     labHref?: string;
-    interviewHref?: string;
   };
 };
 
@@ -29,8 +28,7 @@ export function AppShell({ children, moduleLinks }: AppShellProps) {
     { href: "/courses/ai-engineer-guide/modules", label: "Modules", icon: BookOpen },
     { href: "/courses/ai-engineer-guide/capstone", label: "Capstone", icon: FolderKanban },
     { href: "/courses/ai-engineer-guide/visuals", label: "Visuals", icon: Network },
-    { href: moduleLinks?.labHref ?? "/courses/ai-engineer-guide/modules/python-for-ai-engineering#module-lab", label: "Labs", icon: Code2 },
-    { href: moduleLinks?.interviewHref ?? "/courses/ai-engineer-guide/modules/ai-engineer-interview-preparation", label: "Interview", icon: GraduationCap }
+    { href: moduleLinks?.labHref ?? "/courses/ai-engineer-guide/modules/python-for-ai-engineering#module-lab", label: "Labs", icon: Code2 }
   ];
   const mobileLinks = navItems.map((item) => ({
     href: item.href,
@@ -63,7 +61,7 @@ export function AppShell({ children, moduleLinks }: AppShellProps) {
   return (
     <div className="min-h-screen overflow-x-hidden bg-paper text-ink">
       <aside
-        className={`fixed inset-y-0 left-0 z-20 hidden w-72 border-r border-line bg-surface/92 px-5 py-6 shadow-soft backdrop-blur transition-transform duration-200 lg:block ${
+        className={`fixed inset-y-0 left-0 z-40 hidden w-72 border-r border-line bg-surface px-5 py-6 shadow-[18px_0_60px_rgba(0,0,0,0.55)] transition-transform duration-200 lg:block ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -114,7 +112,7 @@ export function AppShell({ children, moduleLinks }: AppShellProps) {
         </button>
       ) : null}
 
-      <header className="sticky top-0 z-30 border-b border-line bg-surface/92 px-4 py-3 backdrop-blur lg:hidden">
+      <header className="sticky top-0 z-30 border-b border-line bg-surface px-4 py-3 shadow-soft lg:hidden">
         <div className="flex min-w-0 items-center justify-between gap-3">
           <button
             type="button"

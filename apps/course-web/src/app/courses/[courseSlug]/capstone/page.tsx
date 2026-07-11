@@ -35,7 +35,7 @@ export default async function CapstonePage({ params }: { params: Promise<{ cours
             </h2>
             <p className="mt-4 max-w-3xl text-base leading-7 text-muted">
               This workspace converts the course into a product build plan: theory to learn, files to create, APIs to ship,
-              data models to design, acceptance criteria to prove, and the interview story each phase unlocks.
+              data models to design, acceptance criteria to prove, and the project proof each phase creates.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link href={`/courses/${courseSlug}/modules`} className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 sm:w-auto">
@@ -106,8 +106,8 @@ export default async function CapstonePage({ params }: { params: Promise<{ cours
                   <InfoPanel title="Database Tables" icon={<Database size={17} />} items={phase.databaseTables} code />
                   <InfoPanel title="Acceptance Criteria" icon={<ShieldCheck size={17} />} items={phase.acceptanceCriteria} />
                   <div className="rounded-md border border-brand/40 bg-cyan-400/10 p-4">
-                    <p className="text-sm font-semibold text-brand">Interview story unlocked</p>
-                    <p className="mt-2 text-sm leading-6 text-slate-200">{phase.interviewStoryUnlocked}</p>
+                    <p className="text-sm font-semibold text-brand">Project proof</p>
+                    <p className="mt-2 text-sm leading-6 text-slate-200">{phase.projectProof}</p>
                   </div>
                 </div>
               </div>

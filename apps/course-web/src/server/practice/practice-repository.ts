@@ -7,7 +7,7 @@ export type PracticeAttempt = {
   learnerId: string;
   prompt: string;
   answer: string;
-  kind: "short_answer" | "interview";
+  kind: "short_answer";
   updatedAt: Date;
 };
 

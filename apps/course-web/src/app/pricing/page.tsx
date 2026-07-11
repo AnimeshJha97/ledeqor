@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
 import { CourseAccessCta } from "@/components/course-access-cta";
 import { MarketingShell } from "@/components/marketing-shell";
-import { PrimaryCta, SecondaryCta, SectionIntro } from "@/components/marketing";
+import { PrimaryCta, SectionIntro } from "@/components/marketing";
 import { formatInr, getActiveCampaignForPlan, getDiscountedAmount, pricingPlans } from "@/lib/pricing-data";
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description: "Simple pricing for Ledeqor courses, interview practice, project tracks, and guided learning."
+  description: "Simple pricing for Ledeqor courses, project tracks, and guided learning."
 };
 
 export default function PricingPage() {
@@ -16,12 +16,12 @@ export default function PricingPage() {
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <SectionIntro
           eyebrow="Pricing"
-          title="Choose the Ledeqor plan that matches your learning goal."
-          description="There are two paid modes in INR. During launch, the Pro plan has an active early-bird campaign that makes the Rs. 499 plan free for now."
+          title="One course subscription. Free during the launch offer."
+          description="Ledeqor has one Pro plan in INR. During launch, Founder Free Access makes the Rs. 499 Pro plan free for early learners."
           align="center"
         />
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-2">
+        <div className="mx-auto mt-10 grid max-w-2xl gap-5">
           {pricingPlans.map((plan) => {
             const campaign = getActiveCampaignForPlan(plan.id);
             const discountedAmount = getDiscountedAmount(plan, campaign);
@@ -52,12 +52,12 @@ export default function PricingPage() {
                 ) : null}
               </div>
               <div className="mt-6">
-                {plan.id === "pro" && campaign ? (
+                {campaign ? (
                   <CourseAccessCta courseSlug="ai-engineer-guide" />
                 ) : plan.highlighted ? (
                   <PrimaryCta href={plan.href}>{plan.cta}</PrimaryCta>
                 ) : (
-                  <SecondaryCta href={plan.href}>{plan.cta}</SecondaryCta>
+                  <PrimaryCta href={plan.href}>{plan.cta}</PrimaryCta>
                 )}
               </div>
               <div className="mt-6 grid gap-3">

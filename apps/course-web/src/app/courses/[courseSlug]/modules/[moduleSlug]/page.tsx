@@ -54,14 +54,11 @@ export default async function CourseModuleDetailPage({ params }: { params: Promi
       )
   );
   const moduleHref = `/courses/${courseSlug}/modules/${module.slug}`;
-  const interviewHeading = blocks.find((block) => block.type === "heading" && block.text.toLowerCase() === "interview questions");
-  const interviewAnchor = interviewHeading?.type === "heading" ? interviewHeading.id : undefined;
 
   return (
     <AppShell
       moduleLinks={{
-        labHref: labMarkdown ? `${moduleHref}#module-lab` : "/labs",
-        interviewHref: interviewAnchor ? `${moduleHref}#${interviewAnchor}` : "/interview"
+        labHref: labMarkdown ? `${moduleHref}#module-lab` : "/labs"
       }}
     >
       <Link href={`/courses/${courseSlug}/modules`} className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-brand">
