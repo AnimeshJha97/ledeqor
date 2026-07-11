@@ -7,7 +7,18 @@ export const metadata: Metadata = {
   description: "Sign in to Ledeqor with Google."
 };
 
-export default function SignInPage() {
+function getSafeRedirectPath(value?: string) {
+  if (!value || !value.startsWith("/") || value.startsWith("//")) {
+    return "/courses";
+  }
+
+  return value;
+}
+
+export default async function SignInPage({ searchParams }: { searchParams?: Promise<{ next?: string }> }) {
+  const params = await searchParams;
+  const redirectTo = getSafeRedirectPath(params?.next);
+
   return (
     <MarketingShell>
       <section className="mx-auto flex min-h-[60vh] max-w-xl items-center px-4 py-14 sm:px-6 lg:px-8">
@@ -18,7 +29,7 @@ export default function SignInPage() {
             Google sign-in will power course progress, practice history, and future personalized learning.
           </p>
           <div className="mt-6">
-            <AuthActions />
+            <AuthActions redirectTo={redirectTo} />
           </div>
         </div>
       </section>

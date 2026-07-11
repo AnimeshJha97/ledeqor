@@ -6,7 +6,22 @@ import { upsertCourse } from "@/server/courses/course-repository";
 
 export const AI_ENGINEER_GUIDE_SLUG = "ai-engineer-guide";
 
-export function buildAiEngineerGuideCourse(): CourseRecord {
+let courseMetadataCache: CourseRecord | null = null;
+let courseSeedCache: CourseRecord | null = null;
+
+type BuildCourseOptions = {
+  includeMarkdown?: boolean;
+};
+
+export function buildAiEngineerGuideCourse({ includeMarkdown = false }: BuildCourseOptions = {}): CourseRecord {
+  if (includeMarkdown && courseSeedCache) {
+    return courseSeedCache;
+  }
+
+  if (!includeMarkdown && courseMetadataCache) {
+    return courseMetadataCache;
+  }
+
   const hydratedModules = getHydratedModules();
   const now = new Date();
   const modules = hydratedModules.map((module) => {
@@ -33,11 +48,11 @@ export function buildAiEngineerGuideCourse(): CourseRecord {
       sourceFile: module.sourceFile,
       labSlug: module.labSlug,
       lectures,
-      markdown
+      ...(includeMarkdown ? { markdown } : {})
     };
   });
 
-  return {
+  const course: CourseRecord = {
     slug: AI_ENGINEER_GUIDE_SLUG,
     title: "AI Engineer Guide",
     subtitle: "Applied AI engineering through Arkion DocIntel",
@@ -53,8 +68,16 @@ export function buildAiEngineerGuideCourse(): CourseRecord {
     createdAt: now,
     updatedAt: now
   };
+
+  if (includeMarkdown) {
+    courseSeedCache = course;
+  } else {
+    courseMetadataCache = course;
+  }
+
+  return course;
 }
 
 export async function seedAiEngineerGuideCourse() {
-  return upsertCourse(buildAiEngineerGuideCourse());
+  return upsertCourse(buildAiEngineerGuideCourse({ includeMarkdown: true }));
 }

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { BarChart3, BrainCircuit, FileSearch, GitBranch, LockKeyhole, Rocket, SearchCheck, ShieldCheck, Workflow } from "lucide-react";
 import { CourseCard } from "@/components/course-card";
-import { FeatureCard, PrimaryCta, SecondaryCta, SectionIntro, StatPill } from "@/components/marketing";
+import { FounderFreeClaimButton } from "@/components/founder-free-claim-button";
+import { FeatureCard, SecondaryCta, SectionIntro, StatPill } from "@/components/marketing";
 import { MarketingShell } from "@/components/marketing-shell";
 import { getHydratedModules } from "@/lib/course-content";
 
@@ -82,7 +83,10 @@ export default function LandingPage() {
               Founder Free Access: early developers get Pro access free. Limited to the first 25 users.
             </div>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <PrimaryCta href="/courses/ai-engineer-guide?claim=founder-free">Claim Founder Free Access</PrimaryCta>
+              <FounderFreeClaimButton
+                label="Claim Founder Free Access"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-4 py-2.5 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-cyan-300 sm:w-auto"
+              />
               <SecondaryCta href="/courses">Explore courses</SecondaryCta>
             </div>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -214,7 +218,10 @@ export default function LandingPage() {
             Learn the concepts, build the product, explain the architecture, and publish a project you can stand behind.
           </p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-            <PrimaryCta href="/courses/ai-engineer-guide?claim=founder-free">Claim Founder Free Access</PrimaryCta>
+            <FounderFreeClaimButton
+              label="Claim Founder Free Access"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-4 py-2.5 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-cyan-300 sm:w-auto"
+            />
             <SecondaryCta href="/about">Learn about the platform</SecondaryCta>
           </div>
         </div>

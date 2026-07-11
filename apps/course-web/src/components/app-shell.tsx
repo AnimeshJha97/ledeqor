@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { BookOpen, Code2, Compass, FolderKanban, LayoutDashboard, Menu, Network, PanelLeftClose, PanelLeftOpen, UserRound } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { MobileMenu } from "@/components/mobile-menu";
 
@@ -9,41 +10,40 @@ type NavItem = {
   href: string;
   label: string;
   icon: typeof LayoutDashboard;
+  description: string;
+  match?: "exact" | "prefix";
 };
 
 type AppShellProps = {
   children: React.ReactNode;
-  moduleLinks?: {
-    labHref?: string;
-  };
 };
 
-export function AppShell({ children, moduleLinks }: AppShellProps) {
+export function AppShell({ children }: AppShellProps) {
+  const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navItems: NavItem[] = [
-    { href: "/courses", label: "Courses", icon: Compass },
-    { href: "/my-learning", label: "My Learning", icon: UserRound },
-    { href: "/courses/ai-engineer-guide", label: "Course overview", icon: LayoutDashboard },
-    { href: "/courses/ai-engineer-guide/modules", label: "Modules", icon: BookOpen },
-    { href: "/courses/ai-engineer-guide/capstone", label: "Capstone", icon: FolderKanban },
-    { href: "/courses/ai-engineer-guide/visuals", label: "Visuals", icon: Network },
-    { href: moduleLinks?.labHref ?? "/courses/ai-engineer-guide/modules/python-for-ai-engineering#module-lab", label: "Labs", icon: Code2 }
+    { href: "/my-learning", label: "My Learning", icon: UserRound, description: "Continue from your current progress", match: "exact" },
+    { href: "/courses/ai-engineer-guide", label: "Course Home", icon: LayoutDashboard, description: "Open the course overview", match: "exact" },
+    { href: "/courses/ai-engineer-guide/modules", label: "Course Content", icon: BookOpen, description: "Browse modules, lessons, and readings", match: "prefix" },
+    { href: "/labs", label: "Practice Labs", icon: Code2, description: "Open the dedicated lab workspace", match: "exact" },
+    { href: "/courses/ai-engineer-guide/visuals", label: "Visual Library", icon: Network, description: "Review diagrams and system maps", match: "exact" },
+    { href: "/courses/ai-engineer-guide/capstone", label: "Capstone Tracker", icon: FolderKanban, description: "Track the Arkion DocIntel build", match: "exact" },
+    { href: "/courses", label: "Course Catalog", icon: Compass, description: "Explore current and future courses", match: "exact" }
   ];
   const mobileLinks = navItems.map((item) => ({
     href: item.href,
     label: item.label,
-    description:
-      item.label === "My Learning"
-        ? "Continue from your current progress"
-        : item.label === "Modules"
-          ? "Open the course module list"
-          : item.label === "Capstone"
-            ? "Track the Arkion DocIntel build"
-            : item.label === "Labs"
-              ? "Practice the hands-on implementation"
-              : undefined
+    description: item.description
   }));
+
+  function isActive(item: NavItem) {
+    if (item.match === "prefix") {
+      return pathname === item.href || pathname.startsWith(`${item.href}/`);
+    }
+
+    return pathname === item.href;
+  }
 
   useEffect(() => {
     const saved = window.localStorage.getItem("ledeqor-course-sidebar");
@@ -83,17 +83,27 @@ export function AppShell({ children, moduleLinks }: AppShellProps) {
           </button>
         </div>
 
-        <nav className="mt-10 space-y-2">
+        <nav className="mt-10 space-y-2" aria-label="Course navigation">
           {navItems.map((item) => {
             const Icon = item.icon;
+            const active = isActive(item);
+
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-slate-300 transition hover:bg-panel hover:text-ink"
+                aria-current={active ? "page" : undefined}
+                className={`flex items-start gap-3 rounded-md border px-3 py-2 text-sm transition ${
+                  active
+                    ? "border-brand bg-cyan-400/10 text-brand shadow-sm"
+                    : "border-transparent text-slate-300 hover:border-line hover:bg-panel hover:text-ink"
+                }`}
               >
-                <Icon size={18} />
-                {item.label}
+                <Icon className="mt-0.5 shrink-0" size={18} />
+                <span className="min-w-0">
+                  <span className="block font-semibold">{item.label}</span>
+                  <span className={`mt-0.5 block text-xs leading-5 ${active ? "text-cyan-100/80" : "text-muted"}`}>{item.description}</span>
+                </span>
               </Link>
             );
           })}
@@ -127,8 +137,8 @@ export function AppShell({ children, moduleLinks }: AppShellProps) {
             <span className="block truncate text-base font-semibold text-ink">Ledeqor</span>
             <span className="block truncate text-xs font-medium text-muted">AI Engineer Guide</span>
           </Link>
-          <Link href={moduleLinks?.labHref ?? "/my-learning"} className="shrink-0 rounded-md border border-line px-3 py-2 text-sm font-medium text-slate-200">
-            {moduleLinks?.labHref ? "Lab" : "Continue"}
+          <Link href="/courses/ai-engineer-guide/modules" className="shrink-0 rounded-md border border-line px-3 py-2 text-sm font-medium text-slate-200">
+            Modules
           </Link>
         </div>
       </header>

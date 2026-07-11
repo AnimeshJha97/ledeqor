@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 export type MobileMenuLink = {
@@ -22,6 +23,8 @@ type MobileMenuProps = {
 };
 
 export function MobileMenu({ open, title, subtitle, links, action, footer, hideAt = "md", onClose }: MobileMenuProps) {
+  const pathname = usePathname();
+
   useEffect(() => {
     if (!open) {
       return;
@@ -66,17 +69,26 @@ export function MobileMenu({ open, title, subtitle, links, action, footer, hideA
         </div>
 
         <nav className="grid gap-2 overflow-y-auto bg-[#0b111c] px-4 py-4">
-          {links.map((item) => (
-            <Link
-              key={`${item.href}-${item.label}`}
-              href={item.href}
-              onClick={onClose}
-              className="rounded-md border border-line bg-panel px-4 py-3 text-left shadow-sm transition hover:border-brand hover:bg-cyan-400/10"
-            >
-              <span className="block text-sm font-semibold text-slate-100">{item.label}</span>
-              {item.description ? <span className="mt-1 block text-xs leading-5 text-muted">{item.description}</span> : null}
-            </Link>
-          ))}
+          {links.map((item) => {
+            const active = pathname === item.href || (item.href !== "/" && pathname.startsWith(`${item.href}/`));
+
+            return (
+              <Link
+                key={`${item.href}-${item.label}`}
+                href={item.href}
+                onClick={onClose}
+                aria-current={active ? "page" : undefined}
+                className={`rounded-md border px-4 py-3 text-left shadow-sm transition ${
+                  active
+                    ? "border-brand bg-cyan-400/10 text-brand"
+                    : "border-line bg-panel text-slate-100 hover:border-brand hover:bg-cyan-400/10"
+                }`}
+              >
+                <span className="block text-sm font-semibold">{item.label}</span>
+                {item.description ? <span className={`mt-1 block text-xs leading-5 ${active ? "text-cyan-100/80" : "text-muted"}`}>{item.description}</span> : null}
+              </Link>
+            );
+          })}
         </nav>
 
         {(action || footer) ? (

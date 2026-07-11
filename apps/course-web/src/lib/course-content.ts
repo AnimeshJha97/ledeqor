@@ -1,8 +1,14 @@
 import { allModules, type CourseModule } from "@/lib/course-data";
 import { parseMarkdown, readCourseMarkdown } from "@/lib/content";
 
+let hydratedModulesCache: CourseModule[] | null = null;
+
 export function getHydratedModules(): CourseModule[] {
-  return allModules.map((module) => hydrateModule(module));
+  if (!hydratedModulesCache) {
+    hydratedModulesCache = allModules.map((module) => hydrateModule(module));
+  }
+
+  return hydratedModulesCache;
 }
 
 export function getHydratedModule(slug: string) {

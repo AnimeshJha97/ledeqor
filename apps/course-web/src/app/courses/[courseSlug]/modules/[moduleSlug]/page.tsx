@@ -53,14 +53,9 @@ export default async function CourseModuleDetailPage({ params }: { params: Promi
           .map((lecture) => [lecture.id, block.id] as const)
       )
   );
-  const moduleHref = `/courses/${courseSlug}/modules/${module.slug}`;
 
   return (
-    <AppShell
-      moduleLinks={{
-        labHref: labMarkdown ? `${moduleHref}#module-lab` : "/labs"
-      }}
-    >
+    <AppShell>
       <Link href={`/courses/${courseSlug}/modules`} className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-brand">
         <ArrowLeft size={18} /> Back to modules
       </Link>

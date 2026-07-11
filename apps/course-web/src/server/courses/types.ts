@@ -15,7 +15,7 @@ export type CourseModuleRecord = {
   sourceFile: string;
   labSlug?: string;
   lectures: CourseLectureRecord[];
-  markdown: string;
+  markdown?: string;
 };
 
 export type CourseRecord = {
