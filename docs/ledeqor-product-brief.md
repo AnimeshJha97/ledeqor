@@ -1,760 +1,438 @@
 # Ledeqor Product Brief
 
-Last updated: 2026-05-25
+Last updated: 2026-07-12
 
 ## Product Name
 
-**Ledeqor**
+Ledeqor
 
-Meaning:
+## Owner
 
-```text
-Learn. Develop. Conquer.
-```
-
-Parent company:
-
-```text
 Arkion Labs
-```
 
-## One-Line Description
+## Product Summary
 
-Ledeqor is a project-driven learning and career-upgrade platform that helps developers master current and future high-demand technologies by learning concepts, building real products, practicing interviews, and proving skills through portfolio-grade work.
+Ledeqor is a project-driven course platform for software developers who want to learn modern applied technology through structured lessons, hands-on practice, and production-style capstone builds.
 
-## Product Vision
+The platform is not a generic course library and not a content dump. It is designed around a simple learning loop:
 
-Most online learning platforms teach through videos, notes, and isolated exercises. Ledeqor should feel different.
+1. Study a focused concept.
+2. Practice the concept through recall, quizzes, and short answers.
+3. Apply the concept inside a real course project.
+4. Track progress through modules, lectures, labs, diagrams, and capstone phases.
+5. Leave each course with a working product artifact and a clear understanding of the system behind it.
 
-The goal is not just:
+The flagship course is the AI Engineer Guide. Its capstone project is Arkion DocIntel, a document intelligence SaaS concept that teaches document processing, LLM API engineering, structured extraction, embeddings, RAG, workflows, evaluation, security, and deployment.
 
-```text
-Learn a topic.
-```
+## Product Positioning
 
-The goal is:
+Ledeqor is a learning platform for serious project-based technical education.
 
-```text
-Learn a technology, build a serious product with it, explain the system, prove the skill, and use it for career growth.
-```
+It should feel like a quiet, focused course workspace: practical, structured, and implementation-oriented. The product should help learners understand why a system is built a certain way, how the pieces fit together, and how to turn lessons into working software.
 
-Ledeqor should become a platform where a developer can move from:
+The platform should not be positioned as a general productivity tool, social learning network, hiring service, or personal branding product. Its value comes from course design, learning structure, project execution, and durable technical understanding.
 
-```text
-I know this topic in theory.
-```
+## Core Problem
 
-to:
+Many technical courses teach isolated concepts without connecting them to a realistic product. Learners can finish a tutorial and still struggle with questions like:
 
-```text
-I built a product with this technology and can explain it in interviews.
-```
+- How does this concept fit into a real application?
+- Which files, APIs, database records, queues, and UI states would exist in production?
+- How should the system handle failure, privacy, cost, and reliability?
+- How can progress be tracked without losing course context?
+- How can practice be tied to implementation instead of disconnected quizzes?
 
-## Core Positioning
+For applied AI engineering, this gap becomes sharper. A learner may understand prompts or model APIs, but still not understand document ingestion, chunking, retrieval quality, citations, structured outputs, workflow boundaries, evaluation, or deployment tradeoffs.
 
-Ledeqor is not a normal course website.
+Ledeqor exists to close that gap by making every course product-shaped.
 
-It is a guided upgrade system for developers.
+## Why This Product Exists
 
-### Target Positioning
+Ledeqor is built on the belief that advanced technical learning should be organized around real systems, not just readings or videos.
 
-```text
-Project-driven technology education for developers who want portfolio-grade proof.
-```
+A strong course should:
 
-### What Makes It Different
+- explain concepts in sequence;
+- show how concepts support product capabilities;
+- include practice that improves recall;
+- include labs that move the project forward;
+- provide diagrams for mental models;
+- track learner progress;
+- protect paid/private course content;
+- make the capstone implementation visible and measurable.
 
-- Every course is tied to a real product build.
-- Every module connects theory to implementation.
-- Every learner gets progress tracking and practice loops.
-- Every course includes a capstone tracker.
-- Every major concept becomes an interview story.
-- Future AI features help learners practice, revise, and improve.
+The first implementation focuses on a single flagship course because the platform needs one complete, high-quality course experience before scaling into a catalog.
 
-## Current Flagship Course
+## Target Learner
 
-The first course is:
+The initial target learner is an experienced web developer who understands application development and wants a structured path into applied AI engineering.
 
-```text
-AI Engineer Guide
-```
+This learner benefits from:
 
-The capstone project inside that course is:
+- clear sequencing;
+- concise explanations;
+- product-oriented examples;
+- practical labs;
+- architecture diagrams;
+- progress tracking;
+- a capstone plan that turns learning into implementation.
 
-```text
-Arkion DocIntel
-```
+The platform can later support other learner levels and course categories, but the first course is intentionally tuned for developers who already know how software products are built.
 
-Arkion DocIntel is a document intelligence SaaS where learners build AI features such as:
+## Flagship Course
 
-- document upload
-- text extraction
-- structured field extraction
-- semantic search
-- RAG Q&A
-- citations
-- document comparison
-- AI workflows
-- evaluation
-- security
-- deployment
+### AI Engineer Guide
 
-This course proves the platform model:
+The AI Engineer Guide is the first complete course inside Ledeqor.
 
-```text
-Course + product build + practice + capstone tracker + interview preparation.
-```
+It teaches applied AI engineering through the Arkion DocIntel capstone. The course moves from foundations into product implementation, covering:
 
-## Ideal Users
+- product direction and learning strategy;
+- Python for AI engineering;
+- AI, ML, generative AI, and LLM foundations;
+- document AI fundamentals;
+- LLM API engineering;
+- structured document extraction;
+- embeddings and vector search;
+- RAG for business documents;
+- full-stack AI SaaS architecture;
+- agentic document workflows;
+- AI evaluation and observability;
+- AI security, privacy, and compliance;
+- deployment, scaling, and LLMOps;
+- capstone build execution.
 
-### Primary User
+### Capstone: Arkion DocIntel
 
-Experienced full-stack developers who want to upgrade into applied AI engineering or another trending technology area.
+Arkion DocIntel is a B2B SaaS-style document intelligence project. In the course context, it acts as the organizing product that makes abstract AI concepts concrete.
 
-Example:
+The capstone teaches how to design and implement a system that can:
 
-- MERN developers
-- frontend engineers
-- backend engineers
-- full-stack SaaS developers
-- developers preparing for AI/product engineering roles
+- upload and store business documents;
+- parse document text and metadata;
+- classify document types;
+- extract structured fields;
+- generate embeddings;
+- search semantically;
+- answer questions with source citations;
+- compare documents;
+- run controlled AI workflows;
+- evaluate output quality;
+- track usage, reliability, and limitations;
+- prepare for production deployment.
 
-### Secondary User
+The capstone is not just a final assignment. It is the thread that connects the course modules.
 
-Early-career developers who want structured, project-based learning rather than scattered tutorials.
+## Current Product Scope
 
-### Future User Segments
+Ledeqor currently includes:
 
-- college students preparing for modern product roles
-- developers switching domains
-- bootcamp graduates needing portfolio proof
-- teams wanting internal upskilling paths
-- small companies training engineers on AI tools
+- public landing page;
+- course catalog;
+- AI Engineer Guide course detail page;
+- Pro pricing page with Founder Free launch offer;
+- about page;
+- Google authentication through Auth.js;
+- authenticated My Learning workspace;
+- course entitlement and access foundation;
+- course-scoped module dashboard;
+- course-scoped module detail pages;
+- lecture reader pages;
+- lecture progress states;
+- continue-learning flow;
+- module progress summaries;
+- flashcards;
+- quizzes;
+- short-answer practice;
+- coding task prompts;
+- lecture self-rating;
+- capstone build tracker;
+- capstone checklist persistence;
+- visual learning library with Mermaid diagrams;
+- protected APIs for progress, practice attempts, and capstone progress;
+- MongoDB-backed course and learner state;
+- mobile-first navigation with drawer menus.
 
-## Product Principles
+## Current Product Boundaries
 
-### 1. Build First, But With Understanding
+The platform should stay focused on course learning and project execution.
 
-Learners should not blindly copy code. Every implementation should connect to:
+Current non-goals:
 
-- concept
-- product need
-- architecture decision
-- interview explanation
+- no public learner social network;
+- no generalized content marketplace;
+- no hiring workflow;
+- no standalone personal branding workflow;
+- no separate preparation product outside the course experience;
+- no multi-plan packaging beyond the single Pro course subscription;
+- no broad AI assistant surface until the course workspace is stable.
 
-### 2. One Course, One Serious Project
+These boundaries keep the product coherent and easier to complete.
 
-Each course should have a dedicated capstone product.
+## Subscription Model
 
-Examples:
+The product has one paid plan:
 
-- AI Engineer Guide -> Arkion DocIntel
-- RAG Systems Mastery -> KnowledgeOps Search
-- AI SaaS Builder -> LaunchPilot AI
-- System Design for Full Stack Engineers -> ScaleDesk
+### Pro
 
-### 3. Learning Should Create Career Assets
+- Price: Rs. 499/month
+- Access: full course workspace for enrolled courses
+- Includes: modules, lectures, practice, labs, visual library, capstone tracker, and future course updates where applicable
 
-A completed course should produce:
+### Founder Free Launch Offer
 
-- project repository
-- architecture diagram
-- README
-- demo script
-- interview pitch
-- resume bullet points
-- LinkedIn project summary
+During the launch period, the Founder Free campaign grants Pro-style access to early learners.
 
-### 4. Practice Should Be Active
+Current defaults:
 
-Reading alone is weak. Ledeqor should include:
+- Course: `ai-engineer-guide`
+- Access level: `pro`
+- Discount: 100%
+- Max redemptions: 25
+- Duration: 30 days
+- Payment required: no
 
-- quizzes
-- flashcards
-- short-answer questions
-- self-rating
-- coding tasks
-- mock interview prompts
-- AI answer review
-
-### 5. AI Should Improve Learning, Not Replace It
-
-AI features should help the learner think better:
-
-- explain confusing concepts
-- review written answers
-- generate practice prompts
-- suggest next steps
-- run mock interviews
-- compare the learner's explanation with a stronger one
-
-AI should not become a shortcut that hides weak understanding.
-
-## Current Product Capabilities
-
-The current app already supports:
-
-- public landing page
-- course catalog
-- course detail page
-- pricing page
-- about page
-- Google authentication
-- protected course study routes
-- course entitlement foundation
-- module pages
-- lecture pages
-- lecture progress tracking
-- self-rating
-- continue learning
-- practice mode
-- flashcards
-- quizzes
-- short-answer practice
-- AI interview answer analysis
-- capstone build tracker
-- visual learning diagram library
-- MongoDB-backed course and progress storage
+This offer is intended to validate the course experience, onboarding flow, entitlement model, and learner progress loop before billing is connected.
 
 ## Access Model
 
-Ledeqor should use a clear access model:
+The platform separates public discovery from private course consumption.
+
+Public visitors can access:
+
+- landing page;
+- course catalog;
+- public course detail page;
+- pricing page;
+- about page;
+- sign-in page;
+- selected catalog-safe course metadata.
+
+Authenticated and entitled learners can access:
+
+- My Learning;
+- private module dashboard;
+- full module content;
+- lecture pages;
+- practice mode;
+- capstone tracker;
+- visual library;
+- progress APIs;
+- practice APIs;
+- capstone APIs.
+
+Admin and instructor capabilities are planned later for course management, learner analytics, and support operations.
+
+## Core User Flows
 
-### Public
+### Public Discovery
 
-- landing page
-- courses page
-- course detail page
-- pricing page
-- about page
-- sign-in page
-- limited previews
+1. Visitor lands on the homepage.
+2. Visitor reviews the course value proposition.
+3. Visitor opens the AI Engineer Guide course detail page.
+4. Visitor sees modules, product outcome, capstone direction, and Founder Free offer.
+5. Visitor signs in with Google to claim access.
 
-### Authenticated
+### Founder Free Enrollment
 
-- account dashboard
-- my learning
-- enrolled courses
-- progress overview
+1. Signed-out visitor clicks Claim Founder Free Access.
+2. App redirects to Google sign-in.
+3. Auth callback syncs the user into MongoDB.
+4. The claim action checks campaign limits.
+5. App grants a Pro-style course entitlement.
+6. Learner lands in My Learning or the course workspace.
 
-### Enrolled
+### Study Session
 
-- full modules
-- lecture content
-- practice mode
-- capstone tracker
-- diagrams
-- saved answers
-- AI review limits
+1. Learner opens My Learning.
+2. Learner continues from the next unfinished lecture.
+3. Learner reads the lecture.
+4. Learner marks progress and optionally self-rates confidence.
+5. Learner uses practice mode for recall and applied thinking.
+6. Progress persists to MongoDB.
 
-### Paid
+### Capstone Session
 
-- full course access
-- expanded AI usage
-- premium capstone guidance
-- career assets
-- mock interview mode
+1. Learner opens the capstone tracker.
+2. Learner chooses a build phase.
+3. Learner reviews theory, files, APIs, database tables, and acceptance criteria.
+4. Learner completes checklist items.
+5. The app saves project progress per learner and course.
 
-### Admin
+## Information Architecture
 
-- course management
-- pricing campaigns
-- learner analytics
-- usage monitoring
-- entitlement management
+Primary public routes:
 
-## Pricing Direction
+- `/`
+- `/courses`
+- `/courses/ai-engineer-guide`
+- `/pricing`
+- `/about`
+- `/sign-in`
 
-Current planned paid tiers:
+Primary authenticated routes:
 
-```text
-Pro: Rs. 499/month
-Career: Rs. 799/month
-```
+- `/my-learning`
+- `/courses/[courseSlug]/modules`
+- `/courses/[courseSlug]/modules/[moduleSlug]`
+- `/courses/[courseSlug]/modules/[moduleSlug]/lectures/[lectureId]`
+- `/courses/[courseSlug]/modules/[moduleSlug]/practice`
+- `/courses/[courseSlug]/capstone`
+- `/courses/[courseSlug]/visuals`
+- `/labs`
 
-Current campaign:
+Primary API routes:
 
-```text
-Founder Free Access: 100% discount on Rs. 499 Pro plan for the first 25 early users
-```
+- `GET /api/health`
+- `GET /api/courses`
+- `GET /api/courses/[courseSlug]`
+- `POST /api/courses/seed`
+- `GET /api/progress`
+- `PATCH /api/progress`
+- `POST /api/practice/attempts`
+- `GET /api/capstone/progress`
+- `PATCH /api/capstone/progress`
 
-Future pricing can evolve into:
+## Data Model Summary
 
-- monthly subscriptions
-- yearly subscriptions
-- course-specific purchases
-- cohort-based premium plans
-- team plans
-- campus plans
-- lifetime early adopter access
+The platform uses MongoDB for course content and learner state.
 
-## Product Upgrade Roadmap
+Core collections:
 
-## Phase 1: Strong Learning Core
+- `users`: Auth.js-synced users and roles.
+- `courses`: course content, modules, lectures, and metadata.
+- `course_entitlements`: per-user course access.
+- `course_progress`: per-user lecture progress, quiz scores, and self-ratings.
+- `practice_attempts`: saved short-answer attempts.
+- `capstone_progress`: per-user capstone checklist state.
+- `pricing_plans`: Pro plan metadata when persisted.
+- `offer_campaigns`: Founder Free and future plan-specific campaigns.
 
-Goal:
+The guiding rule is separation of concerns:
 
-Make the course-taking experience genuinely useful.
+- course content belongs to course documents;
+- learner activity belongs to learner-scoped documents;
+- access belongs to entitlement documents;
+- pricing and campaigns belong to commercial configuration.
 
-Features:
+## Design Principles
 
-- better module dashboard
-- lecture progress
-- continue learning
-- lecture pages with concept, example, diagram, product connection, interview angle, quiz, mini task
-- self-rating after each lecture
+### 1. Course First
 
-Status:
+The first screen should help people learn or continue learning. Avoid turning the app into a marketing shell once the learner is signed in.
 
-```text
-Mostly implemented.
-```
+### 2. Product-Shaped Learning
 
-## Phase 2: Practice Mode
+Every course should be organized around a serious product build. Concepts should answer practical implementation questions.
 
-Goal:
+### 3. Quiet, Focused Interface
 
-Make learning active.
+The course workspace should be readable, restrained, and easy to scan. The UI should support repeated study sessions without visual noise.
 
-Features:
+### 4. Progress Should Be Visible
 
-- flashcards
-- quizzes
-- short-answer practice
-- interview prompts
-- coding tasks
-- AI answer review
-- saved attempts
+Learners should always understand what they have finished, what remains, and what to do next.
 
-Status:
+### 5. Practice Should Reinforce Understanding
 
-```text
-Initial version implemented.
-```
+Practice mode should focus on recall, written explanation, quizzes, and implementation prompts. It should support learning without becoming a separate product category.
 
-## Phase 3: Capstone Workspace
+### 6. Capstone Work Should Be Concrete
 
-Goal:
+The capstone tracker should name files, routes, schemas, acceptance criteria, and build phases. It should reduce ambiguity around what to build.
 
-Turn each course into a product build.
+### 7. Access Control Should Be Server-Enforced
 
-Features:
+Private course content and learner state must be protected by server-side authorization, not hidden only in the UI.
 
-- project phases
-- theory needed
-- implementation checklist
-- files to create
-- API routes
-- database schema
-- acceptance criteria
-- interview story unlocked
+## Product Quality Bar
 
-Status:
+A course is ready when:
 
-```text
-Initial version implemented for Arkion DocIntel.
-```
+- public pages explain the course clearly;
+- private module pages are readable and navigable;
+- lectures have meaningful sequence and context;
+- practice mode supports recall and implementation;
+- labs are tied to product progress;
+- diagrams clarify complex systems;
+- capstone phases are actionable;
+- progress persists reliably;
+- signed-out users cannot access private content;
+- course data can be seeded and updated repeatably.
 
-## Phase 4: Visual Learning
+## Near-Term Priorities
 
-Goal:
+1. Keep the product focused on course learning and capstone execution.
+2. Reseed MongoDB after course metadata changes so the live course matches local source.
+3. Rotate exposed secrets before production use.
+4. Improve My Learning into a stronger course dashboard.
+5. Add billing only after the Pro access model is stable.
+6. Add admin tools for course publishing and campaign management.
+7. Add a constrained course tutor only after the current learning loop is reliable.
 
-Help learners understand systems faster.
+## Future Course Expansion
 
-Features:
+The platform can support additional courses once the AI Engineer Guide is stable.
 
-- Mermaid diagrams
-- architecture flows
-- pipelines
-- sequence diagrams
-- deployment diagrams
-- concept maps
+Potential future course categories:
 
-Status:
+- production RAG systems;
+- AI SaaS architecture;
+- document intelligence deep dives;
+- evaluation and observability for AI products;
+- secure AI workflows;
+- full-stack SaaS implementation tracks.
 
-```text
-Initial visual library implemented.
-```
+Each future course should have:
 
-## Phase 5: My Learning Dashboard
+- a clear product outcome;
+- a module sequence;
+- labs;
+- visual explanations;
+- practice activities;
+- a capstone or equivalent project;
+- course-specific progress tracking.
 
-Goal:
+## Success Metrics
 
-Give each user a personal learning home.
+Early product success should be measured by learning and product completion signals:
 
-Features:
-
-- enrolled courses
-- continue learning
-- progress by course
-- recent practice
-- next recommended lecture
-- active capstone phase
-- quiz scores
-- AI review usage
-
-Priority:
-
-```text
-High.
-```
-
-## Phase 6: AI Tutor
-
-Goal:
-
-Create a helpful learning companion inside the course.
-
-Features:
-
-- ask questions about current lecture
-- explain confusing terms
-- generate practice questions
-- review written answers
-- suggest next study step
-- mock interview mode
-- capstone guidance
-
-Important design rule:
-
-AI tutor should be course-aware and progress-aware.
-
-It should know:
-
-- current course
-- current module
-- current lecture
-- user's progress
-- user's weak areas
-- capstone phase
-
-## Phase 7: Course Creation System
-
-Goal:
-
-Make it easier to launch future courses.
-
-Features:
-
-- admin course editor
-- course schema management
-- module builder
-- lecture builder
-- practice item builder
-- diagram builder
-- capstone template builder
-- publishing workflow
-
-This is important because Ledeqor should support many courses, not just AI Engineer Guide.
-
-## Phase 8: Payment and Campaign Engine
-
-Goal:
-
-Make pricing real.
-
-Features:
-
-- Razorpay or Stripe checkout
-- subscription records
-- payment webhooks
-- entitlements from payment
-- offer campaign management
-- percentage discounts
-- coupon codes
-- early bird campaigns
-- plan upgrade/downgrade
-- invoice history
-
-## Phase 9: Career Asset Builder
-
-Goal:
-
-Help learners turn completed courses into job-search material.
-
-Features:
-
-- resume bullet generator
-- LinkedIn project summary
-- GitHub README generator
-- architecture explanation builder
-- demo video script
-- interview pitch builder
-- portfolio case study template
-
-## Phase 10: Community and Cohorts
-
-Goal:
-
-Make Ledeqor more engaging and accountable.
-
-Features:
-
-- public learner profiles
-- course completion badges
-- cohort start dates
-- weekly build goals
-- peer review
-- project showcases
-- discussion threads
-- mentor feedback
-
-## Phase 11: B2B / Team Upskilling
-
-Goal:
-
-Sell Ledeqor to teams and organizations.
-
-Features:
-
-- organization accounts
-- team seats
-- assigned courses
-- manager dashboards
-- progress reports
-- private course tracks
-- custom capstone projects
-- internal skill dashboards
-
-## Future Course Ideas
-
-### 1. RAG Systems Mastery
-
-Capstone:
-
-```text
-KnowledgeOps Search
-```
-
-Focus:
-
-- advanced retrieval
-- hybrid search
-- reranking
-- citations
-- evals
-- production RAG debugging
-
-### 2. AI SaaS Builder
-
-Capstone:
-
-```text
-LaunchPilot AI
-```
-
-Focus:
-
-- AI SaaS architecture
-- onboarding
-- billing
-- usage limits
-- AI workflows
-- deployment
-- customer-ready UI
-
-### 3. System Design for Full Stack Engineers
-
-Capstone:
-
-```text
-ScaleDesk
-```
-
-Focus:
-
-- distributed systems
-- queues
-- caching
-- database scaling
-- rate limits
-- observability
-- architecture interviews
-
-### 4. Agentic AI Workflows
-
-Capstone:
-
-```text
-FlowAgent Studio
-```
-
-Focus:
-
-- tool calling
-- workflow state
-- human approval
-- memory
-- evaluation
-- safety
-- agent observability
-
-### 5. Modern Backend Engineering
-
-Capstone:
-
-```text
-CoreStack API Platform
-```
-
-Focus:
-
-- API design
-- auth
-- queues
-- background jobs
-- testing
-- observability
-- cloud deployment
-
-### 6. Frontend Product Engineering
-
-Capstone:
-
-```text
-SignalBoard
-```
-
-Focus:
-
-- modern React
-- Next.js
-- dashboards
-- data visualization
-- forms
-- accessibility
-- product UX
-
-## Long-Term Product Moat
-
-Ledeqor can become defensible through:
-
-- high-quality course structure
-- project-specific capstones
-- progress and practice data
-- AI tutor personalization
-- career asset generation
-- real product build templates
-- learner portfolios
-- cohort accountability
-- strong developer-focused positioning
-
-The moat is not just content.
-
-The moat is:
-
-```text
-content + product build system + practice system + career proof system.
-```
-
-## Key Metrics
-
-### Learning Metrics
-
-- lecture completion rate
-- module completion rate
-- quiz score
-- self-rating improvement
-- practice attempts per learner
-- capstone checklist completion
-
-### Business Metrics
-
-- visitor to sign-up conversion
-- sign-up to enrollment conversion
-- free to paid conversion
-- campaign redemption rate
-- monthly recurring revenue
-- churn
-- course completion rate
-
-### AI Metrics
-
-- AI review usage
-- average score improvement
-- response cost per user
-- latency
-- failure rate
-- user satisfaction with feedback
+- sign-in conversion from course detail page;
+- Founder Free claims;
+- activated learners who open My Learning;
+- learners who complete first lecture;
+- learners who save quiz scores;
+- learners who save short answers;
+- learners who open the capstone tracker;
+- capstone checklist completion rate;
+- return visits per learner;
+- module completion rate;
+- course completion rate.
 
 ## Risks
 
-### Content Scope Creep
+### Scope Creep
 
-Risk:
+The platform can easily expand into too many adjacent workflows. Keep the core product centered on courses, practice, and capstones.
 
-Courses become too large and never ship.
+### Content Drift
 
-Mitigation:
+Course source, MongoDB seeded data, and public copy can drift apart. Reseeding and schema documentation should stay part of the release checklist.
 
-Ship courses in versions:
+### Access Complexity
 
-- v1 complete learning path
-- v2 deeper labs
-- v3 AI tutor support
-- v4 cohort/community layer
+Course access, campaigns, and subscriptions can become confusing if too many plans are introduced too early. Keep one Pro plan until billing and entitlement logic are mature.
 
-### AI Cost Overuse
+### AI Cost and Reliability
 
-Risk:
+AI features should be introduced carefully. Any future AI tutor or answer review should have authentication, entitlement checks, usage limits, and clear fallback behavior.
 
-Users overuse AI review and costs rise.
+### Maintenance Burden
 
-Mitigation:
-
-- plan-based limits
-- per-day usage caps
-- cheaper default model
-- stronger model only for premium tasks
-
-### Too Much Platform Before Course Value
-
-Risk:
-
-Building admin, payments, and community before the course experience is strong.
-
-Mitigation:
-
-Prioritize:
-
-```text
-course quality -> practice -> capstone -> progress -> AI tutor -> payments/admin/community.
-```
-
-### Weak Differentiation
-
-Risk:
-
-Looks like another course website.
-
-Mitigation:
-
-Make capstone build trackers, interview stories, and career asset generation central to the product.
-
-## Near-Term Recommended Priorities
-
-1. Build My Learning dashboard.
-2. Add real pricing plans and campaign data to MongoDB.
-3. Add plan-based AI usage limits.
-4. Improve AI answer review with saved analysis history.
-5. Add preview/locked states for course content.
-6. Add admin seed/manage page for courses and pricing campaigns.
-7. Start AI Tutor only after the learning dashboard is stable.
+Long courses require ongoing upkeep. The platform should make course updates repeatable through source files, seed routes, and clear schema boundaries.
 
 ## Product Thesis
 
-Ledeqor should win by helping developers do more than consume content.
+Ledeqor should become a focused learning workspace where technical courses are inseparable from real product execution.
 
-It should help them:
-
-- learn the right concepts
-- build serious products
-- practice explanations
-- prove skill through artifacts
-- upgrade their career positioning
-
-The core promise:
-
-```text
-Learn. Develop. Conquer.
-```
+The product wins by helping learners move from concept to implementation with less ambiguity: clear modules, practical exercises, visual models, saved progress, and a capstone plan that makes the system concrete.
