@@ -2,15 +2,18 @@ import type { Metadata } from "next";
 import { CourseCard } from "@/components/course-card";
 import { MarketingShell } from "@/components/marketing-shell";
 import { SectionIntro } from "@/components/marketing";
-import { getHydratedModules } from "@/lib/course-content";
+import { getCourseForStudy } from "@/server/courses/course-service";
 
 export const metadata: Metadata = {
   title: "Courses | Ledeqor",
   description: "Explore project-driven technology courses on Ledeqor, starting with the AI Engineer Guide capstone path."
 };
 
-export default function CoursesPage() {
-  const modules = getHydratedModules();
+export const revalidate = 60;
+
+export default async function CoursesPage() {
+  const course = await getCourseForStudy("ai-engineer-guide");
+  const modules = course?.modules ?? [];
   const lectureCount = modules.reduce((total, module) => total + module.lectures.length, 0);
 
   return (

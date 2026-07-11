@@ -1,5 +1,5 @@
-import { getHydratedModules } from "@/lib/course-content";
 import { parseMarkdown, readCourseMarkdown, slugify } from "@/lib/content";
+import { getCourseBySlugForStudy } from "@/server/courses/course-repository";
 import { AI_ENGINEER_GUIDE_SLUG, buildAiEngineerGuideCourse } from "@/server/courses/seed-course";
 import type { CourseModuleRecord, CourseRecord } from "@/server/courses/types";
 
@@ -8,9 +8,16 @@ export async function getCourseForStudy(courseSlug: string): Promise<CourseRecor
     return null;
   }
 
-  // Course content is versioned with the app. MongoDB stores learner-specific
-  // state, but study routes should not depend on a previously seeded course
-  // document that may be stale after a content deploy.
+  try {
+    const course = await getCourseBySlugForStudy(courseSlug);
+
+    if (course) {
+      return course;
+    }
+  } catch {
+    return buildAiEngineerGuideCourse();
+  }
+
   return buildAiEngineerGuideCourse();
 }
 

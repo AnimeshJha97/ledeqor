@@ -4,7 +4,7 @@ import { ArrowRight, CheckCircle2, Layers3, ShieldCheck, Target, Workflow } from
 import { CourseAccessCta } from "@/components/course-access-cta";
 import { MarketingShell } from "@/components/marketing-shell";
 import { SecondaryCta, SectionIntro, StatPill } from "@/components/marketing";
-import { getHydratedModules } from "@/lib/course-content";
+import { getCourseForStudy } from "@/server/courses/course-service";
 
 export const metadata: Metadata = {
   title: "AI Engineer Guide Course | Build Arkion DocIntel",
@@ -23,7 +23,8 @@ const outcomes = [
 
 export default async function AiEngineerGuidePage({ searchParams }: { searchParams?: Promise<{ access?: string; claim?: string }> }) {
   const params = await searchParams;
-  const modules = getHydratedModules();
+  const course = await getCourseForStudy("ai-engineer-guide");
+  const modules = course?.modules ?? [];
   const lectureCount = modules.reduce((total, module) => total + module.lectures.length, 0);
 
   return (
@@ -131,7 +132,7 @@ export default async function AiEngineerGuidePage({ searchParams }: { searchPara
       <section className="mx-auto max-w-4xl px-4 py-14 text-center sm:px-6 lg:px-8">
         <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">Ready to study and build?</h2>
         <p className="mt-4 text-base leading-7 text-muted">
-          Open the dashboard, start from Module 0, and work through the capstone path with the product beside you.
+          Open the dashboard, start with the first available module, and work through the capstone path with the product beside you.
         </p>
         <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
           <CourseAccessCta courseSlug="ai-engineer-guide" />

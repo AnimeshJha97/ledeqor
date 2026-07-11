@@ -4,7 +4,7 @@ import { CourseCard } from "@/components/course-card";
 import { FounderFreeClaimButton } from "@/components/founder-free-claim-button";
 import { FeatureCard, SecondaryCta, SectionIntro, StatPill } from "@/components/marketing";
 import { MarketingShell } from "@/components/marketing-shell";
-import { getHydratedModules } from "@/lib/course-content";
+import { getCourseForStudy } from "@/server/courses/course-service";
 
 export const metadata: Metadata = {
   title: "Ledeqor | Learn Future-Ready Technology By Building",
@@ -21,6 +21,8 @@ export const metadata: Metadata = {
     "AI courses for developers"
   ]
 };
+
+export const revalidate = 60;
 
 const solutionFeatures = [
   {
@@ -63,8 +65,9 @@ const roadmapGroups = [
   ["Project Launch", "Capstone Build", "Demo Readiness", "Documentation and Polish"]
 ];
 
-export default function LandingPage() {
-  const modules = getHydratedModules();
+export default async function LandingPage() {
+  const course = await getCourseForStudy("ai-engineer-guide");
+  const modules = course?.modules ?? [];
   const lectureCount = modules.reduce((total, module) => total + module.lectures.length, 0);
 
   return (
