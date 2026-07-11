@@ -1,6 +1,6 @@
 # Project Task Tracker
 
-Last updated: 2026-06-01
+Last updated: 2026-06-03
 
 ## Tracking Rules
 
@@ -23,7 +23,7 @@ Last updated: 2026-06-01
 
 | Priority | Task | Status | Notes |
 |---|---|---|---|
-| P3 | Phase 5: AI Tutor Later | Pending | Next major phase after access foundation, learning system, practice mode, capstone tracker, visual library, and mobile-first UX pass |
+| P3 | Phase 5: AI Tutor Later | Pending | Next major phase after access foundation, learning system, practice mode, capstone tracker, visual library, mobile-first UX pass, and README refresh |
 
 ## Completed Tasks
 
@@ -56,6 +56,7 @@ Last updated: 2026-06-01
 | P1 | Ledeqor product brief | Completed | Created detailed product brief covering product idea, current capabilities, access model, pricing direction, upgrade roadmap, future course ideas, moat, metrics, risks, and near-term priorities | Added `docs/ledeqor-product-brief.md` |
 | P0 | Founder Free launch sprint | Completed | Implemented Founder Free Pro-style claim flow, 25-user redemption cap, 30-day entitlement expiry, `/my-learning` dashboard lite, launch CTAs/copy, feedback CTA config, and schema docs | `npm.cmd run build` passed; `/`, `/pricing`, `/courses/ai-engineer-guide` returned 200; signed-out `/my-learning` redirected to `/sign-in` |
 | P0 | Mobile-first UX upgrade | Completed | Added real mobile drawers for marketing and study shells, moved tablet/narrow navigation into drawers, added mobile lecture map, tightened lecture/practice/capstone/visual responsiveness, and constrained code/table/diagram overflow | `npm.cmd run build` passed; public routes returned 200; protected study routes returned 307 when signed out; headless mobile screenshot pass identified and informed header breakpoint fix |
+| P1 | Update README for latest Ledeqor platform state | Completed | Rewrote the README around the current Ledeqor platform, flagship AI Engineer Guide course, Arkion DocIntel capstone, setup, env vars, routes, architecture, access model, pricing direction, verification, and next priorities | Documentation-only update; README readback completed |
 
 ## In Progress
 
