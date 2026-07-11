@@ -134,7 +134,6 @@ Required variables:
 
 ```text
 MONGODB_URI=
-MONGODB_DIRECT_URI=
 MONGODB_DB=
 COURSE_SEED_SECRET=
 AUTH_GOOGLE_ID=
@@ -147,6 +146,15 @@ OPENAI_MODEL=gpt-4.1-nano
 FOUNDER_FREE_MAX_REDEMPTIONS=25
 NEXT_PUBLIC_FEEDBACK_FORM_URL=
 ```
+
+Optional MongoDB fallback for local DNS/SRV issues:
+
+```text
+MONGODB_DIRECT_URI=
+MONGODB_USE_DIRECT_URI=false
+```
+
+By default the app tries `MONGODB_URI` first and falls back to `MONGODB_DIRECT_URI`. Set `MONGODB_USE_DIRECT_URI=true` only when you want the direct URI to be tried first, usually for a local DNS/SRV issue.
 
 Important: secrets were shared during development and should be rotated before production use.
 
