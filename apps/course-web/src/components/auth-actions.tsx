@@ -1,4 +1,5 @@
 import { auth, signIn, signOut } from "@/auth";
+import { PendingSubmitButton } from "@/components/pending-submit-button";
 
 export async function AuthActions() {
   const session = await auth();
@@ -11,9 +12,9 @@ export async function AuthActions() {
           await signOut({ redirectTo: "/" });
         }}
       >
-        <button type="submit" className="w-full rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand">
+        <PendingSubmitButton pendingLabel="Signing out" className="inline-flex min-w-24 w-full items-center justify-center gap-2 rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand">
           Sign out
-        </button>
+        </PendingSubmitButton>
       </form>
     );
   }
@@ -25,9 +26,9 @@ export async function AuthActions() {
         await signIn("google", { redirectTo: "/courses" });
       }}
     >
-      <button type="submit" className="w-full rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand">
+      <PendingSubmitButton pendingLabel="Signing in" className="inline-flex min-w-24 w-full items-center justify-center gap-2 rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand">
         Sign in
-      </button>
+      </PendingSubmitButton>
     </form>
   );
 }
