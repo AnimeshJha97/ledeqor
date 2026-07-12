@@ -27,7 +27,7 @@ export function ModuleDashboard({
           <h3 className="mt-2 text-2xl font-semibold text-ink">{module.title}</h3>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-muted">{module.outcome}</p>
         </div>
-        <Link href={`/courses/${courseSlug}/modules/${module.slug}/practice`} className="inline-flex items-center justify-center gap-2 rounded-md bg-brand px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300">
+        <Link href={`/courses/${courseSlug}/modules/${module.slug}/practice`} className="inline-flex items-center justify-center gap-2 rounded-md border border-line px-4 py-2.5 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand">
           Practice mode <ArrowRight size={17} />
         </Link>
       </div>

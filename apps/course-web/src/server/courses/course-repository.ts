@@ -42,19 +42,6 @@ export async function getCourseBySlug(slug: string) {
   return collection.findOne({ slug } as Filter<CourseRecord>, { projection: { _id: 0 } });
 }
 
-export async function getCourseBySlugForStudy(slug: string) {
-  const collection = await coursesCollection();
-  return collection.findOne(
-    { slug } as Filter<CourseRecord>,
-    {
-      projection: {
-        _id: 0,
-        "modules.markdown": 0
-      }
-    }
-  );
-}
-
 export async function upsertCourse(course: CourseRecord) {
   const collection = await coursesCollection();
   await collection.updateOne(

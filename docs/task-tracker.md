@@ -28,6 +28,7 @@ Last updated: 2026-07-12
 
 | Priority | Task | Status | Notes | Verification |
 |---|---|---|---|---|
+| P0 | Course navigation and reading-surface overhaul | Completed | Moved AppShell/MarketingShell into `(workspace)`/`(marketing)` route-group layouts so the side menu persists; merged Course Home/Course Content into one sidebar item and moved Course Catalog into a separate Platform exit section; made the module page the single reading surface (scroll-spy lecture map with `#anchor` links, per-lecture done/confidence bar, module prev/next footer); converted lecture routes into redirects to `module#anchor`; study content now always reads from local course source instead of MongoDB | `npm.cmd run build` passed; segmentation script verified all 128 lectures across modules 0-7 split cleanly with question tails separated; HTTP checks confirmed lecture URLs redirect to module anchors, signed-out private routes redirect to `/sign-in`, and marketing/workspace shells render on the correct pages |
 | P0 | Google auth runtime fix | Completed | Added explicit Auth.js host trust handling and documented Google callback URLs | `/api/auth/session` returned 200 locally; `npm.cmd run build` passed |
 | P0 | MongoDB connection issue resolution | Completed | Runtime issue was caused by a stopped Atlas instance; app now supports URI fallback and clears failed cached client promises | User confirmed Google login works after reconnecting MongoDB |
 | P0 | Course-only product cleanup | Completed | Removed non-course preparation surfaces, removed old AI answer-analysis API, removed old multi-plan pricing, kept Pro with Founder Free offer, and reframed public copy around course learning and project proof | `npm.cmd run build` passed; `/pricing` returned 200 with only the Pro plan; removed routes returned 404 |
@@ -57,7 +58,7 @@ Last updated: 2026-07-12
 
 | Priority | Task | Status | Notes |
 |---|---|---|---|
-| P0 | Reseed course document | Pending | After deploying the course-only source updates, call `POST /api/courses/seed` so MongoDB course metadata matches local source |
+| P0 | Reseed course document | Pending | Study pages now read course content from local source directly; reseeding via `POST /api/courses/seed` only keeps catalog/API metadata (`/api/courses`, `/api/courses/[courseSlug]`) in sync |
 | P0 | Rotate exposed secrets | Pending | Rotate MongoDB, Google OAuth, and any older AI provider keys that were shared during development |
 | P1 | Improve My Learning dashboard | Pending | Show enrolled courses, next lesson, recent progress, and capstone progress in one focused workspace |
 | P1 | Add paid billing integration | Pending | Keep a single Pro plan; connect checkout, subscription status, and entitlement updates after the current access model is stable |
@@ -92,8 +93,8 @@ Last updated: 2026-07-12
 | `/sign-in` | Google sign-in page | Completed |
 | `/my-learning` | Authenticated learning dashboard | Completed; needs richer dashboard work |
 | `/courses/[courseSlug]/modules` | Course-scoped module dashboard | Completed |
-| `/courses/[courseSlug]/modules/[moduleSlug]` | Module detail | Completed |
-| `/courses/[courseSlug]/modules/[moduleSlug]/lectures/[lectureId]` | Lecture reader | Completed |
+| `/courses/[courseSlug]/modules/[moduleSlug]` | Module reading surface (all lectures, anchor navigation, per-lecture progress) | Completed |
+| `/courses/[courseSlug]/modules/[moduleSlug]/lectures/[lectureId]` | Legacy lecture link; redirects to the module page anchored at that lecture | Completed |
 | `/courses/[courseSlug]/modules/[moduleSlug]/practice` | Practice mode | Completed |
 | `/courses/[courseSlug]/capstone` | Capstone build tracker | Completed |
 | `/courses/[courseSlug]/visuals` | Visual learning library | Completed |

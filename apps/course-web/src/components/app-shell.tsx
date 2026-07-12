@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { BookOpen, Code2, Compass, FolderKanban, LayoutDashboard, Menu, Network, PanelLeftClose, PanelLeftOpen, UserRound } from "lucide-react";
+import { BookOpen, Code2, Compass, FolderKanban, Menu, Network, PanelLeftClose, PanelLeftOpen, UserRound } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { MobileMenu } from "@/components/mobile-menu";
@@ -9,7 +9,7 @@ import { MobileMenu } from "@/components/mobile-menu";
 type NavItem = {
   href: string;
   label: string;
-  icon: typeof LayoutDashboard;
+  icon: typeof BookOpen;
   description: string;
   match?: "exact" | "prefix";
 };
@@ -18,20 +18,24 @@ type AppShellProps = {
   children: React.ReactNode;
 };
 
+const DEFAULT_COURSE_SLUG = "ai-engineer-guide";
+
 export function AppShell({ children }: AppShellProps) {
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const courseSlug = pathname.match(/^\/courses\/([^/]+)/)?.[1] ?? DEFAULT_COURSE_SLUG;
   const navItems: NavItem[] = [
-    { href: "/my-learning", label: "My Learning", icon: UserRound, description: "Continue from your current progress", match: "exact" },
-    { href: "/courses/ai-engineer-guide", label: "Course Home", icon: LayoutDashboard, description: "Open the course overview", match: "exact" },
-    { href: "/courses/ai-engineer-guide/modules", label: "Course Content", icon: BookOpen, description: "Browse modules, lessons, and readings", match: "prefix" },
-    { href: "/labs", label: "Practice Labs", icon: Code2, description: "Open the dedicated lab workspace", match: "exact" },
-    { href: "/courses/ai-engineer-guide/visuals", label: "Visual Library", icon: Network, description: "Review diagrams and system maps", match: "exact" },
-    { href: "/courses/ai-engineer-guide/capstone", label: "Capstone Tracker", icon: FolderKanban, description: "Track the Arkion DocIntel build", match: "exact" },
-    { href: "/courses", label: "Course Catalog", icon: Compass, description: "Explore current and future courses", match: "exact" }
+    { href: "/my-learning", label: "My Learning", icon: UserRound, description: "Your dashboard and next step", match: "exact" },
+    { href: `/courses/${courseSlug}/modules`, label: "Course Content", icon: BookOpen, description: "Modules, lectures, and readings", match: "prefix" },
+    { href: "/labs", label: "Practice Labs", icon: Code2, description: "Hands-on lab workspace", match: "exact" },
+    { href: `/courses/${courseSlug}/visuals`, label: "Visual Library", icon: Network, description: "Diagrams and system maps", match: "exact" },
+    { href: `/courses/${courseSlug}/capstone`, label: "Capstone Tracker", icon: FolderKanban, description: "Track the Arkion DocIntel build", match: "exact" }
   ];
-  const mobileLinks = navItems.map((item) => ({
+  const exitItems: NavItem[] = [
+    { href: "/courses", label: "Course Catalog", icon: Compass, description: "Leave the workspace and browse courses", match: "exact" }
+  ];
+  const mobileLinks = [...navItems, ...exitItems].map((item) => ({
     href: item.href,
     label: item.label,
     description: item.description
@@ -58,15 +62,39 @@ export function AppShell({ children }: AppShellProps) {
     window.localStorage.setItem("ledeqor-course-sidebar", next ? "open" : "closed");
   }
 
+  function renderNavLink(item: NavItem) {
+    const Icon = item.icon;
+    const active = isActive(item);
+
+    return (
+      <Link
+        key={item.href}
+        href={item.href}
+        aria-current={active ? "page" : undefined}
+        className={`flex items-start gap-3 rounded-md border px-3 py-2 text-sm transition ${
+          active
+            ? "border-brand bg-cyan-400/10 text-brand shadow-sm"
+            : "border-transparent text-slate-300 hover:border-line hover:bg-panel hover:text-ink"
+        }`}
+      >
+        <Icon className="mt-0.5 shrink-0" size={18} />
+        <span className="min-w-0">
+          <span className="block font-semibold">{item.label}</span>
+          <span className={`mt-0.5 block text-xs leading-5 ${active ? "text-cyan-100/80" : "text-muted"}`}>{item.description}</span>
+        </span>
+      </Link>
+    );
+  }
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-paper text-ink">
       <aside
-        className={`fixed inset-y-0 left-0 z-40 hidden w-72 border-r border-line bg-surface px-5 py-6 shadow-[18px_0_60px_rgba(0,0,0,0.55)] transition-transform duration-200 lg:block ${
+        className={`fixed inset-y-0 left-0 z-40 hidden w-72 flex-col border-r border-line bg-surface px-5 py-6 shadow-[18px_0_60px_rgba(0,0,0,0.55)] transition-transform duration-200 lg:flex ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="flex items-start justify-between gap-4">
-          <Link href="/" className="block min-w-0">
+          <Link href="/my-learning" className="block min-w-0">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand">Ledeqor</p>
             <h1 className="mt-2 text-2xl font-semibold text-ink">AI Engineer Guide</h1>
             <p className="mt-2 text-sm leading-6 text-muted">Study applied AI engineering through courses, practice, diagrams, and capstone builds.</p>
@@ -84,29 +112,12 @@ export function AppShell({ children }: AppShellProps) {
         </div>
 
         <nav className="mt-10 space-y-2" aria-label="Course navigation">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const active = isActive(item);
+          {navItems.map(renderNavLink)}
+        </nav>
 
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={active ? "page" : undefined}
-                className={`flex items-start gap-3 rounded-md border px-3 py-2 text-sm transition ${
-                  active
-                    ? "border-brand bg-cyan-400/10 text-brand shadow-sm"
-                    : "border-transparent text-slate-300 hover:border-line hover:bg-panel hover:text-ink"
-                }`}
-              >
-                <Icon className="mt-0.5 shrink-0" size={18} />
-                <span className="min-w-0">
-                  <span className="block font-semibold">{item.label}</span>
-                  <span className={`mt-0.5 block text-xs leading-5 ${active ? "text-cyan-100/80" : "text-muted"}`}>{item.description}</span>
-                </span>
-              </Link>
-            );
-          })}
+        <nav className="mt-auto border-t border-line pt-4" aria-label="Platform navigation">
+          <p className="px-3 pb-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Platform</p>
+          {exitItems.map(renderNavLink)}
         </nav>
       </aside>
 
@@ -137,7 +148,7 @@ export function AppShell({ children }: AppShellProps) {
             <span className="block truncate text-base font-semibold text-ink">Ledeqor</span>
             <span className="block truncate text-xs font-medium text-muted">AI Engineer Guide</span>
           </Link>
-          <Link href="/courses/ai-engineer-guide/modules" className="shrink-0 rounded-md border border-line px-3 py-2 text-sm font-medium text-slate-200">
+          <Link href={`/courses/${courseSlug}/modules`} className="shrink-0 rounded-md border border-line px-3 py-2 text-sm font-medium text-slate-200">
             Modules
           </Link>
         </div>
