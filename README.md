@@ -1,53 +1,102 @@
-# Arkion DocIntel AI Engineer Course
+# Ledeqor
 
-This repository is the source of truth for a self-paced course that turns a senior MERN full-stack engineer into an applied AI engineer through a production-style document intelligence SaaS build.
+Ledeqor is a project-driven learning platform by Arkion Labs for developers who want to upgrade into current, new, and future-ready technology roles.
 
-The course is designed for short chat instructions and deep course output. Chat can stay minimal. Course files should stay detailed, structured, and beginner-friendly.
+The first flagship course is the **AI Engineer Guide**, a complete applied AI engineering path built around a real capstone project: **Arkion DocIntel**, an AI document intelligence SaaS platform.
 
-## Recommended Delivery Model
+## What This Repository Contains
 
-Use a hybrid format:
+This repository contains the course content, learning web app, labs, capstone planning, architecture docs, and product documentation for Ledeqor.
 
-1. Markdown/MDX course source
-2. Next.js learning app
-3. Hands-on capstone monorepo
-4. Visual assets and diagrams
-5. Evaluation datasets and portfolio artifacts
+The platform is designed to support multiple future courses. Each course can have its own modules, lectures, labs, capstone project, visual diagrams, practice mode, progress tracking, and access rules.
 
-This gives you both learning material and a portfolio-grade product.
+## Current Product State
 
-## Repository Shape
+Ledeqor currently includes:
+
+- Public landing page
+- Course catalog
+- AI Engineer Guide course detail page
+- Pricing page with INR tiers
+- About page
+- Google authentication through Auth.js
+- Course entitlement and access foundation
+- Founder Free launch campaign
+- Authenticated My Learning workspace
+- Course-scoped module routes
+- Lecture progress tracking
+- Continue Learning flow
+- Module dashboard
+- Lecture detail pages
+- Flashcards, quizzes, short answers, coding tasks, and self-rating
+- Capstone build tracker
+- Visual learning library with Mermaid diagrams
+- Mobile-first navigation and responsive study experience
+
+## Flagship Course
+
+### AI Engineer Guide
+
+The AI Engineer Guide helps a senior full-stack MERN developer transition into applied AI engineering.
+
+The course covers:
+
+- Product direction and AI project positioning
+- Python for AI engineering
+- AI, ML, generative AI, and LLM foundations
+- Document AI fundamentals
+- LLM API engineering
+- Structured document extraction
+- Embeddings, vector search, and semantic search
+- RAG for business documents
+- Full-stack AI SaaS architecture
+- Agentic document workflows
+- AI evaluation, testing, and observability
+- AI security, privacy, and compliance
+- Deployment, scaling, and LLMOps
+- Capstone build execution
+
+### Capstone: Arkion DocIntel
+
+Arkion DocIntel is a B2B SaaS document intelligence platform where businesses can upload documents and use AI to:
+
+- Understand documents
+- Extract structured fields
+- Classify document types
+- Search semantically
+- Ask questions with citations
+- Compare documents
+- Summarize business documents
+- Detect risks and missing information
+- Trigger controlled document workflows
+- Export structured data
+
+The capstone exists to create stronger project proof than a basic chatbot demo.
+
+## Repository Structure
 
 ```text
-Arkion-docintel-ai-engineer-course/
+orvion-docintel-ai-engineer-course/
   apps/
-    course-web/
-  course/
-    00-course-overview.md
-    01-career-transition-strategy.md
-    ...
-  labs/
-    module-01-python-fastapi/
-    module-03-document-ai/
-    ...
-  diagrams/
-  assets/
-  datasets/
-  assessments/
-  app-plan/
-  capstone/
-  portfolio/
+    course-web/                  # Next.js Ledeqor web app
+  course/                        # Markdown course source
+  labs/                          # Hands-on module labs
+  capstone/                      # Arkion DocIntel product build docs
+  docs/                          # Architecture, schema, product, and task docs
+  portfolio/                     # Portfolio and project assets
+  templates/                     # Reusable course/project templates
+  app-plan/                      # Planning material
 ```
 
-## Course Web App
+## Web App
 
-The preparation UI lives here:
+The Next.js app lives in:
 
 ```text
 apps/course-web
 ```
 
-Run it:
+### Run Locally
 
 ```powershell
 cd apps/course-web
@@ -61,32 +110,173 @@ Open:
 http://localhost:3001
 ```
 
-The app reads from the Markdown course source and keeps the existing file structure intact.
+### Build
 
-## Learning Goal
+```powershell
+cd apps/course-web
+npm.cmd run build
+```
 
-By the end, you should be able to say:
+## Environment Variables
 
-> I am a senior full-stack engineer with strong React, Node.js, TypeScript, backend, and product delivery experience. I expanded into applied AI engineering by building Arkion DocIntel, a document intelligence platform that processes business documents using Python, FastAPI, LLMs, embeddings, vector search, RAG, structured extraction, AI workflows, evaluation, and production deployment.
+Create:
 
-## Course Product
+```text
+apps/course-web/.env.local
+```
 
-Arkion DocIntel is a B2B SaaS document intelligence platform where businesses can upload documents, extract structured fields, search semantically, ask grounded questions with citations, compare documents, detect risks, and trigger document workflows.
+Use `apps/course-web/.env.example` as the template.
 
-## Build Philosophy
+Required variables:
 
-This course is not a chatbot tutorial.
+```text
+MONGODB_URI=
+MONGODB_DB=
+COURSE_SEED_SECRET=
+AUTH_GOOGLE_ID=
+AUTH_GOOGLE_SECRET=
+AUTH_SECRET=
+AUTH_TRUST_HOST=true
+FOUNDER_FREE_MAX_REDEMPTIONS=25
+NEXT_PUBLIC_FEEDBACK_FORM_URL=
+```
 
-It teaches:
+Optional MongoDB fallback for local DNS/SRV issues:
 
-- Python for production AI services
-- Document AI fundamentals
-- LLM API engineering
-- Structured extraction
-- Embeddings and vector search
-- RAG with citations
-- Full-stack SaaS architecture
-- Agentic workflows
-- AI evaluation and observability
-- Security, privacy, and deployment
-- Interview and job strategy
+```text
+MONGODB_DIRECT_URI=
+MONGODB_USE_DIRECT_URI=false
+```
+
+By default the app tries `MONGODB_URI` first and falls back to `MONGODB_DIRECT_URI`. Set `MONGODB_USE_DIRECT_URI=true` only when you want the direct URI to be tried first, usually for a local DNS/SRV issue.
+
+Important: secrets were shared during development and should be rotated before production use.
+
+For Google OAuth, add the exact callback URL for each environment in Google Cloud Console. With the local command above, the development redirect URI is:
+
+```text
+http://localhost:3001/api/auth/callback/google
+```
+
+Production should use the same path on the deployed domain, for example `https://your-domain.com/api/auth/callback/google`.
+
+## Main Routes
+
+| Route | Purpose |
+|---|---|
+| `/` | Public landing page |
+| `/courses` | Course catalog |
+| `/courses/ai-engineer-guide` | Flagship course detail page |
+| `/pricing` | Pricing and Founder Free offer |
+| `/about` | Platform about page |
+| `/sign-in` | Google sign-in page |
+| `/my-learning` | Authenticated learning dashboard |
+| `/courses/[courseSlug]/modules` | Course module dashboard |
+| `/courses/[courseSlug]/modules/[moduleSlug]` | Module detail page |
+| `/courses/[courseSlug]/modules/[moduleSlug]/lectures/[lectureId]` | Lecture study page |
+| `/courses/[courseSlug]/modules/[moduleSlug]/practice` | Practice mode |
+| `/courses/[courseSlug]/capstone` | Capstone build tracker |
+| `/courses/[courseSlug]/visuals` | Visual learning library |
+
+## Architecture Snapshot
+
+Frontend:
+
+- Next.js App Router
+- React
+- TypeScript
+- Tailwind CSS
+- Dark mobile-first UI
+- Mermaid diagrams
+
+Backend inside Next.js:
+
+- App Router API routes
+- MongoDB repositories
+- Auth.js Google authentication
+- Course access and entitlement guards
+- Progress, practice, and capstone persistence
+
+Database:
+
+- `courses`
+- `course_progress`
+- `practice_attempts`
+- `capstone_progress`
+- `users`
+- `course_entitlements`
+- pricing/offer campaign data model
+
+## Access Model
+
+Public users can view:
+
+- Landing page
+- Courses page
+- Pricing page
+- About page
+- Course preview/detail page
+
+Authenticated and entitled users can access:
+
+- My Learning
+- Full module pages
+- Lecture pages
+- Practice mode
+- Capstone tracker
+- Visual library
+- Progress APIs
+- Practice APIs
+- Capstone progress APIs
+
+The current launch flow includes Founder Free access for early users.
+
+## Pricing Direction
+
+The current paid tier is INR-based:
+
+- Pro: Rs. 499
+
+The Pro tier currently supports an early-bird campaign that can discount the plan by percentage. During launch, the active campaign makes Pro available for free to a limited number of users.
+
+## Current Verification
+
+Recent verified checks:
+
+- `npm.cmd run build` passes
+- Public routes return `200`
+- Protected study routes redirect signed-out users
+- Mobile-first navigation and study layout pass implemented
+- MongoDB course seed completed for AI Engineer Guide
+- Course content seeded with 16 modules and 271 lectures
+
+## Key Documentation
+
+- `docs/task-tracker.md`
+- `docs/database-schema.md`
+- `docs/security-route-access-architecture.md`
+- `docs/ledeqor-product-brief.md`
+- `capstone/arkion-docintel-blueprint.md`
+- `COURSE_CREATION_PLAN.md`
+
+## Next Priorities
+
+- Rotate exposed secrets before production
+- Expand My Learning into a multi-course dashboard
+- Add paid plan enforcement after billing integration
+- Add AI tutor features after the learning system is stable
+- Prepare deployment and production environment configuration
+
+## Positioning
+
+Ledeqor is not a generic tutorial site.
+
+It is a project-first learning platform where every serious course should produce:
+
+- Deep conceptual understanding
+- A real portfolio project
+- Hands-on labs
+- Practice and project readiness
+- Architecture explanations
+- Project assets
+- A launchable product story

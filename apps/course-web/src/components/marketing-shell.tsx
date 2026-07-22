@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, GraduationCap } from "lucide-react";
-import { AuthActions } from "@/components/auth-actions";
+import { BookOpen, GraduationCap } from "lucide-react";
+import { FounderFreeClaimButton } from "@/components/founder-free-claim-button";
 import { MobileMarketingMenu } from "@/components/mobile-marketing-menu";
 
 type MarketingShellProps = {
@@ -47,26 +47,26 @@ export function MarketingShell({ children }: MarketingShellProps) {
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
-            <AuthActions />
+            <Link href="/sign-in" className="inline-flex min-w-24 items-center justify-center rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand">
+              Sign in
+            </Link>
             <Link href="/my-learning" className="inline-flex items-center gap-2 rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand">
               My Learning <BookOpen size={16} />
             </Link>
-            <Link href="/courses/ai-engineer-guide?claim=founder-free" className="inline-flex items-center gap-2 rounded-md bg-brand px-3 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300">
-              Claim Founder Free <ArrowRight size={16} />
-            </Link>
+            <FounderFreeClaimButton />
           </div>
 
           <MobileMarketingMenu
             links={mobileNavItems}
             action={
               <>
-                <AuthActions />
+                <Link href="/sign-in" className="inline-flex w-full items-center justify-center rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand">
+                  Sign in
+                </Link>
                 <Link href="/my-learning" className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-line px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-brand hover:text-brand">
                   My Learning <BookOpen size={16} />
                 </Link>
-                <Link href="/courses/ai-engineer-guide?claim=founder-free" className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-3 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300">
-                  Claim Founder Free <ArrowRight size={16} />
-                </Link>
+                <FounderFreeClaimButton className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-brand px-3 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300" />
               </>
             }
           />
@@ -89,7 +89,6 @@ export function MarketingShell({ children }: MarketingShellProps) {
                 {item.label}
               </Link>
             ))}
-            <Link href="/pricing" className="hover:text-brand">Pricing</Link>
             <Link href="/my-learning" className="hover:text-brand">My Learning</Link>
           </div>
         </div>

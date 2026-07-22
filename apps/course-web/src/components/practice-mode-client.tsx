@@ -3,15 +3,6 @@
 import { useState, useTransition } from "react";
 import type { StudyPracticePack } from "@/lib/study-tools";
 
-type Analysis = {
-  score?: number;
-  strengths?: string[];
-  gaps?: string[];
-  improved_answer_outline?: string[];
-  next_practice_tip?: string;
-  raw?: string;
-};
-
 export function PracticeModeClient({
   courseSlug,
   moduleSlug,
@@ -25,11 +16,8 @@ export function PracticeModeClient({
   const [revealed, setRevealed] = useState(false);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [savedScore, setSavedScore] = useState<string | null>(null);
-  const [practiceQuestion, setPracticeQuestion] = useState(pack.interviewPrompts[0] ?? "");
-  const [practiceAnswer, setPracticeAnswer] = useState("");
   const [shortAnswers, setShortAnswers] = useState<Record<string, string>>({});
   const [savedShortAnswers, setSavedShortAnswers] = useState<Record<string, boolean>>({});
-  const [analysis, setAnalysis] = useState<Analysis | null>(null);
   const [isPending, startTransition] = useTransition();
 
   const score = pack.quiz.reduce((total, question, index) => total + (answers[index] === question.answerIndex ? 1 : 0), 0);
@@ -50,24 +38,6 @@ export function PracticeModeClient({
         })
       });
       setSavedScore(`${score}/${pack.quiz.length} saved`);
-    });
-  }
-
-  function analyzeAnswer() {
-    setAnalysis(null);
-    startTransition(async () => {
-      const response = await fetch("/api/interview-practice/analyze", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          courseSlug,
-          moduleSlug,
-          question: practiceQuestion,
-          answer: practiceAnswer
-        })
-      });
-      const payload = await response.json();
-      setAnalysis(payload.analysis ?? { raw: payload.error ?? "Unable to analyze answer." });
     });
   }
 
@@ -193,36 +163,6 @@ export function PracticeModeClient({
       </section>
 
       <section className="rounded-md border border-line bg-surface p-5 shadow-sm">
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">Interview practice</p>
-        <h2 className="mt-2 text-2xl font-semibold text-ink">One answer at a time</h2>
-        <select value={practiceQuestion} onChange={(event) => setPracticeQuestion(event.target.value)} className="mt-5 w-full min-w-0 rounded-md border border-line bg-panel px-3 py-2 text-sm text-slate-200">
-          {pack.interviewPrompts.map((prompt) => (
-            <option key={prompt} value={prompt}>{prompt}</option>
-          ))}
-        </select>
-        <textarea
-          value={practiceAnswer}
-          onChange={(event) => setPracticeAnswer(event.target.value)}
-          rows={7}
-          className="mt-3 w-full rounded-md border border-line bg-panel px-3 py-2 text-sm leading-6 text-slate-200 outline-none transition focus:border-brand"
-          placeholder="Write your answer like you are speaking in an interview..."
-        />
-        <button type="button" disabled={isPending || practiceAnswer.trim().length < 20} onClick={analyzeAnswer} className="mt-3 w-full rounded-md bg-brand px-3 py-2 text-sm font-semibold text-slate-950 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto">
-          Analyze answer
-        </button>
-        {analysis ? (
-          <div className="mt-5 rounded-md border border-line bg-panel p-4">
-            {typeof analysis.score === "number" ? <p className="text-lg font-semibold text-brand">Score: {analysis.score}/10</p> : null}
-            <AnalysisList title="Strengths" items={analysis.strengths} />
-            <AnalysisList title="Gaps" items={analysis.gaps} />
-            <AnalysisList title="Improved outline" items={analysis.improved_answer_outline} />
-            {analysis.next_practice_tip ? <p className="mt-3 text-sm leading-6 text-muted"><span className="font-semibold text-ink">Next tip:</span> {analysis.next_practice_tip}</p> : null}
-            {analysis.raw ? <p className="text-sm leading-6 text-muted">{analysis.raw}</p> : null}
-          </div>
-        ) : null}
-      </section>
-
-      <section className="rounded-md border border-line bg-surface p-5 shadow-sm">
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">Coding tasks</p>
         <h2 className="mt-2 text-2xl font-semibold text-ink">Turn practice into product work</h2>
         <div className="mt-5 grid gap-3">
@@ -233,23 +173,6 @@ export function PracticeModeClient({
           ))}
         </div>
       </section>
-    </div>
-  );
-}
-
-function AnalysisList({ title, items }: { title: string; items?: string[] }) {
-  if (!items?.length) {
-    return null;
-  }
-
-  return (
-    <div className="mt-4">
-      <p className="text-sm font-semibold text-ink">{title}</p>
-      <ul className="mt-2 grid gap-1 text-sm leading-6 text-muted">
-        {items.map((item) => (
-          <li key={item}>- {item}</li>
-        ))}
-      </ul>
     </div>
   );
 }

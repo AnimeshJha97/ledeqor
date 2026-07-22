@@ -14,7 +14,7 @@ export type CapstonePhase = {
   apiRoutes: string[];
   databaseTables: string[];
   acceptanceCriteria: string[];
-  interviewStoryUnlocked: string;
+  projectProof: string;
 };
 
 export const capstonePhases: CapstonePhase[] = [
@@ -36,7 +36,7 @@ export const capstonePhases: CapstonePhase[] = [
     apiRoutes: ["GET /health", "GET /ready"],
     databaseTables: ["users", "organizations", "workspaces"],
     acceptanceCriteria: ["All services run locally", "Health checks respond", "Environment variables are documented"],
-    interviewStoryUnlocked: "I can explain how I structured a multi-service AI SaaS from day one."
+    projectProof: "Document the multi-service AI SaaS structure and why each service exists."
   },
   {
     id: "upload-processing",
@@ -56,7 +56,7 @@ export const capstonePhases: CapstonePhase[] = [
     apiRoutes: ["POST /documents", "GET /documents/:id", "POST /documents/:id/process"],
     databaseTables: ["documents", "document_pages", "jobs"],
     acceptanceCriteria: ["PDF uploads work", "Parser stores page-aware text", "UI shows queued/processing/ready/failed"],
-    interviewStoryUnlocked: "I can describe document ingestion, storage, parsing, and async job tracking."
+    projectProof: "Show document ingestion, storage, parsing, and async job tracking working end to end."
   },
   {
     id: "classification",
@@ -74,7 +74,7 @@ export const capstonePhases: CapstonePhase[] = [
     apiRoutes: ["POST /documents/:id/classify", "PATCH /documents/:id/type"],
     databaseTables: ["documents.document_type", "documents.classification_confidence"],
     acceptanceCriteria: ["Document type appears in library", "Unknown documents are handled", "User can correct classification"],
-    interviewStoryUnlocked: "I can explain deterministic plus AI fallback classification."
+    projectProof: "Show deterministic plus AI fallback classification with correction support."
   },
   {
     id: "extraction",
@@ -93,7 +93,7 @@ export const capstonePhases: CapstonePhase[] = [
     apiRoutes: ["POST /documents/:id/extract", "GET /documents/:id/extraction"],
     databaseTables: ["extraction_results", "extracted_fields"],
     acceptanceCriteria: ["Invoice and contract fields display", "Missing fields use null", "Evidence/page numbers are shown"],
-    interviewStoryUnlocked: "I can explain how I made LLM output usable as validated business data."
+    projectProof: "Show validated structured extraction that turns LLM output into usable business data."
   },
   {
     id: "search",
@@ -112,7 +112,7 @@ export const capstonePhases: CapstonePhase[] = [
     apiRoutes: ["POST /documents/search"],
     databaseTables: ["document_chunks"],
     acceptanceCriteria: ["Search returns relevant chunks", "Results include source metadata", "Tenant filters apply before search"],
-    interviewStoryUnlocked: "I can explain semantic search, chunking, metadata, and vector privacy."
+    projectProof: "Show semantic search with chunking, metadata filters, and tenant-safe retrieval."
   },
   {
     id: "rag",
@@ -130,7 +130,7 @@ export const capstonePhases: CapstonePhase[] = [
     apiRoutes: ["POST /documents/:id/questions", "POST /workspaces/:id/questions"],
     databaseTables: ["rag_runs", "ai_usage_events"],
     acceptanceCriteria: ["Answers include citations", "Missing answers are refused", "Single and workspace Q&A are separate"],
-    interviewStoryUnlocked: "I can explain a production RAG pipeline and how I reduce hallucination."
+    projectProof: "Show grounded RAG answers with citations and safe unknown-answer behavior."
   },
   {
     id: "comparison",
@@ -148,7 +148,7 @@ export const capstonePhases: CapstonePhase[] = [
     apiRoutes: ["POST /documents/compare"],
     databaseTables: ["comparison_runs"],
     acceptanceCriteria: ["Comparison uses both documents", "Differences are cited", "Risk summary is clear"],
-    interviewStoryUnlocked: "I can explain how retrieval and extraction support document comparison."
+    projectProof: "Show cited document comparison powered by retrieval and structured extraction."
   },
   {
     id: "workflows",
@@ -167,7 +167,7 @@ export const capstonePhases: CapstonePhase[] = [
     apiRoutes: ["POST /workflows/contract-review", "POST /workflows/invoice-summary"],
     databaseTables: ["workflow_runs"],
     acceptanceCriteria: ["Workflow state is persisted", "Outputs are schema-validated", "High-risk outputs require review"],
-    interviewStoryUnlocked: "I can explain the difference between uncontrolled agents and safe business workflows."
+    projectProof: "Show controlled AI workflows with persisted state, schema validation, and review points."
   },
   {
     id: "evals",
@@ -186,14 +186,14 @@ export const capstonePhases: CapstonePhase[] = [
     apiRoutes: ["GET /admin/quality", "POST /evals/run"],
     databaseTables: ["eval_runs", "ai_usage_events"],
     acceptanceCriteria: ["Eval scripts run repeatably", "Prompt versions are recorded", "Failures are categorized"],
-    interviewStoryUnlocked: "I can explain how I measured AI reliability instead of just trusting outputs."
+    projectProof: "Show repeatable eval scripts, prompt versions, and categorized AI failures."
   },
   {
     id: "polish",
     number: 10,
     title: "Production Polish",
     summary: "Finish auth, workspace management, RBAC, delete flows, usage dashboard, deployment, README, and demo.",
-    theoryNeeded: ["Module 11 security", "Module 12 deployment", "Module 14 interviews"],
+    theoryNeeded: ["Module 11 security", "Module 12 deployment", "Module 13 capstone"],
     implementationChecklist: [
       { id: "auth", label: "Finish authentication" },
       { id: "rbac", label: "Add role-based access" },
@@ -205,7 +205,6 @@ export const capstonePhases: CapstonePhase[] = [
     apiRoutes: ["DELETE /documents/:id", "GET /admin/usage"],
     databaseTables: ["audit_logs", "memberships"],
     acceptanceCriteria: ["Demo flow works", "README is clear", "Known limitations are documented", "Architecture diagram is ready"],
-    interviewStoryUnlocked: "I can present the project like a launchable AI SaaS, with limitations and roadmap."
+    projectProof: "Prepare the README, demo flow, architecture diagram, limitations, and roadmap."
   }
 ];
-

@@ -12,7 +12,7 @@ export function MobileMarketingMenu({ links, action }: { links: MobileMenuLink[]
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex rounded-md border border-line p-2 text-slate-200 transition hover:border-brand hover:text-brand lg:hidden"
+        className="inline-flex rounded-md border border-line bg-surface p-2 text-slate-200 shadow-sm transition hover:border-brand hover:text-brand lg:hidden"
         aria-label="Open menu"
         aria-expanded={open}
       >

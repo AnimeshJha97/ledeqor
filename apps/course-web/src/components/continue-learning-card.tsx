@@ -19,8 +19,10 @@ export function ContinueLearningCard({
     );
   }
 
+  const anchor = next.lecture.anchor ? `#${next.lecture.anchor}` : "";
+
   return (
-    <Link href={`/courses/${courseSlug}/modules/${next.module.slug}/lectures/${next.lecture.id}`} className="group block rounded-md border border-brand/30 bg-cyan-400/10 p-5 shadow-sm transition hover:border-brand hover:bg-cyan-400/15">
+    <Link href={`/courses/${courseSlug}/modules/${next.module.slug}${anchor}`} className="group block rounded-md border border-brand/30 bg-cyan-400/10 p-5 shadow-sm transition hover:border-brand hover:bg-cyan-400/15">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="inline-flex items-center gap-2 text-sm font-semibold text-brand">

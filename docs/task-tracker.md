@@ -1,14 +1,13 @@
 # Project Task Tracker
 
-Last updated: 2026-06-01
+Last updated: 2026-07-12
 
 ## Tracking Rules
 
-- Update this file before starting implementation work.
-- Mark the active task as `In progress`.
-- After completing a task, update status, notes, and verification.
-- Keep priorities explicit so the next task is obvious.
-- Do not mix course content progress with product/app implementation progress.
+- This is the single canonical task tracker for the Ledeqor course platform.
+- Keep implementation status separate from course-content authoring status.
+- Add completed work with a verification note when possible.
+- Keep pending work focused on the current product direction: course learning, practice, access, and capstone execution.
 
 ## Status Legend
 
@@ -23,119 +22,80 @@ Last updated: 2026-06-01
 
 | Priority | Task | Status | Notes |
 |---|---|---|---|
-| P3 | Phase 5: AI Tutor Later | Pending | Next major phase after access foundation, learning system, practice mode, capstone tracker, visual library, and mobile-first UX pass |
+| P0 | Documentation alignment | In progress | Update product brief, schema docs, access architecture, and task tracker after course-only product cleanup |
 
-## Completed Tasks
+## Recently Completed
 
 | Priority | Task | Status | Notes | Verification |
 |---|---|---|---|---|
-| P0 | Complete course content Modules 0-15 | Completed | All course modules expanded with lectures, labs/assignments, quizzes, answer keys, interview prompts, and source links | `npm.cmd run build` passed |
-| P0 | Build dark themed course reader app | Completed | Added module pages, Markdown rendering, Mermaid support, lecture maps, collapsible sidebar, dark UI | Route checks and build passed |
-| P0 | Fix Module 0 UI bugs | Completed | Fixed horizontal overflow, lecture anchor scrolling, sidebar hide/open behavior | Manual route testing during prior phase |
-| P0 | Add Next.js backend foundation | Completed | Added MongoDB driver, DB client, repositories, course/progress schema, API routes, env example, schema docs | `npm.cmd run build` passed |
-| P0 | Add `.env.local` | Completed | Added MongoDB URI, DB name, and 32-character course seed secret | File created; ignored by git |
-| P0 | Build public marketing pages | Completed | Added landing page, courses page, AI Engineer Guide course detail page, about page, reusable marketing components | Production route checks returned 200 |
-| P0 | Add pricing page | Completed | Added 3 tiers: Free, Pro, Career | Build passed |
-| P0 | Add Google auth scaffolding | Completed | Installed `next-auth@beta`, added Google provider config, auth route, sign-in page, sign-in/sign-out action component | Build passed; `/api/auth/session` needs runtime fix |
-| P0 | Add course-scoped route structure | Completed | Added `/courses/[courseSlug]/modules` and `/courses/[courseSlug]/modules/[moduleSlug]`; legacy `/modules` redirects | Build passed; page routes returned 200 |
-| P1 | Add Gemini interview analysis API foundation | Completed | Added one-answer-at-a-time API endpoint using `gemini-2.5-flash` | Build passed; live Gemini call not yet verified |
-| P0 | Create project task tracker | Completed | Added a living Markdown tracker for completed, active, pending, blocked, and phase-based work | Created `docs/task-tracker.md` |
-| P0 | Auth session runtime | Completed | User will verify after deployment and Google Console redirect URL configuration; local auth/session issue is not blocking current work | Build passed; deployment configuration pending outside local app |
-| P0 | Seed current course into MongoDB | Completed | Added `MONGODB_DIRECT_URI` fallback to bypass local SRV lookup issue, connected to Atlas, and seeded `ai-engineer-guide` course | `/api/health` returned 200; `/api/courses/seed` returned 200; seeded 16 modules and 271 lectures |
-| P0 | Move UI reads toward course-scoped data | Completed | Added server-side course study adapter that reads MongoDB course data with Markdown fallback | Build passed; scoped module/lecture/practice routes returned 200 |
-| P0 | Phase 1: Better Study UX | Completed | Added lecture progress statuses, continue learning card, module dashboard, lecture-focused pages, structured study cues, self-rating, and course-scoped dashboard progress | Build passed; progress writes returned 200; progress read showed saved lecture and rating |
-| P1 | Phase 2: Practice Mode | Completed | Added flashcards, interactive quizzes with saved scores, short-answer writing with saved attempts, interview prompts, Gemini answer analysis endpoint, coding task prompts, and lecture self-rating | Build passed; quiz/progress/short-answer APIs returned 200; Gemini high-demand failure handled cleanly |
-| P1 | Phase 3: Capstone Build Tracker | Completed | Added course-scoped capstone workspace with 10 product build phases, checklist progress, theory/files/API/database/acceptance/interview story sections, and MongoDB progress persistence | `npm.cmd run build` passed; `/courses/ai-engineer-guide/capstone` returned 200; capstone progress PATCH/GET returned 200 |
-| P2 | Phase 4: Visual Learning | Completed | Added course-scoped visual learning library with Mermaid diagrams for AI foundations, ingestion, extraction, embeddings, RAG, SaaS architecture, workflows, evaluation, and deployment | `npm.cmd run build` passed; `/courses/ai-engineer-guide/visuals` returned 200 |
-| P0 | Fix Auth.js missing secret error | Completed | Passed `AUTH_SECRET` explicitly into the NextAuth config instead of relying on auto-detection | `npm.cmd run build` passed |
-| P0 | Security and route access architecture | Completed | Defined public/authenticated/enrolled/paid/admin access model, Udemy-inspired access patterns, route/API matrices, entitlement schema, guard layers, and implementation phases | Added `docs/security-route-access-architecture.md` |
-| P0 | Implement access foundation | Completed | Added Auth.js user sync, `users` and `course_entitlements`, shared page/API guards, temporary free enrollment CTA, private route gating, API gating, and session-based learner ids | `npm.cmd run build` passed; signed-out private study routes redirected to `/sign-in`; signed-out progress API returned 401; public course API no longer returns Markdown |
-| P0 | Rebrand application to Ledeqor | Completed | Updated platform/app naming to Ledeqor by Arkion Labs while keeping AI Engineer Guide as the flagship course and Arkion DocIntel as its capstone project | `npm.cmd run build` passed |
-| P0 | Pricing tiers and offer campaign schema | Completed | Updated pricing to two INR paid tiers: Pro Rs. 499/month and Career Rs. 799/month. Added active 100% early-bird campaign for Pro and fixed Best value badge wrapping | `npm.cmd run build` passed |
-| P0 | Switch AI analysis provider to OpenAI GPT-4.1 nano | Completed | Updated interview answer analysis to use OpenAI Responses API with `OPENAI_API_KEY` and `OPENAI_MODEL`, defaulting to `gpt-4.1-nano`; updated env example and security docs | `npm.cmd run build` passed |
-| P1 | Ledeqor product brief | Completed | Created detailed product brief covering product idea, current capabilities, access model, pricing direction, upgrade roadmap, future course ideas, moat, metrics, risks, and near-term priorities | Added `docs/ledeqor-product-brief.md` |
-| P0 | Founder Free launch sprint | Completed | Implemented Founder Free Pro-style claim flow, 25-user redemption cap, 30-day entitlement expiry, `/my-learning` dashboard lite, launch CTAs/copy, feedback CTA config, and schema docs | `npm.cmd run build` passed; `/`, `/pricing`, `/courses/ai-engineer-guide` returned 200; signed-out `/my-learning` redirected to `/sign-in` |
-| P0 | Mobile-first UX upgrade | Completed | Added real mobile drawers for marketing and study shells, moved tablet/narrow navigation into drawers, added mobile lecture map, tightened lecture/practice/capstone/visual responsiveness, and constrained code/table/diagram overflow | `npm.cmd run build` passed; public routes returned 200; protected study routes returned 307 when signed out; headless mobile screenshot pass identified and informed header breakpoint fix |
+| P0 | Course navigation and reading-surface overhaul | Completed | Moved AppShell/MarketingShell into `(workspace)`/`(marketing)` route-group layouts so the side menu persists; merged Course Home/Course Content into one sidebar item and moved Course Catalog into a separate Platform exit section; made the module page the single reading surface (scroll-spy lecture map with `#anchor` links, per-lecture done/confidence bar, module prev/next footer); converted lecture routes into redirects to `module#anchor`; study content now always reads from local course source instead of MongoDB | `npm.cmd run build` passed; segmentation script verified all 128 lectures across modules 0-7 split cleanly with question tails separated; HTTP checks confirmed lecture URLs redirect to module anchors, signed-out private routes redirect to `/sign-in`, and marketing/workspace shells render on the correct pages |
+| P0 | Google auth runtime fix | Completed | Added explicit Auth.js host trust handling and documented Google callback URLs | `/api/auth/session` returned 200 locally; `npm.cmd run build` passed |
+| P0 | MongoDB connection issue resolution | Completed | Runtime issue was caused by a stopped Atlas instance; app now supports URI fallback and clears failed cached client promises | User confirmed Google login works after reconnecting MongoDB |
+| P0 | Course-only product cleanup | Completed | Removed non-course preparation surfaces, removed old AI answer-analysis API, removed old multi-plan pricing, kept Pro with Founder Free offer, and reframed public copy around course learning and project proof | `npm.cmd run build` passed; `/pricing` returned 200 with only the Pro plan; removed routes returned 404 |
+| P0 | Mobile drawer UI fix | Completed | Made mobile drawer overlay darker, panel opaque, and drawer shadow stronger; raised desktop side menu layering | `npm.cmd run build` passed; HTTP route checks passed |
+| P0 | Task tracker consolidation | Completed | Kept `docs/task-tracker.md` as the canonical tracker and removed duplicate `docs/ledeqor-task-tracker.md` | Documentation-only change |
 
-## In Progress
+## Completed Foundations
 
-| Priority | Task | Status | Notes | Next Step |
+| Priority | Task | Status | Notes | Verification |
 |---|---|---|---|---|
-| P2 | Platform naming and repositioning | Completed | Final platform name is Ledeqor by Arkion Labs. Keep AI Engineer Guide as the flagship course and Arkion DocIntel as its capstone project. | UI branding updated |
+| P0 | Course content foundation | Completed | Built the AI Engineer Guide source content, labs, and capstone planning files | Course source present in `course/`, `labs/`, and `capstone/` |
+| P0 | Dark themed course reader app | Completed | Added module pages, Markdown rendering, Mermaid support, lecture maps, collapsible navigation, and dark UI | Build and route checks passed during implementation |
+| P0 | Next.js backend foundation | Completed | Added MongoDB driver, DB client, course/progress repositories, API routes, and env example | `npm.cmd run build` passed |
+| P0 | Public marketing pages | Completed | Added landing page, courses page, course detail page, pricing page, about page, and shared marketing components | Public routes returned 200 |
+| P0 | Google authentication | Completed | Added Auth.js Google provider, auth route, sign-in page, and sign-in/sign-out actions | `npm.cmd run build` passed; runtime verified after MongoDB reconnection |
+| P0 | Course-scoped routing | Completed | Added `/courses/[courseSlug]` route family and legacy redirects | Build passed |
+| P0 | MongoDB course seeding | Completed | Added seed route that upserts AI Engineer Guide course data into MongoDB | `/api/courses/seed` verified during earlier setup |
+| P0 | Access foundation | Completed | Added users, course entitlements, shared page/API guards, private route gating, and session-based learner IDs | Signed-out private routes redirected; APIs returned 401/403 as expected |
+| P0 | Founder Free launch flow | Completed | Added Founder Free claim flow, redemption cap, 30-day entitlement expiry, and My Learning entry point | Build passed; claim flow verified after auth/runtime fixes |
+| P1 | Study UX | Completed | Added lecture progress statuses, continue-learning flow, module dashboard, lecture pages, study cues, and self-rating | Progress writes and reads verified during implementation |
+| P1 | Practice mode | Completed | Added flashcards, quizzes, short-answer writing, coding tasks, saved quiz scores, and saved short answers | Build passed; practice APIs returned 200 |
+| P1 | Capstone tracker | Completed | Added course-scoped capstone workspace with build phases, implementation checklist, files, APIs, database tables, acceptance criteria, and persisted checklist state | Build passed; capstone progress API verified |
+| P2 | Visual learning library | Completed | Added course-scoped Mermaid diagrams for AI foundations, ingestion, extraction, embeddings, RAG, SaaS architecture, workflows, evaluation, and deployment | `/courses/ai-engineer-guide/visuals` returned 200 |
+| P0 | Mobile-first UX pass | Completed | Added real mobile drawers, tightened responsive layouts, added mobile lecture map, and constrained overflow for code/table/diagram content | Build passed; public routes returned 200 |
 
 ## Pending: Immediate Priority
 
 | Priority | Task | Status | Notes |
 |---|---|---|---|
-| P0 | Rotate exposed secrets | Pending | MongoDB, Google OAuth, Gemini keys were pasted in chat and should be rotated |
-| P1 | Implement My Learning dashboard | Pending | Show authenticated user's enrolled courses and continue-learning state |
-| P1 | Add paid plan enforcement | Pending | Connect pricing tiers to entitlement access levels after billing is added |
-| P0 | Progress tracking + Continue Learning | Completed | Implemented as part of Phase 1 |
+| P0 | Reseed course document | Pending | Study pages now read course content from local source directly; reseeding via `POST /api/courses/seed` only keeps catalog/API metadata (`/api/courses`, `/api/courses/[courseSlug]`) in sync |
+| P0 | Rotate exposed secrets | Pending | Rotate MongoDB, Google OAuth, and any older AI provider keys that were shared during development |
+| P1 | Improve My Learning dashboard | Pending | Show enrolled courses, next lesson, recent progress, and capstone progress in one focused workspace |
+| P1 | Add paid billing integration | Pending | Keep a single Pro plan; connect checkout, subscription status, and entitlement updates after the current access model is stable |
+| P1 | Add course admin tools | Pending | Add secure course seed/publish controls and basic learner progress visibility |
 
-## Pending: Phase 1 - Better Study UX
-
-| Priority | Task | Status | Notes |
-|---|---|---|---|
-| P0 | Lecture progress tracking | Completed | Per lecture: Not started, Reading, Done, Needs revision |
-| P0 | Continue Learning button | Completed | Jumps to next unfinished lecture |
-| P1 | Module dashboard | Completed | Shows completed lectures, pending lectures, quiz score, lab status, and progress bar |
-| P1 | Better lecture layout | Completed | Added focused lecture pages with concept/product/interview/mini-task study cues and self-rating |
-
-## Pending: Phase 2 - Practice Mode
+## Pending: Later Phases
 
 | Priority | Task | Status | Notes |
 |---|---|---|---|
-| P1 | Flashcards | Completed | Generated per module from lecture titles |
-| P1 | Quizzes | Completed | Module-level interactive quiz with saved score |
-| P1 | Short-answer practice | Completed | User writes and saves answers to MongoDB |
-| P1 | Interview-style explanation prompts | Completed | Practice prompts plus Gemini-backed one-answer analysis endpoint |
-| P2 | Coding tasks | Completed | Course/project-specific implementation prompts shown in Practice Mode |
-| P2 | Self-rating after each lecture | Completed | Confidence rating saved per lecture |
-
-## Pending: Phase 3 - Capstone Build Tracker
-
-| Priority | Task | Status | Notes |
-|---|---|---|---|
-| P1 | Capstone workspace | Completed | Course-specific project workspace |
-| P1 | Phase checklist UI | Completed | Project setup, upload, classification, extraction, search, RAG, comparison, workflows, evals, polish |
-| P1 | Capstone phase detail model | Completed | Theory needed, files to create, API routes, DB tables, acceptance criteria, interview story unlocked |
-
-## Pending: Phase 4 - Visual Learning
-
-| Priority | Task | Status | Notes |
-|---|---|---|---|
-| P2 | Diagram library | Completed | Reusable Mermaid visual library |
-| P2 | Add high-value diagrams | Completed | AI hierarchy, ingestion, extraction, embeddings, RAG, SaaS, agents, evals, deployment |
-
-## Pending: Phase 5 - AI Tutor Later
-
-| Priority | Task | Status | Notes |
-|---|---|---|---|
-| P3 | Current lecture Q&A tutor | Pending | Ask questions about the active lecture |
-| P3 | Confusing term explainer | Pending | Short contextual explanations |
-| P3 | Practice question generator | Pending | Generate limited practice prompts |
-| P3 | Mock interview mode | Pending | AI-guided interview loop |
-| P3 | Written answer review | Pending | Gemini-backed evaluation, limited usage |
-| P3 | Next study step suggestions | Pending | Personalized guidance based on progress |
+| P2 | Preview lecture model | Pending | Add public previews without exposing full course content |
+| P2 | Notes per lecture | Pending | Allow learners to save private notes per lecture or module |
+| P2 | Search across course content | Pending | Add authenticated search over enrolled course content |
+| P3 | Course tutor | Pending | Add a constrained tutor for the active lecture after access, billing, and course workspace are stable |
+| P3 | Multi-course expansion | Pending | Add future courses only after the AI Engineer Guide experience is complete and maintainable |
 
 ## Blocked / Needs Attention
 
 | Priority | Item | Status | Notes |
 |---|---|---|---|
-| P0 | MongoDB Atlas health check | Completed | Connected successfully using direct MongoDB URI fallback |
-| P0 | Secret rotation | Pending | Rotate exposed MongoDB, Google OAuth, and Gemini credentials |
+| P0 | Production secrets | Pending | Rotate exposed secrets before production use |
+| P0 | Live MongoDB course data | Pending | Live course content may still include old seeded modules until reseeded |
 
-## Route Structure Target
+## Current Route Structure
 
 | Route | Purpose | Status |
 |---|---|---|
 | `/` | Platform landing page | Completed |
-| `/courses` | Multi-course catalog | Completed |
-| `/courses/[courseSlug]` | Course detail / sales page | Completed for `/courses/ai-engineer-guide` |
-| `/courses/[courseSlug]/modules` | Course-scoped module dashboard | Completed for AI Engineer Guide |
-| `/courses/[courseSlug]/modules/[moduleSlug]` | Course-scoped module detail | Completed for AI Engineer Guide |
-| `/courses/[courseSlug]/capstone` | Course-scoped capstone build tracker | Completed for AI Engineer Guide |
-| `/courses/[courseSlug]/visuals` | Course-scoped visual diagram library | Completed for AI Engineer Guide |
-| `/pricing` | Pricing page | Completed |
+| `/courses` | Course catalog | Completed |
+| `/courses/[courseSlug]` | Course detail page | Completed for AI Engineer Guide |
+| `/pricing` | Pro plan and Founder Free offer | Completed |
 | `/about` | Platform about page | Completed |
-| `/sign-in` | Google sign-in page | Completed; runtime auth needs verification |
+| `/sign-in` | Google sign-in page | Completed |
+| `/my-learning` | Authenticated learning dashboard | Completed; needs richer dashboard work |
+| `/courses/[courseSlug]/modules` | Course-scoped module dashboard | Completed |
+| `/courses/[courseSlug]/modules/[moduleSlug]` | Module reading surface (all lectures, anchor navigation, per-lecture progress) | Completed |
+| `/courses/[courseSlug]/modules/[moduleSlug]/lectures/[lectureId]` | Legacy lecture link; redirects to the module page anchored at that lecture | Completed |
+| `/courses/[courseSlug]/modules/[moduleSlug]/practice` | Practice mode | Completed |
+| `/courses/[courseSlug]/capstone` | Capstone build tracker | Completed |
+| `/courses/[courseSlug]/visuals` | Visual learning library | Completed |
+| `/labs` | Lab index | Completed |

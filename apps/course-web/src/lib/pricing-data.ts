@@ -1,5 +1,5 @@
 export type PricingPlan = {
-  id: "pro" | "career";
+  id: "pro";
   name: string;
   amountInr: number;
   billingPeriod: "month";
@@ -35,26 +35,9 @@ export const pricingPlans: PricingPlan[] = [
       "Full access to all current courses",
       "Course progress synced to your account",
       "Capstone build trackers",
-      "Interview answer practice with AI review limits",
-      "Downloadable checklists and templates",
+      "Module practice with quizzes and short answers",
+      "Hands-on labs and implementation prompts",
       "Future course updates included"
-    ]
-  },
-  {
-    id: "career",
-    name: "Career",
-    amountInr: 799,
-    billingPeriod: "month",
-    subtitle: "For learners preparing for interviews and job switch.",
-    cta: "Choose Career",
-    href: "/sign-in",
-    features: [
-      "Everything in Pro",
-      "Expanded mock interview practice limits",
-      "Resume and LinkedIn review workflows",
-      "Portfolio case study builder",
-      "Weekly job strategy tracker",
-      "Priority access to new career modules"
     ]
   }
 ];

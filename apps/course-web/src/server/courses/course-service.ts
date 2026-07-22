@@ -1,21 +1,13 @@
-import { getHydratedModules } from "@/lib/course-content";
-import { parseMarkdown, readCourseMarkdown, slugify } from "@/lib/content";
-import { getCourseBySlug } from "@/server/courses/course-repository";
+import { parseMarkdown, readCourseMarkdown, slugify, type MarkdownBlock } from "@/lib/content";
 import { AI_ENGINEER_GUIDE_SLUG, buildAiEngineerGuideCourse } from "@/server/courses/seed-course";
-import type { CourseModuleRecord, CourseRecord } from "@/server/courses/types";
+import type { CourseLectureRecord, CourseModuleRecord, CourseRecord } from "@/server/courses/types";
 
+// The study workspace always reads course content from the repository source files.
+// MongoDB stores learner state and catalog metadata; it must never decide what a
+// module or lecture contains, otherwise a stale seed silently shadows local content.
 export async function getCourseForStudy(courseSlug: string): Promise<CourseRecord | null> {
   if (courseSlug !== AI_ENGINEER_GUIDE_SLUG) {
     return null;
-  }
-
-  try {
-    const course = await getCourseBySlug(courseSlug);
-    if (course) {
-      return course;
-    }
-  } catch {
-    return buildAiEngineerGuideCourse();
   }
 
   return buildAiEngineerGuideCourse();
@@ -41,21 +33,61 @@ export function getModuleBlocks(module: CourseModuleRecord) {
   return parseMarkdown(module.markdown || readCourseMarkdown(module.sourceFile));
 }
 
-export function getLectureBlocks(module: CourseModuleRecord, lectureId: string) {
-  const blocks = getModuleBlocks(module);
-  const startIndex = blocks.findIndex((block) => block.type === "heading" && block.text.toLowerCase().startsWith(`${lectureId} `));
+export type ModuleLectureSection = {
+  lecture: CourseLectureRecord;
+  anchor: string;
+  blocks: MarkdownBlock[];
+};
 
-  if (startIndex === -1) {
-    return [];
+export type ModuleSections = {
+  intro: MarkdownBlock[];
+  lectures: ModuleLectureSection[];
+  tail: MarkdownBlock[];
+};
+
+// Splits a module's markdown into the intro (purpose, outcomes), one section per
+// lecture (a `## X.Y` heading up to the next lecture heading), and the module tail
+// (revision questions, answer key, interview questions, source links).
+export function getModuleSections(module: CourseModuleRecord): ModuleSections {
+  const blocks = getModuleBlocks(module);
+  const markers = module.lectures
+    .map((lecture) => ({
+      lecture,
+      index: blocks.findIndex((block) => block.type === "heading" && block.text.toLowerCase().startsWith(`${lecture.id} `))
+    }))
+    .filter((marker) => marker.index !== -1)
+    .sort((a, b) => a.index - b.index);
+
+  if (!markers.length) {
+    return { intro: blocks, lectures: [], tail: [] };
   }
 
-  const endIndex = blocks.findIndex((block, index) => index > startIndex && block.type === "heading" && block.level === 2 && /^\d+\.\d+\s+/.test(block.text));
-  return blocks.slice(startIndex, endIndex === -1 ? blocks.length : endIndex);
-}
+  const lastMarker = markers[markers.length - 1];
+  let tailStart = blocks.length;
+  for (let index = lastMarker.index + 1; index < blocks.length; index += 1) {
+    const block = blocks[index];
+    if (block.type === "heading" && block.level <= 2) {
+      tailStart = index;
+      break;
+    }
+  }
 
-export function getLectureAnchor(module: CourseModuleRecord, lectureId: string) {
-  const lecture = module.lectures.find((item) => item.id === lectureId);
-  return lecture?.anchor ?? slugify(`${lectureId} ${lecture?.title ?? ""}`);
+  const lectures = markers.map((marker, order) => {
+    const heading = blocks[marker.index];
+    const end = order + 1 < markers.length ? markers[order + 1].index : tailStart;
+
+    return {
+      lecture: marker.lecture,
+      anchor: heading.type === "heading" ? heading.id : slugify(`${marker.lecture.id} ${marker.lecture.title}`),
+      blocks: blocks.slice(marker.index, end)
+    };
+  });
+
+  return {
+    intro: blocks.slice(0, markers[0].index),
+    lectures,
+    tail: blocks.slice(tailStart)
+  };
 }
 
 export function getNextLecture(course: CourseRecord, progressLectureKeys: Set<string>) {

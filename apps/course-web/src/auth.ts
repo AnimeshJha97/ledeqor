@@ -2,8 +2,14 @@ import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import { upsertUserFromAuth } from "@/server/users/user-repository";
 
+const trustHost =
+  process.env.AUTH_TRUST_HOST === "true" ||
+  process.env.NODE_ENV !== "production" ||
+  Boolean(process.env.VERCEL || process.env.CF_PAGES);
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   secret: process.env.AUTH_SECRET,
+  trustHost,
   providers: [
     Google({
       clientId: process.env.AUTH_GOOGLE_ID,

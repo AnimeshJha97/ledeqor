@@ -66,16 +66,15 @@ Indexes:
 
 One document per sellable paid tier. Free access and previews are handled by entitlements or campaigns, not as a separate paid plan.
 
-Current tiers:
+Current tier:
 
 - `pro`: Rs. 499/month
-- `career`: Rs. 799/month
 
 Shape:
 
 ```ts
 {
-  slug: "pro" | "career";
+  slug: "pro";
   name: string;
   description: string;
   currency: "INR";
@@ -125,7 +124,7 @@ General shape:
   slug: string;
   name: string;
   description?: string;
-  targetPlanSlugs: ("pro" | "career")[];
+  targetPlanSlugs: "pro"[];
   discountPercentage: number; // 0-100
   status: "draft" | "scheduled" | "active" | "paused" | "expired";
   startsAt: Date;
@@ -177,7 +176,7 @@ Shape:
       id: string;
       title: string;
       anchor: string;
-      kind?: "concept" | "build" | "interview" | "strategy";
+      kind?: "concept" | "build" | "strategy";
     }[];
     markdown: string;
   }[];
@@ -241,13 +240,15 @@ Shape:
   learnerId: string;
   prompt: string;
   answer: string;
-  createdAt: Date;
+  kind: "short_answer";
+  updatedAt: Date;
 }
 ```
 
 Indexes:
 
-- `{ courseSlug: 1, moduleSlug: 1, learnerId: 1, createdAt: -1 }`
+- unique `{ courseSlug: 1, moduleSlug: 1, learnerId: 1, prompt: 1, kind: 1 }`
+- `{ learnerId: 1, updatedAt: -1 }`
 
 ### `capstone_progress`
 
@@ -285,7 +286,6 @@ PATCH  /api/progress                                    authenticated + enrolled
 POST   /api/practice/attempts                           authenticated + enrolled
 GET    /api/capstone/progress?courseSlug=ai-engineer-guide authenticated + enrolled
 PATCH  /api/capstone/progress                           authenticated + enrolled
-POST   /api/interview-practice/analyze                  authenticated + enrolled
 ```
 
 ## Seeding

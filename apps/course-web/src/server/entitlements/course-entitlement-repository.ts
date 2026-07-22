@@ -69,26 +69,23 @@ export async function grantFounderFreeEntitlement(input: {
 }) {
   const collection = await entitlementsCollection();
   const now = new Date();
-  const existing = await getCourseEntitlement(input.userId, input.courseSlug);
-
-  if (existing) {
-    return existing;
-  }
 
   await collection.updateOne(
     { userId: input.userId, courseSlug: input.courseSlug },
     {
-      $setOnInsert: {
-        userId: input.userId,
-        courseSlug: input.courseSlug,
+      $set: {
         accessLevel: "pro",
         source: "founder_free",
         campaignId: input.campaignId,
         status: "active",
         startsAt: input.startsAt,
         expiresAt: input.expiresAt,
-        createdAt: now,
         updatedAt: now
+      },
+      $setOnInsert: {
+        userId: input.userId,
+        courseSlug: input.courseSlug,
+        createdAt: now
       }
     },
     { upsert: true }

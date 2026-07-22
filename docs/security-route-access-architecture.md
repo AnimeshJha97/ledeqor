@@ -1,63 +1,29 @@
 # Security and Route Access Architecture
 
-Last updated: 2026-05-20
+Last updated: 2026-07-12
 
 ## Purpose
 
-The platform is a multi-course study and preparation product. Public visitors should be able to discover the platform, compare courses, read marketing content, and sign in. Actual course consumption should require authentication and course access.
+Ledeqor separates public course discovery from private course consumption. Public visitors should be able to understand the platform, review available courses, view pricing, and sign in. Full course study, practice, progress, capstone work, and private diagrams require authentication and course access.
 
 This document defines the production access model for:
 
-- public pages
-- signed-in user pages
-- enrolled course pages
-- paid/subscription-only features
-- admin/instructor routes
-- API route authorization
-- database ownership and entitlement checks
+- public pages;
+- signed-in user pages;
+- enrolled course pages;
+- Pro course access;
+- admin/instructor routes;
+- API route authorization;
+- database ownership checks.
 
-## Udemy-Inspired Product Patterns
+## Access Principles
 
-Udemy is a useful comparison because it separates course discovery from course consumption:
-
-- Course landing/enrollment pages can be public, while the course-taking experience is tied to enrollment or purchase.
-- Course creators can make enrollment pages private, which means access is controlled by invitation or direct link rather than public catalog discovery.
-- Learners have progress and completion state tied to their account.
-- Udemy Business adds organization-level administration, assignments, user management, and reporting.
-
-Sources reviewed:
-
-- Udemy support: private course enrollment pages  
-  https://support.udemy.com/hc/en-us/articles/229604188-How-to-Make-a-Course-Enrollment-Page-Private
-- Udemy support: course taking / learning experience  
-  https://support.udemy.com/hc/en-us/categories/204119728-Course-Taking
-- Udemy support: certificates and course completion  
-  https://support.udemy.com/hc/en-us/articles/229603868-Certificate-of-Completion
-- Udemy Business support: admin and learning management concepts  
-  https://business-support.udemy.com/
-
-We should not clone Udemy directly. Our app is more guided, cohort/product-build oriented, and AI-enhanced. But the route-access model should follow the same principle: public discovery, private learning.
-
-## Current Problem
-
-Right now, course study routes can be opened without signing in:
-
-```text
-/courses/ai-engineer-guide/modules
-/courses/ai-engineer-guide/modules/[moduleSlug]
-/courses/ai-engineer-guide/modules/[moduleSlug]/lectures/[lectureId]
-/courses/ai-engineer-guide/modules/[moduleSlug]/practice
-/courses/ai-engineer-guide/capstone
-/courses/ai-engineer-guide/visuals
-```
-
-The matching APIs also use a temporary learner id:
-
-```ts
-const learnerId = "local-learner";
-```
-
-That is fine for local prototyping but not acceptable for production. In production, learner identity must come from the authenticated session.
+1. Public pages can explain the course and product outcome, but must not expose full paid course content.
+2. Authentication identifies the learner, but entitlement determines course access.
+3. Course access must be enforced on the server, not only hidden in the UI.
+4. Learner-owned data must always be scoped by authenticated user id.
+5. Admin and seed operations require stronger checks than learner routes.
+6. Pricing should stay simple until billing and entitlement workflows are mature.
 
 ## Access Levels
 
@@ -67,39 +33,37 @@ No sign-in required.
 
 Can access:
 
-- landing page
-- course catalog
-- public course sales/detail page
-- pricing
-- about
-- sign-in
-- selected free previews
-- health check
+- landing page;
+- course catalog;
+- public course detail page;
+- pricing;
+- about;
+- sign-in;
+- health check;
+- catalog-safe course summaries.
 
 Cannot access:
 
-- full modules
-- full lecture pages
-- progress state
-- practice submissions
-- AI answer analysis
-- capstone checklist
-- private diagrams if tied to course content
-- account dashboard
+- full modules;
+- full lecture pages;
+- progress state;
+- practice submissions;
+- capstone checklist;
+- private visual library;
+- My Learning.
 
 ### 2. Authenticated User
 
-Signed in, but may not have course access.
+Signed in, but may not yet have course access.
 
 Can access:
 
-- account dashboard
-- profile/settings
-- owned/enrolled course list
-- checkout/enrollment flows
-- free tier allowed content
+- My Learning shell;
+- owned/enrolled course list;
+- enrollment or claim flows;
+- public course pages.
 
-Cannot access paid course content unless entitlement exists.
+Cannot access private course content unless an active entitlement exists.
 
 ### 3. Enrolled Learner
 
@@ -107,78 +71,81 @@ Signed in and has active access to a specific course.
 
 Can access:
 
-- course modules
-- lectures
-- practice mode
-- quizzes
-- saved answers
-- progress tracking
-- capstone tracker
-- visual learning library
-- AI analysis within plan limits
+- course module dashboard;
+- module pages;
+- lecture pages;
+- practice mode;
+- saved quiz scores;
+- saved short answers;
+- progress tracking;
+- capstone tracker;
+- visual learning library;
+- lab index.
 
-### 4. Pro / Paid Learner
+### 4. Pro Learner
 
-Signed in, enrolled, and has paid/subscription entitlement.
+Signed in and has a Pro-level entitlement for a course.
 
 Can access:
 
-- all learner features
-- advanced AI answer review
-- mock interview mode
-- deeper capstone guidance
-- exportable reports or certificates when implemented
+- all enrolled learner features;
+- all currently available private course workspace features;
+- future Pro course updates where applicable.
+
+The current paid plan is Pro only. Founder Free grants temporary Pro-style access through a campaign entitlement.
 
 ### 5. Admin / Instructor
 
-Can access:
+Can later access:
 
-- course authoring
-- seed/publish tools
-- learner analytics
-- billing/admin settings
-- moderation and audit logs
-- support tools
+- course authoring;
+- seed/publish tools;
+- learner analytics;
+- campaign management;
+- billing/admin settings;
+- moderation and audit logs;
+- support tooling.
 
-## Target Route Matrix
+Admin routes must check the authenticated user role server-side.
+
+## Current Route Matrix
 
 | Route | Access | Reason |
 |---|---:|---|
-| `/` | Public | Platform marketing |
+| `/` | Public | Platform landing |
 | `/courses` | Public | Course catalog |
-| `/courses/[courseSlug]` | Public | Sales/detail page |
-| `/pricing` | Public | Conversion page |
-| `/about` | Public | Trust page |
-| `/sign-in` | Public only when signed out | Auth entry |
-| `/dashboard` | Authenticated | User home |
-| `/my-learning` | Authenticated | Owned/enrolled courses and Founder Free empty state |
-| `/courses/[courseSlug]/modules` | Enrolled learner | Paid/private course content |
-| `/courses/[courseSlug]/modules/[moduleSlug]` | Enrolled learner | Module content |
-| `/courses/[courseSlug]/modules/[moduleSlug]/lectures/[lectureId]` | Enrolled learner | Lecture body |
+| `/courses/[courseSlug]` | Public | Course detail page |
+| `/pricing` | Public | Pro plan and Founder Free offer |
+| `/about` | Public | Platform context |
+| `/sign-in` | Public when signed out | Auth entry |
+| `/my-learning` | Authenticated | Learner workspace |
+| `/labs` | Enrolled learner | Course lab index |
+| `/courses/[courseSlug]/modules` | Enrolled learner | Private course content |
+| `/courses/[courseSlug]/modules/[moduleSlug]` | Enrolled learner | Private module content |
+| `/courses/[courseSlug]/modules/[moduleSlug]/lectures/[lectureId]` | Enrolled learner | Private lecture body |
 | `/courses/[courseSlug]/modules/[moduleSlug]/practice` | Enrolled learner | Practice and saved answers |
 | `/courses/[courseSlug]/capstone` | Enrolled learner | Course project workspace |
-| `/courses/[courseSlug]/visuals` | Enrolled learner or preview-limited | Diagrams may expose course IP |
-| `/admin` | Admin | Platform management |
-| `/admin/courses` | Admin/instructor | Course management |
+| `/courses/[courseSlug]/visuals` | Enrolled learner | Private course diagrams |
+| `/admin` | Admin | Future platform management |
+| `/admin/courses` | Admin/instructor | Future course management |
 
-## Target API Matrix
+## Current API Matrix
 
 | API Route | Access | Notes |
 |---|---:|---|
 | `GET /api/health` | Public | No sensitive data |
-| `GET /api/courses` | Public | Return catalog-safe summaries only |
-| `GET /api/courses/[courseSlug]` | Public + private shape split | Public users get marketing summary; enrolled users can get study content |
-| `POST /api/courses/seed` | Admin/server secret only | Must never be public |
-| `GET /api/progress` | Authenticated + enrolled | Use session user id |
-| `PATCH /api/progress` | Authenticated + enrolled | Validate ownership and course access |
-| `POST /api/practice/attempts` | Authenticated + enrolled | Save per user, per course |
-| `POST /api/interview-practice/analyze` | Authenticated + entitled + rate limited | AI cost and abuse control |
-| `GET /api/capstone/progress` | Authenticated + enrolled | Per learner |
-| `PATCH /api/capstone/progress` | Authenticated + enrolled | Per learner |
+| `GET /api/courses` | Public | Catalog-safe summaries only |
+| `GET /api/courses/[courseSlug]` | Public + private shape split | Public users get summary; enrolled users can get study content |
+| `POST /api/courses/seed` | Server secret / admin later | Requires `COURSE_SEED_SECRET` when configured |
+| `GET /api/progress` | Authenticated + enrolled | Uses session user id |
+| `PATCH /api/progress` | Authenticated + enrolled | Validates course access and ownership |
+| `POST /api/practice/attempts` | Authenticated + enrolled | Saves short-answer attempts per user and course |
+| `GET /api/capstone/progress` | Authenticated + enrolled | Reads learner capstone state |
+| `PATCH /api/capstone/progress` | Authenticated + enrolled | Updates learner capstone checklist |
 
-## Recommended Course Entitlement Model
+## Entitlement Model
 
-Create a course-specific enrollment collection instead of putting course access directly inside the user document.
+Use a course-specific entitlement collection instead of storing access directly in the user document.
 
 ### `users`
 
@@ -199,10 +166,11 @@ Create a course-specific enrollment collection instead of putting course access 
 ```ts
 {
   _id: ObjectId;
-  userId: ObjectId;
+  userId: ObjectId | string;
   courseSlug: string;
   accessLevel: "free" | "paid" | "pro" | "admin";
-  source: "manual" | "purchase" | "subscription" | "admin_grant" | "preview";
+  source: "manual" | "purchase" | "subscription" | "admin_grant" | "preview" | "free_enrollment" | "founder_free";
+  campaignId?: string;
   status: "active" | "expired" | "revoked" | "refunded";
   startsAt: Date;
   expiresAt?: Date;
@@ -211,12 +179,13 @@ Create a course-specific enrollment collection instead of putting course access 
 }
 ```
 
-Indexes:
+Recommended indexes:
 
 ```ts
 unique { userId: 1, courseSlug: 1 }
 { courseSlug: 1, status: 1 }
 { userId: 1, status: 1 }
+{ campaignId: 1, status: 1 }
 ```
 
 ### `subscriptions`
@@ -226,11 +195,11 @@ Use later when billing is introduced.
 ```ts
 {
   _id: ObjectId;
-  userId: ObjectId;
+  userId: ObjectId | string;
   provider: "stripe" | "razorpay";
   providerCustomerId: string;
   providerSubscriptionId?: string;
-  plan: "free" | "pro" | "career";
+  plan: "pro";
   status: "active" | "past_due" | "canceled" | "trialing";
   currentPeriodEnd?: Date;
   createdAt: Date;
@@ -238,24 +207,24 @@ Use later when billing is introduced.
 }
 ```
 
-## Route Guard Strategy
+## Guard Strategy
 
 Use layered protection.
 
-### Layer 1: Middleware
+### Layer 1: High-Level Route Control
 
-Middleware should block broad private page families early:
+Middleware or proxy can be used later for fast redirects on broad private route families:
 
 ```text
-/dashboard
 /my-learning
+/labs
 /courses/:courseSlug/modules
 /courses/:courseSlug/capstone
 /courses/:courseSlug/visuals
 /admin
 ```
 
-Middleware is good for fast auth redirects, but it should not be the only protection because entitlement checks often need database access.
+This layer improves UX, but it must not be the only protection.
 
 ### Layer 2: Server Page Guards
 
@@ -269,20 +238,20 @@ await requireCourseAccess(courseSlug, {
 
 The guard should:
 
-- read the Auth.js session
-- redirect to `/sign-in` if signed out
-- check `course_entitlements`
-- redirect to `/pricing` or `/courses/[courseSlug]` if not enrolled
-- return `{ user, entitlement }` for page rendering
+- read the Auth.js session;
+- redirect to `/sign-in` if signed out;
+- check `course_entitlements`;
+- redirect to the public course detail page if not enrolled;
+- return `{ user, entitlement }` for page rendering.
 
 ### Layer 3: API Guards
 
-Every private API route must use server-side authorization. Never trust the UI to hide buttons.
+Every private API route must use server-side authorization. Never trust the UI to hide controls.
 
 Recommended helper:
 
 ```ts
-const access = await requireApiCourseAccess(request, courseSlug);
+const access = await requireApiCourseAccess(courseSlug);
 ```
 
 If unauthorized:
@@ -290,7 +259,6 @@ If unauthorized:
 ```ts
 401 signed out
 403 signed in but no course access
-429 rate limited
 ```
 
 ### Layer 4: Data Ownership Checks
@@ -301,80 +269,81 @@ Database queries must always include the authenticated user id:
 { courseSlug, learnerId: session.user.id }
 ```
 
-Do not accept `learnerId` from request body or query string.
+Never accept `learnerId` from request body or query string.
 
-## Free Preview Model
+## Founder Free Access
 
-To support conversion without exposing the full course:
+Founder Free is a launch campaign that grants Pro-style access to the AI Engineer Guide.
 
-- public course detail page shows curriculum titles, outcomes, and project summary
-- allow a small number of preview lectures
-- preview lecture route can be:
+Defaults:
 
-```text
-/courses/[courseSlug]/preview/[lectureId]
-```
+- Course: `ai-engineer-guide`
+- Access level: `pro`
+- Duration: 30 days
+- Max redemptions: 25 users
+- Payment required: no
 
-Preview content should use separate `previewMarkdown` or a redacted subset, not the full lecture body.
+Claim flow:
 
-## AI Feature Security
+1. User clicks Founder Free CTA.
+2. If signed out, Auth.js redirects to Google sign-in.
+3. User is synced into `users`.
+4. Claim action checks existing entitlement.
+5. Claim action checks redemption cap.
+6. Claim action creates a `course_entitlements` document.
+7. User is redirected to My Learning.
 
-AI features need stricter protection because they cost money and process user content.
+## Practice and Progress Security
 
-For `/api/interview-practice/analyze`:
+Practice and progress routes must:
 
-- require session
-- require course entitlement
-- enforce per-user rate limits
-- validate input length
-- use `OPENAI_API_KEY` and `OPENAI_MODEL`, currently `gpt-4.1-nano`
-- store prompt/answer only if product needs history
-- avoid sending private keys to client
-- log token/cost metadata, not full sensitive answers by default
+- require authentication;
+- require course entitlement;
+- validate course and module slugs;
+- use session user id as `learnerId`;
+- reject empty or malformed input;
+- avoid exposing another learner's progress.
 
-Recommended initial limits:
-
-| Plan | AI answer reviews |
-|---|---:|
-| Free | 3 per day |
-| Pro | 50 per day |
-| Career | 200 per day |
+Current practice scope is short-answer persistence. Any future AI-assisted practice should add usage limits, cost controls, and clear fallback behavior before release.
 
 ## Admin Security
 
 Admin routes should require:
 
-- authenticated session
-- `user.role === "admin"`
-- audit logging for destructive actions
-- seed secret for seed routes until proper admin UI exists
+- authenticated session;
+- `user.role === "admin"`;
+- audit logging for destructive actions;
+- seed secret for seed routes until a proper admin UI exists.
 
 The seed route should remain protected by `COURSE_SEED_SECRET`, even after admin auth is added.
 
-## Recommended Implementation Phases
+## Preview Model
 
-### Phase A: Access Foundation
+To support conversion without exposing the full course:
 
-Status: implemented locally.
+- public course detail page shows curriculum titles, outcomes, and project summary;
+- selected preview content can be added later;
+- preview content should use a redacted or dedicated preview field, not the full private lecture body.
 
-1. Add `users` repository and Auth.js user sync.
-2. Add `course_entitlements` repository.
-3. Add `requireAuth`, `requireCourseAccess`, and `requireAdmin`.
-4. Replace `local-learner` with session user id.
-5. Gate study routes and APIs.
-6. Add temporary free enrollment CTA on the course detail page.
+Potential future route:
+
+```text
+/courses/[courseSlug]/preview/[lectureId]
+```
+
+## Implementation Status
 
 Implemented private route families:
 
 ```text
+/my-learning
+/labs
 /courses/[courseSlug]/modules
 /courses/[courseSlug]/modules/[moduleSlug]
 /courses/[courseSlug]/modules/[moduleSlug]/lectures/[lectureId]
 /courses/[courseSlug]/modules/[moduleSlug]/practice
 /courses/[courseSlug]/capstone
 /courses/[courseSlug]/visuals
-/labs
-/interview
 ```
 
 Implemented private APIs:
@@ -383,56 +352,20 @@ Implemented private APIs:
 GET/PATCH /api/progress
 POST      /api/practice/attempts
 GET/PATCH /api/capstone/progress
-POST      /api/interview-practice/analyze
 ```
 
-### Phase B: Enrollment Flow
+Removed or intentionally out of scope:
 
-Status: Founder Free launch version implemented.
+```text
+standalone non-course preparation route
+standalone AI answer-analysis API
+extra paid plan tiers beyond Pro
+```
 
-1. Add `/my-learning`.
-2. Add Founder Free claim button on landing, pricing, and course detail pages.
-3. Create Pro-style `founder_free` entitlement on claim.
-4. Redirect enrolled users to study dashboard.
+## Next Security Priorities
 
-Founder Free defaults:
-
-- Course: `ai-engineer-guide`
-- Access level: `pro`
-- Duration: 30 days
-- Max redemptions: 25 users
-- Payment required: no
-
-### Phase C: Paid Access
-
-1. Add plan-aware access levels.
-2. Connect pricing page to checkout.
-3. Add subscription webhook handling.
-4. Update entitlement status from billing events.
-
-### Phase D: Preview and Conversion
-
-1. Add preview lecture support.
-2. Show locked states in curriculum.
-3. Add upgrade prompts only where relevant.
-
-### Phase E: Admin and Reporting
-
-1. Add admin dashboard.
-2. Add course publish controls.
-3. Add learner progress analytics.
-4. Add audit logs.
-
-## Immediate Engineering Decision
-
-For the next implementation task, build Phase A first.
-
-The minimum production-safe change is:
-
-- protect private pages
-- protect private APIs
-- use session user id
-- add course entitlements
-- create a temporary free enrollment flow for the AI Engineer Guide course
-
-That makes the app behave like a real course platform while keeping payment integration for a later phase.
+1. Rotate exposed development secrets.
+2. Reseed MongoDB so live course data matches current source.
+3. Add billing webhook verification when paid Pro checkout is introduced.
+4. Add admin-only course seed/publish controls.
+5. Add rate limits before introducing any cost-bearing AI feature.
