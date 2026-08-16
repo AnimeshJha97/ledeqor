@@ -76,7 +76,7 @@ The capstone exists to create stronger project proof than a basic chatbot demo.
 ## Repository Structure
 
 ```text
-orvion-docintel-ai-engineer-course/
+ledeqor/
   apps/
     course-web/                  # Next.js Ledeqor web app
   course/                        # Markdown course source
